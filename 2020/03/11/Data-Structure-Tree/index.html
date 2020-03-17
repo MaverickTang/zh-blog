@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Blogs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Blogs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Blogs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Blogs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Blogs/css/main.css">
+
+
+<link rel="stylesheet" href="/Blogs/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mavericktang.github.io","root":"/Blogs/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Data Structure: TreeIntroIn computer science, a data structure is a data organization, management, and storage format that enables efficient access and modification. More precisely, a data structure i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure: Tree">
+<meta property="og:url" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Data Structure: TreeIntroIn computer science, a data structure is a data organization, management, and storage format that enables efficient access and modification. More precisely, a data structure i">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/tree-basic.png">
+<meta property="og:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/t016b0d2e51e372bef0.png">
+<meta property="og:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/Example1.png">
+<meta property="og:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/Example2.png">
+<meta property="og:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86.png">
+<meta property="article:published_time" content="2020-03-11T23:35:49.000Z">
+<meta property="article:modified_time" content="2020-03-17T04:20:34.317Z">
+<meta property="article:author" content="Haotian Tang">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Competition">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/Data-Structure-Tree/tree-basic.png">
+
+<link rel="canonical" href="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+<script type="text/javascript">
+  // Wait for the page to load first
+  var _prevOnload = window.onload;
+  window.onload = function() {
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
+      switchLang.onclick = function() {
+          var href = window.location.href;
+          var indexOfEn = href.toLowerCase().indexOf('/en/');
+          if(indexOfEn !== -1) {
+              window.location.href = href.replace('/en/', '/');
+          }
+          else {
+              window.location.href = href.replace(/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1en/$2');
+          }
+          if(typeof(_prevOnload) === 'function') {
+              _prevOnload();
+          }
+          return false;
+      }
+  }
+</script>j
+
+  <title>Data Structure: Tree | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/Blogs/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">if(Coding == Happiness && Happiness == Life)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/Blogs/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/Blogs/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/Blogs/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/Blogs/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-switch_lang">
+
+    <a href="https://mavericktang.github.io/en" rel="section"><i class="fa fa-fw fa-language"></i>English</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/MaverickTang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Blogs/images/avatar.gif">
+      <meta itemprop="name" content="Haotian Tang">
+      <meta itemprop="description" content="Live without Barricades!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Data Structure: Tree
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-11 16:35:49" itemprop="dateCreated datePublished" datetime="2020-03-11T16:35:49-07:00">2020-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-16 21:20:34" itemprop="dateModified" datetime="2020-03-16T21:20:34-07:00">2020-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blogs/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span></span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>NaN:aN</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Data-Structure-Tree"><a href="#Data-Structure-Tree" class="headerlink" title="Data Structure: Tree"></a>Data Structure: Tree</h1><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>In computer science, a <strong>data structure</strong> is a data organization, management, and storage format that enables efficient access and modification. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data</p>
+<h2 id="Basic-Info"><a href="#Basic-Info" class="headerlink" title="Basic Info"></a>Basic Info</h2><p>Tree in computer science is the same as the tree in the real world. But we are more used to put the root on the top to think about the tree.</p>
+<p>A tree without any stable point is <strong>unrooted tree</strong>, it has those equalievent definition:</p>
+<ul>
+<li>Has n points, n-1 edges linked undirected graph</li>
+<li>Undirected graph but without cycle</li>
+<li>Undirected graph which two points have and only have a simple path</li>
+</ul>
+<p>In the base as the unrooted graph, the specific point is <strong>root</strong>.</p>
+<p><img src="Data-Structure-Tree/tree-basic.png" alt=""></p>
+<h2 id="Restore-it"><a href="#Restore-it" class="headerlink" title="Restore it!"></a>Restore it!</h2><h3 id="Segment-tree"><a href="#Segment-tree" class="headerlink" title="Segment tree"></a><a href="https://en.wikipedia.org/wiki/Segment_tree" target="_blank" rel="noopener">Segment tree</a></h3><p>In computer science, a <strong>segment tree,</strong> also known as a statistic tree, is a tree data structure used for <strong>storing information about intervals, or segments</strong>. It allows querying which of the stored segments contain a given point. It is, in principle, a static structure; that is, it’s a structure that <strong>cannot be modified once it’s built</strong>. A similar data structure is the interval tree. A segment tree for a set <em>I</em> of <em>n</em> intervals uses <a href="https://en.wikipedia.org/wiki/Big_O_notation" target="_blank" rel="noopener"><em>O</em></a>(<em>n</em> log <em>n</em>) storage and can be built in <em>O</em>(<em>n</em> log <em>n</em>) time. Segment trees support searching for all the intervals that contain a query point in <em>O</em>(log <em>n</em> + <em>k</em>), <em>k</em>being the number of retrieved intervals or segments.</p>
+<p>So it has every characteristic binary tree has:</p>
+<ul>
+<li><p>There are at <strong>most 2^(i-1)^(i$&gt;=$1) points</strong> in the <strong>number i layer</strong> of the binary tree</p>
+</li>
+<li><p>There are at <strong>most 2^(i-1)^(i$&gt;=$1) points</strong> in the binary tree which’s  <strong>depth is i</strong></p>
+</li>
+<li><p>A binary tree which has <strong>n points</strong> has <strong>log2^n^+1 depth</strong></p>
+</li>
+<li><p>For a perfect binary tree which has n points, for any point i(1&lt;=i&lt;=n):</p>
+<p>If i==1, then i is the root of the binary tree, else if i&gt;1, then i’s parent is i/2</p>
+<p>if 2i&gt;n, then i has no left child</p>
+<p>If 2i+1&gt;n, then i has no right child</p>
+</li>
+</ul>
+<h4 id="Charastics-of-Segment-tree"><a href="#Charastics-of-Segment-tree" class="headerlink" title="Charastics of Segment tree"></a>Charastics of Segment tree</h4><ul>
+<li><p>almost perfect binary tree. </p>
+</li>
+<li><p>i’s <strong>father</strong> is i/2(suppose i is a point in the tree)</p>
+</li>
+<li><p>i’s <strong>brothers</strong> are b=i/2*2andanother one is b+1. </p>
+</li>
+<li><p>i’s <strong>children</strong> are l=i*2and r=l+1</p>
+</li>
+</ul>
+<p><img src="Data-Structure-Tree/t016b0d2e51e372bef0.png" alt=""></p>
+<h4 id="Restoring"><a href="#Restoring" class="headerlink" title="Restoring"></a>Restoring</h4><p>Base on the charastic of the binary tree. We can easily build the Segment tree.</p>
+<p>Because the segment tree, every point has larger value which is stored in one of its children. So we need to store its children in order to know the segment. And also the value of the point of course. Because the question would ask the data in the original order, so we also need to store those info.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mx=<span class="number">100001</span>; </span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span> </span><br><span class="line">    <span class="keyword">int</span> l, r; <span class="comment">//left son and right son</span></span><br><span class="line">    ll val; <span class="comment">//The largest value</span></span><br><span class="line">&#125;  tr[mx&lt;&lt;<span class="number">2</span>] ;<span class="comment">//mx&lt;&lt;2 is equal to mx*2.</span></span><br><span class="line"><span class="keyword">int</span> n, a[mx]= &#123;<span class="number">0</span>&#125;;<span class="comment">//points number, the array restoring data</span></span><br><span class="line"><span class="keyword">int</span> real[mx]=&#123;<span class="number">0</span>&#125;;<span class="comment">//The real poisition for the leaves</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Building"><a href="#Building" class="headerlink" title="Building"></a>Building</h4><p>We build the tree from its root, then its sons. Then we keep build sons’s sons through recursion. And when we finally get to the deepest point of the tree(leaves). We need to memerozie the number for the leaves and restore the value.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">   tr[i].l=l, tr[i].r=r, tr[i].val=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">if</span>(l==r)&#123; <span class="comment">//if reach the leaf point</span></span><br><span class="line">     real[l]=i; <span class="comment">//memerozie the number for the leaves</span></span><br><span class="line">     tr[i].val=a[l]; <span class="comment">// restore the value</span></span><br><span class="line">     <span class="keyword">return</span>;<span class="comment">//End the function</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>; <span class="comment">//Midpoint</span></span><br><span class="line">   build(i&lt;&lt;<span class="number">1</span>,l,m); <span class="comment">//Left son</span></span><br><span class="line">   build(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,m+<span class="number">1</span>,r); <span class="comment">//right son</span></span><br><span class="line">   tr[i].val=<span class="built_in">max</span>(tr[i&lt;&lt;<span class="number">1</span>].val,tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val);<span class="comment">//Renew the value of the father ponint through son's point</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Query-segment"><a href="#Query-segment" class="headerlink" title="Query segment"></a>Query segment</h4><p>Query will return the max value for the segment. So it will firtst find out if the request segment is in the domain, and return the value.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tr[i].l&gt;=l&amp;&amp;tr[i].r&lt;=r)<span class="keyword">return</span> tr[i].val;<span class="comment">//In range</span></span><br><span class="line">	<span class="keyword">if</span>(tr[i].l&gt;r||tr[i].r&lt;l)<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//not in</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">max</span>(tr[i&lt;&lt;<span class="number">1</span>].val, tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val);<span class="comment">//Else return the max in sons</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Update-value（One-point）"><a href="#Update-value（One-point）" class="headerlink" title="Update value（One point）"></a>Update value（One point）</h4><p>Once we changed a point. It will influence its father and all the way to the root.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> tr[real[a]].val=k;<span class="comment">//IN the main func, change the value of a point</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(i==<span class="number">1</span>) <span class="keyword">return</span>;<span class="comment">//To the root</span></span><br><span class="line">   <span class="keyword">int</span> fi=i&gt;&gt;<span class="number">1</span>;<span class="comment">//calculate its father</span></span><br><span class="line">   tr[fi].val=<span class="built_in">max</span>(tr[fi&lt;&lt;<span class="number">1</span>].val, tr[fi&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val);</span><br><span class="line">   update(fi);<span class="comment">//Update father</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Update-Value-Segment"><a href="#Update-Value-Segment" class="headerlink" title="Update Value(Segment)"></a>Update Value(Segment)</h3><p>When we trying to update the value for a segment, it is impossible to update one point by one pointO(nlogn). So we add a lazy tag which store the value that need to be updated.  So the segment update will be more like query segment. So we need to discuss If the segment we need to update is inside the segment…….</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123; </span><br><span class="line">tr[i].l=l,tr[i].r=r,tr[i].val=<span class="number">0</span>,tr[i].lazy=<span class="number">0</span>; </span><br><span class="line"><span class="keyword">if</span>(l==r) &#123;  tr[i].val=a[l];  <span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; <span class="comment">//Same old story</span></span><br><span class="line">build(i&lt;&lt;<span class="number">1</span>,l,mid); </span><br><span class="line">build(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">tr[i].val=tr[i&lt;&lt;<span class="number">1</span>].val+tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val; <span class="comment">//It can also restore the value of the sum</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span> </span>&#123; <span class="comment">//K is the value we need to update</span></span><br><span class="line">  <span class="keyword">if</span>(l&lt;=tr[i].l&amp;&amp;r&gt;=tr[i].r) &#123;<span class="comment">//If just inside the segment i</span></span><br><span class="line">    tr[i].lazy+=k; <span class="comment">//add k to lazy value</span></span><br><span class="line">    tr[i].val+=(tr[i].r-tr[i].l+<span class="number">1</span>)*k; <span class="comment">//add k to the segment</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">if</span>(r&lt;tr[i].l||l&gt;tr[i].r)<span class="keyword">return</span>; <span class="comment">// If it is not inside the segment i</span></span><br><span class="line">  </span><br><span class="line">  pushdown(i);<span class="comment">//Pushdown the value from the father segment</span></span><br><span class="line">  </span><br><span class="line">  update(i&lt;&lt;<span class="number">1</span>,l,r,k); <span class="comment">//Same old story</span></span><br><span class="line">  update(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r,k); </span><br><span class="line">  tr[i].val=tr[i&lt;&lt;<span class="number">1</span>].val+tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val;<span class="comment">//In this kind, the value can only restore the summary of its son's value</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; </span><br><span class="line"><span class="keyword">if</span>(tr[i].lazy==<span class="number">0</span>) <span class="keyword">return</span>;<span class="comment">//Don't need to update</span></span><br><span class="line">tr[i&lt;&lt;<span class="number">1</span>].lazy+=tr[i].lazy;<span class="comment">//pass lazy to left son</span></span><br><span class="line">tr[i&lt;&lt;<span class="number">1</span>].val+=tr[i].lazy*(tr[i&lt;&lt;<span class="number">1</span>].r-tr[i&lt;&lt;<span class="number">1</span>].l+<span class="number">1</span>); <span class="comment">//Update value of left son</span></span><br><span class="line">tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].lazy+=tr[i].lazy;<span class="comment">//right son</span></span><br><span class="line"> tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val+=tr[i].lazy*(tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].r-tr[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].l+<span class="number">1</span>);</span><br><span class="line"> 	tr[i].lazy=<span class="number">0</span>;<span class="comment">//The value has passed</span></span><br><span class="line"> &#125; </span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tr[i].l&gt;=l&amp;&amp;tr[i].r&lt;=r)<span class="keyword">return</span> tr[i].val;<span class="comment">//In range</span></span><br><span class="line">	<span class="keyword">if</span>(tr[i].l&gt;=r||tr[i].r&lt;=l)<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//not in</span></span><br><span class="line">  pushdown(i); <span class="comment">//Update the value from the father point</span></span><br><span class="line">	<span class="keyword">return</span> query(i&lt;&lt;<span class="number">1</span>,l,r)+query(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now we know the way to update the value for a segment.</p>
+<p>How about the segment’s value time something?（Discussion question）</p>
+<h2 id="Binary-Indexed-Tree"><a href="#Binary-Indexed-Tree" class="headerlink" title="Binary Indexed Tree"></a><a href="https://en.wikipedia.org/wiki/Fenwick_tree" target="_blank" rel="noopener">Binary Indexed Tree</a></h2><p> A data structure that can efficiently <strong>update elements</strong> and <strong>calculate prefix sums</strong> in a table of numbers.</p>
+<p>We can understand it through segment tree. The Binary indexed tree aims to calculate the sum from a<sub>s</sub></p>
+<p>a<sub>s+1</sub>…..a<sub>t</sub>. We can calculate it with segment tree. But what if we want to get it fast? If we can calculate the sum(1<del>t)-the sum(1</del>s-1), it works the same. Then we discover that the right son is no longer needed. We can get them from the father - left son.</p>
+<p>![](Data-Structure-Tree/BInary indexed tree.png)</p>
+<p>So base on the graph below.</p>
+<p>![](Data-Structure-Tree/Binary simple.png)</p>
+<p>Everytime we minus the last 1 in the binary expression, and add i’s value into the result, we can get the sum easily. This is the importance of lowbit.</p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>Binary Expression</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0000</td>
+</tr>
+</tbody></table>
+<p><img src="Data-Structure-Tree/Example1.png" alt=""></p>
+<p>When we update the data, we just add 0001 to the binary expression.</p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>Binary Expression</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p><img src="Data-Structure-Tree/Example2.png" alt=""></p>
+<h3 id="Preparation-lowbit"><a href="#Preparation-lowbit" class="headerlink" title="Preparation: lowbit()"></a>Preparation: lowbit()</h3><p>Lowbit(i) will return the place for 1 in the binary system.</p>
+<p>For instance, lowbit(10)will return 2 because (10)<sub>2</sub>=1010. And 1 is in the place 2.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">   <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Realization"><a href="#Realization" class="headerlink" title="Realization"></a>Realization</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="built_in">bit</span>[mx+<span class="number">1</span>], n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">   <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//Calculate the sum</span></span><br><span class="line">  <span class="keyword">int</span> s =<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    s+=<span class="built_in">bit</span>[i];  i-=lowbit(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//Add x to i</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)&#123;</span><br><span class="line">       <span class="built_in">bit</span>[i]+=x; i+=lowbit(i);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Binary-Indexed-tree-amp-Inversion"><a href="#Binary-Indexed-tree-amp-Inversion" class="headerlink" title="Binary Indexed tree &amp; Inversion"></a>Binary Indexed tree &amp; Inversion</h2><h3 id="Inversion"><a href="#Inversion" class="headerlink" title="Inversion"></a><a href="https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)" target="_blank" rel="noopener">Inversion</a></h3><p>For a sequence A. If i&lt;j and A[i]&gt;A[j]. We call A[i] and A[j] are inversion.</p>
+<p>So we can find the number of the inversion in this way</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = A.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">    cnt += sum(A[i]);</span><br><span class="line">    update(A[i], <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a><a href="http://poj.org/problem?id=1990" target="_blank" rel="noopener">Example</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Every year, Farmer John’s N (1 &lt;= N &lt;= 20,000) cows attend “MooFest”,a social gathering of cows from around the world. MooFest involves a variety of events including haybale stacking, fence jumping, pin the tail on the farmer, and of course, mooing. When the cows all stand in line for a particular event, they moo so loudly that the roar is practically deafening. After participating in this event year after year, some of the cows have in fact lost a bit of their hearing. </p>
+<p>Each cow i has an associated “hearing” threshold v(i) (in the range 1..20,000). If a cow moos to cow i, she must use a volume of at least v(i) times the distance between the two cows in order to be heard by cow i. If two cows i and j wish to converse, they must speak at a volume level equal to the distance between them times max(v(i),v(j)). </p>
+<p>Suppose each of the N cows is standing in a straight line (each cow at some unique x coordinate in the range 1..20,000), and every pair of cows is carrying on a conversation using the smallest possible volume. </p>
+<p>Compute the sum of all the volumes produced by all N(N-1)/2 pairs of mooing cows. </p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>* Line 1: A single integer, N </p>
+<p>* Lines 2..N+1: Two integers: the volume threshold and x coordinate for a cow. Line 2 represents the first cow; line 3 represents the second cow; and so on. No two cows will stand at the same location. </p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>* Line 1: A single line with a single integer that is the sum of all the volumes of the conversing cows. </p>
+<p>Sample Input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">3 1</span><br><span class="line">2 5</span><br><span class="line">2 6</span><br><span class="line">4 3</span><br></pre></td></tr></table></figure>
+
+<p>Sample Output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">57</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Of course stimulation can be a good way, easy to think. But use the binary indexed tree can help to save a lot of time. So we sort cows first because when data is sorted from the smallest to the largest, we don’t need to worry about computation. So we need to use <strong>struct</strong> to restore the value. But we can’t make sure the x value for a cow, we must come up with a way to calculate the cows ( who are before cow i and x&lt;x<sub>i</sub>)’s sum of  x’s absolute value. </p>
+<p>So we need to use two Binary Indexed tree to restore the data:</p>
+<ul>
+<li>The number of cows which are before i and x are smaller than x<sub>i</sub></li>
+<li>The cows which are before i and x are smaller than x<sub>i</sub>, the sum of their x value</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span>  <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mx=<span class="number">50010</span>;</span><br><span class="line">ll n,<span class="built_in">bit</span>[mx],bit2[mx];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cow</span>&#123;</span></span><br><span class="line">	ll v,d;</span><br><span class="line">&#125;c[mx];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Cow a,Cow b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.v&lt;b.v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Binary index tree 1</span></span><br><span class="line"><span class="function">ll <span class="title">lowbit</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;mx)&#123;</span><br><span class="line">		<span class="built_in">bit</span>[x]+=k;</span><br><span class="line">		x+=lowbit(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">	ll s=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		s+=<span class="built_in">bit</span>[i];</span><br><span class="line">		i-=lowbit(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Binary index tree 1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;mx)&#123;</span><br><span class="line">		bit2[x]+=k;</span><br><span class="line">		x+=lowbit(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum2</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">	ll s=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		s+=bit2[i];</span><br><span class="line">		i-=lowbit(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;c[i].v&gt;&gt;c[i].d;</span><br><span class="line">	sort(c+<span class="number">1</span>,c+<span class="number">1</span>+n,cmp);<span class="comment">//The cmp is write especially for structure</span></span><br><span class="line">	ll ans=<span class="number">0</span>,all=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		ll s1=sum(c[i].d),s2=sum2(c[i].d);</span><br><span class="line">		ans+=(s1*c[i].d-s2)*c[i].v;</span><br><span class="line">		ans+=((all-s2)-(i<span class="number">-1</span>-s1)*c[i].d)*c[i].v;</span><br><span class="line">			add(c[i].d,<span class="number">1</span>);</span><br><span class="line">			add2(c[i].d,c[i].d);</span><br><span class="line">			all+=c[i].d;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lowest-Common-Ancestor"><a href="#Lowest-Common-Ancestor" class="headerlink" title="Lowest Common Ancestor"></a><a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="noopener">Lowest Common Ancestor</a></h2><p>the <strong>lowest common ancestor</strong> (<strong>LCA</strong>) of two nodes <em>v</em> and <em>w</em> in a tree or directed acyclic graph (DAG) <em>T</em> is <strong>the lowest (i.e. deepest) node</strong> that <strong>has both <em>v</em> and <em>w</em> as descendants</strong>, where we define each node to be a descendant of itself (so if <em>v</em> has a direct connection from <em>w</em>, <em>w</em> is the lowest common ancestor).</p>
+<h3 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h3><ul>
+<li>LCA(u)=u</li>
+<li>LCA(u,v)=u, if and only if u is the ancestor of v</li>
+<li>If u and v are not ancestor of each other, then they are separate in their lca’s son trees</li>
+<li>LCA(A$\bigcup$B)=LCA(LCA(A),LCA(B))</li>
+<li>u and v’s lea must be in the route from u to v(Shortest)</li>
+</ul>
+<h3 id="Realization-1"><a href="#Realization-1" class="headerlink" title="Realization"></a>Realization</h3><h4 id="Easier-way"><a href="#Easier-way" class="headerlink" title="Easier way"></a>Easier way</h4><p>Build a loop, and in the loop fInd the point which is deeper, and jump it to its father. When two points meet together, the poistion is their LCA.</p>
+<h4 id="Faster-way"><a href="#Faster-way" class="headerlink" title="Faster way"></a>Faster way</h4><p>We premake a <code>fa[x][i]</code> array, and  <code>fa[x][i]</code> Means the 2^i^ ancestor for point x. We can make <code>fa[][]</code>array through dfs. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[x]&lt;dep[y])swap(x,y);<span class="comment">//Let's make sure x deeper</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">19</span>; i&gt;=<span class="number">0</span>; i--) &#123; <span class="comment">//make x the same depth as y</span></span><br><span class="line">	   <span class="keyword">if</span>(dep[y]&lt;=dep[anc[x][i]]) x=anc[x][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;<span class="comment">//Base on charastic, we find the lca</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">19</span>; i&gt;=<span class="number">0</span>; i--) &#123; <span class="comment">//Push up in the same time(If they are in the same depth)</span></span><br><span class="line">	   <span class="keyword">if</span>(anc[x][i]!=anc[y][i]) &#123;</span><br><span class="line">	      x=anc[x][i];</span><br><span class="line">	      y=anc[y][i];</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> anc[x][<span class="number">0</span>];<span class="comment">//It must be lca</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">  anc[x][<span class="number">0</span>]=fa; <span class="comment">//Default: set fa as x's father</span></span><br><span class="line">	dep[x]=dep[fa]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; (<span class="number">1</span>&lt;&lt;i)&lt;=dep[x]; i++) &#123; </span><br><span class="line">	  anc[x][i]=anc[anc[x][i<span class="number">-1</span>]][i<span class="number">-1</span>];<span class="comment">//Calculate the ancestor </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x]; i; i=node[i].next ) &#123;</span><br><span class="line">	   <span class="keyword">int</span> j=node[i].d;</span><br><span class="line">	   <span class="keyword">if</span>(j!=fa) dfs(j, x);<span class="comment">//Recursion</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="The-centroid-of-the-tree"><a href="#The-centroid-of-the-tree" class="headerlink" title="The centroid of the tree"></a>The centroid of the tree</h3><h4 id="Defination"><a href="#Defination" class="headerlink" title="Defination"></a>Defination</h4><p>For a point in the tree, calculate its biggest son’s point number. For the point which has the smallest number. That should be the centroid.</p>
+<h4 id="Characteristics-1"><a href="#Characteristics-1" class="headerlink" title="Characteristics"></a>Characteristics</h4><ul>
+<li>When the root is the centroid, every son’s scale won’t be larger than half of the whole tree</li>
+<li>When calculate the distance from every point to a single point, the centroid will be the smallest</li>
+<li>Conecting two trees through an edge, then the new centroid will be on the route that conect two centroids.</li>
+</ul>
+<h4 id="Realization-2"><a href="#Realization-2" class="headerlink" title="Realization"></a>Realization</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getCentroid</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">  siz[u] = <span class="number">1</span>;</span><br><span class="line">  wt[u] = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; ~i; i = nxt[i]) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = to[i];</span><br><span class="line">    <span class="keyword">if</span> (v != fa) &#123;</span><br><span class="line">      getCentroid(v, u);</span><br><span class="line">      siz[u] += siz[v];</span><br><span class="line">      wt[u] = <span class="built_in">max</span>(wt[u], siz[v]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  wt[u] = <span class="built_in">max</span>(wt[u], n - siz[u]);</span><br><span class="line">  <span class="keyword">if</span> (rt == <span class="number">0</span> || wt[u] &lt; wt[rt]) rt = u;  <span class="comment">// rt 为重心编号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>So you might wonder how can we get size and father those kinds of information, and here is the most important method we are going to learn……</p>
+<p>The alograthim I am going to talk about actually has no translation. So I just go with my Chinese……</p>
+<p>接下来的内容没有英语翻译,所以我要开始说人话了</p>
+<h2 id="树链剖分"><a href="#树链剖分" class="headerlink" title="树链剖分"></a>树链剖分</h2><h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h3><p>“树链” ，就是树上的路径。</p>
+<p>“剖分”，就是把路径分类为<strong>重链</strong>和<strong>轻链</strong>。</p>
+<p>常见的操作方式就是轻重剖分，这种方法能实现任意一点到根结点上的链的个数不超过logn条。</p>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><p>记siz[v]表示以v为根的子树的节点数，dep[v]表示v的深度(根深度为1)，top[v]表示v所在的链的顶端节点，fa[v]表示v的父亲，son[v]表示与v在同一重链上的v的儿子节点（姑且称为<strong>重儿子</strong>）。 下图中圆圈内的数字表示树结点编号；加粗的边代表重链，反之则为轻链；树结点中带有小圆点的表示该条链所在链的顶端结点；</p>
+<p><img src="Data-Structure-Tree/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86.png" alt=""></p>
+<h3 id="叫法"><a href="#叫法" class="headerlink" title="叫法"></a>叫法</h3><p><strong>重儿子</strong>：siz[u]为v的子节点中siz值最大的，那么u就是v的重儿子。</p>
+<p><strong>轻儿子</strong>：v的其它子节点。</p>
+<p><strong>重边</strong>：点v与其重儿子的连边。</p>
+<p><strong>轻边</strong>：点v与其轻儿子的连边。</p>
+<p><strong>重链</strong>：由重边连成的路径。</p>
+<p><strong>轻链：</strong>轻边。 </p>
+<h3 id="Charastics"><a href="#Charastics" class="headerlink" title="Charastics"></a>Charastics</h3><ul>
+<li><p>如果(v,u)为轻边，则siz[u] * 2 &lt; siz[v]</p>
+</li>
+<li><p>从根到某一点的路径上轻链、重链的个数都不大于logn </p>
+</li>
+</ul>
+<h3 id="Realization-3"><a href="#Realization-3" class="headerlink" title="Realization"></a>Realization</h3><p>用两个dfs(可用bfs)来求出fa、dep、siz、son、top等信息；<br> dfs_1：</p>
+<p>​    把 fa、dep、siz、son求出来，比较简单，略过</p>
+<p>   dfs_2：</p>
+<p>​    ⒈（重链）对于v，当son[v]存在（即v不是叶子节点）时，显然有top[son[v]] = top<a href="v的重儿子与v是在同一条重链上的">v</a>。继续 dfs_2(son[v])；</p>
+<p>​    ⒉（轻链）对于v的各个轻儿子u，显然有top[u] = u，进行dfs_2(u)过程。<br>  这就求出了top。</p>
+<p>这样就完成了轻重链划分，即树链剖分</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;<span class="comment">// siz、 son、 dep、fa</span></span><br><span class="line">   siz[u]=<span class="number">1</span>, son[u]=<span class="number">0</span>;<span class="comment">//记录顶点u的子节点个数及重儿子编号</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i; i=eg[i].next)&#123;</span><br><span class="line">     <span class="keyword">int</span> v=eg[i].d;</span><br><span class="line">     <span class="keyword">if</span>(v!=fa[u])&#123;<span class="comment">//避免绕回</span></span><br><span class="line">        fa[v]=u;<span class="comment">//v的父结点是u</span></span><br><span class="line">        dep[v]=dep[u]+<span class="number">1</span>;<span class="comment">//v的深度=u的深度+1</span></span><br><span class="line">        dfs1(v);<span class="comment">//继续向下搜索</span></span><br><span class="line">        siz[u]+=siz[v]; <span class="comment">//u的儿子个数</span></span><br><span class="line">        <span class="keyword">if</span>(!son[u] || siz[v] &gt; siz[son[u]]) <span class="comment">//计算重儿子</span></span><br><span class="line">           son[u]=v;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> tp)</span></span>&#123;<span class="comment">//轻重链</span></span><br><span class="line">	top[u]=tp;</span><br><span class="line">	<span class="keyword">if</span>(son[u])dfs2(son[u], tp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=eg[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> v=eg[i].d;</span><br><span class="line">		<span class="keyword">if</span>(v!=fa[u]&amp;&amp;v!=son[u])dfs2(v,v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Seems to be long, but when we slow down and coding it few more times, it would be easy for us to learn.</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h1 id="P3038-USACO11DEC-Grass-Planting-G"><a href="#P3038-USACO11DEC-Grass-Planting-G" class="headerlink" title="P3038 [USACO11DEC]Grass Planting G"></a>P3038 [USACO11DEC]Grass Planting G</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Farmer John has N barren pastures (2 &lt;= N &lt;= 100,000) connected by N-1 bidirectional roads, such that there is exactly one path between any two pastures. Bessie, a cow who loves her grazing time, often complains about how there is no grass on the roads between pastures. Farmer John loves Bessie very much, and today he is finally going to plant grass on the roads. He will do so using a procedure consisting of M steps (1 &lt;= M &lt;= 100,000).</p>
+<p>At each step one of two things will happen:</p>
+<ul>
+<li>FJ will choose two pastures, and plant a patch of grass along each road in between the two pastures, or,</li>
+<li>Bessie will ask about how many patches of grass on a particular road, and Farmer John must answer her question.</li>
+</ul>
+<p>Farmer John is a very poor counter – help him answer Bessie’s questions!</p>
+<p>给出一棵n个节点的树，有m个操作，操作为将一条路径上的边权加一或询问某条边的权值。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>* Line 1: Two space-separated integers N and M</p>
+<p>* Lines 2..N: Two space-separated integers describing the endpoints of a road.</p>
+<p>* Lines N+1..N+M: Line i+1 describes step i. The first character of the line is either P or Q, which describes whether or not FJ is planting grass or simply querying. This is followed by two space-separated integers A_i and B_i (1 &lt;= A_i, B_i &lt;= N) which describe FJ’s action or query.</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>* Lines 1..???: Each line has the answer to a query, appearing in the same order as the queries appear in the input.</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p><strong>输入 #1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">4 6 </span><br><span class="line">1 4 </span><br><span class="line">2 4 </span><br><span class="line">3 4 </span><br><span class="line">P 2 3 </span><br><span class="line">P 1 3 </span><br><span class="line">Q 3 4 </span><br><span class="line">P 1 4 </span><br><span class="line">Q 2 4 </span><br><span class="line">Q 1 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 </span><br><span class="line">1 </span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mx=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,w[mx],head[mx],num_edge;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> v,nxt;</span><br><span class="line">&#125;eg[mx&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> fa,son,dep,top,<span class="built_in">size</span>,s,t;</span><br><span class="line">&#125;node[mx];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TREE</span>&#123;</span></span><br><span class="line">	TREE *lson,*rson;</span><br><span class="line">	<span class="keyword">int</span> l,r,mid,len;</span><br><span class="line">	<span class="keyword">int</span> num,lazy;</span><br><span class="line">&#125;tree[mx&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="keyword">typedef</span> TREE* Tree;</span><br><span class="line">Tree Root,now_node=tree;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c=getchar();<span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(c);c=getchar())</span><br><span class="line">		<span class="keyword">if</span>(c==<span class="string">'P'</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(c==<span class="string">'Q'</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar())</span><br><span class="line">		num=num*<span class="number">10</span>+c-<span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	eg[++num_edge].v=v;</span><br><span class="line">	eg[num_edge].nxt=head[u];</span><br><span class="line">	head[u]=num_edge;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	node[u].<span class="built_in">size</span>=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u],v;i;i=eg[i].nxt)&#123;</span><br><span class="line">		v=eg[i].v;</span><br><span class="line">		<span class="keyword">if</span>(v==node[u].fa)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		node[v].fa=u;</span><br><span class="line">		node[v].dep=node[u].dep+<span class="number">1</span>;</span><br><span class="line">		dfs1(v);</span><br><span class="line">		node[u].<span class="built_in">size</span>+=node[v].<span class="built_in">size</span>;</span><br><span class="line">		<span class="keyword">if</span>(node[v].<span class="built_in">size</span>&gt;node[node[u].son].<span class="built_in">size</span>)</span><br><span class="line">			node[u].son=v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> bound;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> top)</span></span>&#123;</span><br><span class="line">	node[u].top=top;</span><br><span class="line">	node[u].s=++bound;</span><br><span class="line">	<span class="keyword">if</span>(node[u].son)&#123;</span><br><span class="line">		dfs2(node[u].son,top);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u],v;i;i=eg[i].nxt)&#123;</span><br><span class="line">			v=eg[i].v;</span><br><span class="line">			<span class="keyword">if</span>(v==node[u].son||v==node[u].fa)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			dfs2(v,v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	node[u].t=bound;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(Tree &amp;root,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	root=++now_node;</span><br><span class="line">	root-&gt;l=l,root-&gt;r=r,root-&gt;mid=l+r&gt;&gt;<span class="number">1</span>,root-&gt;len=r-l+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">	build(root-&gt;lson,l,root-&gt;mid);</span><br><span class="line">	build(root-&gt;rson,root-&gt;mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root-&gt;lazy)&#123;</span><br><span class="line">		root-&gt;lson-&gt;lazy+=root-&gt;lazy;</span><br><span class="line">		root-&gt;rson-&gt;lazy+=root-&gt;lazy;</span><br><span class="line">		root-&gt;lson-&gt;num+=root-&gt;lson-&gt;len*root-&gt;lazy;</span><br><span class="line">		root-&gt;rson-&gt;num+=root-&gt;rson-&gt;len*root-&gt;lazy;</span><br><span class="line">		root-&gt;lazy=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Tree root,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root-&gt;l==l&amp;&amp;r==root-&gt;r)&#123;</span><br><span class="line">		root-&gt;num+=root-&gt;len;</span><br><span class="line">		root-&gt;lazy+=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	pushdown(root);</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=root-&gt;mid)</span><br><span class="line">		update(root-&gt;lson,l,r);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;root-&gt;mid)</span><br><span class="line">		update(root-&gt;rson,l,r);</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		update(root-&gt;lson,l,root-&gt;mid);</span><br><span class="line">		update(root-&gt;rson,root-&gt;mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	root-&gt;num=root-&gt;lson-&gt;num+root-&gt;rson-&gt;num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(Tree root,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root-&gt;l==l&amp;&amp;root-&gt;r==r)</span><br><span class="line">		<span class="keyword">return</span> root-&gt;num;</span><br><span class="line">	pushdown(root);</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=root-&gt;mid)</span><br><span class="line">		<span class="keyword">return</span> query(root-&gt;lson,l,r);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;root-&gt;mid)</span><br><span class="line">		<span class="keyword">return</span> query(root-&gt;rson,l,r);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> query(root-&gt;lson,l,root-&gt;mid)+query(root-&gt;rson,root-&gt;mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Modify</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=node[x].top,fy=node[y].top;</span><br><span class="line">	<span class="keyword">while</span>(fx!=fy)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node[fx].dep&gt;node[fy].dep)&#123;</span><br><span class="line">			update(Root,node[fx].s,node[x].s);</span><br><span class="line">			x=node[fx].fa;</span><br><span class="line">			fx=node[x].top;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			update(Root,node[fy].s,node[y].s);</span><br><span class="line">			y=node[fy].fa;</span><br><span class="line">			fy=node[y].top;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x!=y)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node[x].dep&gt;node[y].dep)</span><br><span class="line">			update(Root,node[y].s+<span class="number">1</span>,node[x].s);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			update(Root,node[x].s+<span class="number">1</span>,node[y].s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=node[x].top,fy=node[y].top;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(fx!=fy)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node[fx].dep&gt;node[fy].dep)&#123;</span><br><span class="line">			ans+=query(Root,node[fx].s,node[x].s);</span><br><span class="line">			x=node[fx].fa;</span><br><span class="line">			fx=node[x].top;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ans+=query(Root,node[fy].s,node[y].s);</span><br><span class="line">			y=node[fy].fa;</span><br><span class="line">			fy=node[y].top;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x!=y)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node[x].dep&gt;node[y].dep)</span><br><span class="line">			<span class="keyword">return</span> ans+query(Root,node[y].s+<span class="number">1</span>,node[x].s);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> ans+query(Root,node[x].s+<span class="number">1</span>,node[y].s);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> opt,u,v;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		u=<span class="built_in">read</span>(),v=<span class="built_in">read</span>();</span><br><span class="line">		add_edge(u,v);</span><br><span class="line">		add_edge(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs1(<span class="number">1</span>);</span><br><span class="line">	dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	build(Root,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		opt=<span class="built_in">read</span>(),u=<span class="built_in">read</span>(),v=<span class="built_in">read</span>();</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">1</span>)</span><br><span class="line">			Modify(u,v);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Query(u,v));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/Blogs/images/wechatpay.png" alt="Haotian Tang WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/Blogs/images/alipay.png" alt="Haotian Tang Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Haotian Tang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/" title="Data Structure: Tree">https://mavericktang.github.io/Blogs/2020/03/11/Data-Structure-Tree/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fa fa-wechat"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Blogs/tags/C/" rel="tag"># C++</a>
+              <a href="/Blogs/tags/Competition/" rel="tag"># Competition</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Blogs/2020/02/23/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/" rel="prev" title="爬取进击的巨人漫画">
+      <i class="fa fa-chevron-left"></i> 爬取进击的巨人漫画
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Blogs/2020/03/14/Bitwise-operation/" rel="next" title="Bitwise operation">
+      Bitwise operation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure-Tree"><span class="nav-number">1.</span> <span class="nav-text">Data Structure: Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Info"><span class="nav-number">1.2.</span> <span class="nav-text">Basic Info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restore-it"><span class="nav-number">1.3.</span> <span class="nav-text">Restore it!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Segment-tree"><span class="nav-number">1.3.1.</span> <span class="nav-text">Segment tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Charastics-of-Segment-tree"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Charastics of Segment tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Restoring"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Restoring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Building"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Building</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Query-segment"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">Query segment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Update-value（One-point）"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">Update value（One point）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-Value-Segment"><span class="nav-number">1.3.2.</span> <span class="nav-text">Update Value(Segment)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Indexed-Tree"><span class="nav-number">1.4.</span> <span class="nav-text">Binary Indexed Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preparation-lowbit"><span class="nav-number">1.4.1.</span> <span class="nav-text">Preparation: lowbit()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Realization"><span class="nav-number">1.4.2.</span> <span class="nav-text">Realization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Indexed-tree-amp-Inversion"><span class="nav-number">1.5.</span> <span class="nav-text">Binary Indexed tree &amp; Inversion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inversion"><span class="nav-number">1.5.1.</span> <span class="nav-text">Inversion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">1.6.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.6.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.6.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.6.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.6.4.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lowest-Common-Ancestor"><span class="nav-number">1.7.</span> <span class="nav-text">Lowest Common Ancestor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Characteristics"><span class="nav-number">1.7.1.</span> <span class="nav-text">Characteristics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Realization-1"><span class="nav-number">1.7.2.</span> <span class="nav-text">Realization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Easier-way"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">Easier way</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Faster-way"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">Faster way</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-centroid-of-the-tree"><span class="nav-number">1.7.3.</span> <span class="nav-text">The centroid of the tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Defination"><span class="nav-number">1.7.3.1.</span> <span class="nav-text">Defination</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Characteristics-1"><span class="nav-number">1.7.3.2.</span> <span class="nav-text">Characteristics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Realization-2"><span class="nav-number">1.7.3.3.</span> <span class="nav-text">Realization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树链剖分"><span class="nav-number">1.8.</span> <span class="nav-text">树链剖分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concept"><span class="nav-number">1.8.1.</span> <span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method"><span class="nav-number">1.8.2.</span> <span class="nav-text">Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叫法"><span class="nav-number">1.8.3.</span> <span class="nav-text">叫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Charastics"><span class="nav-number">1.8.4.</span> <span class="nav-text">Charastics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Realization-3"><span class="nav-number">1.8.5.</span> <span class="nav-text">Realization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">1.9.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P3038-USACO11DEC-Grass-Planting-G"><span class="nav-number">2.</span> <span class="nav-text">P3038 [USACO11DEC]Grass Planting G</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入格式"><span class="nav-number">2.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出格式"><span class="nav-number">2.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出样例"><span class="nav-number">2.0.4.</span> <span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Haotian Tang"
+      src="/Blogs/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Haotian Tang</p>
+  <div class="site-description" itemprop="description">Live without Barricades!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Blogs/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/Blogs/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MaverickTang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MaverickTang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/Blogs/agodsfor@gmail.com" title="E-Mail → agodsfor@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="/Blogs/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2897146797&auto=1&height=430"></iframe>
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mavericreate</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">NaN:aN</span>
+</div>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/Blogs/lib/anime.min.js"></script>
+  <script src="/Blogs/lib/velocity/velocity.min.js"></script>
+  <script src="/Blogs/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/Blogs/js/utils.js"></script>
+
+<script src="/Blogs/js/motion.js"></script>
+
+
+<script src="/Blogs/js/schemes/pisces.js"></script>
+
+
+<script src="/Blogs/js/next-boot.js"></script>
+
+<script src="/Blogs/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/Blogs/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/crash_cheat.js"></script>
