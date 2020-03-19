@@ -63,7 +63,7 @@
               window.location.href = href.replace('/en/', '/');
           }
           else {
-              window.location.href = href.replace(/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1en/$2');
+              window.location.href = href.replace(/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1');
           }
           if(typeof(_prevOnload) === 'function') {
               _prevOnload();
@@ -71,7 +71,7 @@
           return false;
       }
   }
-</script>j
+</script>
 
   <title>Data Structure: Tree | Mavericreate.Blog</title>
   
@@ -597,6 +597,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -868,6 +869,26 @@ window.addEventListener('pjax:success', () => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'be309a88a9a8f3bbeaa5',
+      clientSecret: 'd3b52b56b65cdd831b4a034e82e05b4c735a4997# GitHub Application Client Secret',
+      repo        : 'gitalk-commnet# Repository name to store issues',
+      owner       : 'MaverickTang# GitHub repo owner',
+      admin       : ['MaverickTang'],
+      id          : '7a62dec658f8c56a8eecf7ef0fafb7e2',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
   <!--崩溃欺骗-->
