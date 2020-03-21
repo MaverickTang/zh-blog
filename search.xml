@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>尽管我们的手中一无所有——美国留学告别篇</title>
-    <url>/Blogs/2020/03/20/%E5%B0%BD%E7%AE%A1%E6%88%91%E4%BB%AC%E7%9A%84%E6%89%8B%E4%B8%AD%E4%B8%80%E6%97%A0%E6%89%80%E6%9C%89%E2%80%94%E2%80%94%E7%BE%8E%E5%9B%BD%E7%95%99%E5%AD%A6%E5%91%8A%E5%88%AB%E7%AF%87/</url>
+    <url>/Blogs/2020/03/20/American-Memory/</url>
     <content><![CDATA[<h2 id="前序"><a href="#前序" class="headerlink" title="前序"></a>前序</h2><p>​        关于记忆，我一直都很欣赏刘慈欣在三体里说的话：过去就像攥在手中的一把干沙，自以为攥得很紧，其实早就从指缝中流光了。这就是为什么会有回忆录，总要有一些东西来帮助人们记住一些重要的时刻，特别是对我来说，这重要的时刻竟然有接近一年之长。去年8月我离开成都来到Pasadena求学，今年三月因为Coronavirus回国，历时7个月（手动狗头好像和一年有些差距qaq）。不管怎样，我走得之匆忙甚至没空与朋友们好好告别，不过好在我走前搭建好了博客，还能写篇博客留给大家看看（还得写英语qaq）。</p>
 <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/bokuranoteniha-nanimonaikedo/1204763777?i=1204764497"></iframe>
 
@@ -148,7 +148,7 @@
   </entry>
   <entry>
     <title>爬取进击的巨人漫画</title>
-    <url>/Blogs/2020/02/23/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/</url>
+    <url>/Blogs/2020/02/23/Crawl-Attack-on%20t-titan/</url>
     <content><![CDATA[<h1 id="使用Scrapy爬取进击的巨人漫画"><a href="#使用Scrapy爬取进击的巨人漫画" class="headerlink" title="使用Scrapy爬取进击的巨人漫画"></a>使用Scrapy爬取进击的巨人漫画</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>​        自己看到网上有两个大牛分别爬取了<strong>合法</strong>(Naruto)与<strong>非法</strong>(<del>你懂的</del>)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(<del>丧尽天良</del>),所以就只有自己写了一个算是结合版的代码，爬取了这个<a href="https://www.fzdm.com/" target="_blank" rel="noopener">网站</a>。在此分享给大家，授人以both🐟。</p>
 <p>​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个方法不仅可以下载进击的巨人，整个网站的漫画都可以爬，建议大家别乱改我设置的延迟，爬的太快了可能会被网站锁IP。</p>
 <h2 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h2><p>博主的环境如下：</p>
