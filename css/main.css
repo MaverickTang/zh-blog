@@ -1331,7 +1331,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #500381;
+  background: #6cffe4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2363,6 +2363,14 @@ ul.breadcrumb li + li:last-child {
 .tag-cloud a:hover {
   color: #222 !important;
 }
+.gt-header a,
+.gt-comments a,
+.gt-popup a {
+  border-bottom: none;
+}
+.gt-container .gt-popup .gt-action.is--active::before {
+  top: 0.7em;
+}
 .search-pop-overlay {
   background: rgba(0,0,0,0.3);
   display: none;
@@ -2754,4 +2762,34 @@ ul.breadcrumb li + li:last-child {
 }
 .back-to-top.back-to-top-on {
   margin-top: 16px;
+}
+body {
+  background: url("https://raw.githubusercontent.com/MaverickTang/Images/master/bkg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  opacity: 0.9;
+}
+body footer > div > div {
+  color: #000;
+}
+body {
+  background: url("https://raw.githubusercontent.com/MaverickTang/Images/master/bkg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  opacity: 0.9;
+}
+body footer > div > div {
+  color: #000;
 }
