@@ -26,24 +26,24 @@
 <meta property="og:url" content="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/index.html">
 <meta property="og:site_name" content="Mavericreate.Blog">
 <meta property="og:description" content="使用Scrapy爬取进击的巨人漫画一、简介​        自己看到网上有两个大牛分别爬取了合法(Naruto)与非法(你懂的)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(丧尽天良),所以就只有自己写了一个算是结合版的代码，爬取了这个网站。在此分享给大家，授人以both🐟。 ​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/scrapy_architecture.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNf91.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect3.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/last.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGN2N9.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/pic.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/heirque.jpeg">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/pic2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/saocaozuo.gif">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/xiazai.gif">
-<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/%E7%AC%AC1%E9%A1%B5.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNsnU.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGN7He.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGUpDS.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNvgP.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNX9I.jpg">
 <meta property="article:published_time" content="2020-02-23T23:13:57.000Z">
-<meta property="article:modified_time" content="2020-03-21T00:29:30.473Z">
+<meta property="article:modified_time" content="2020-04-02T02:50:11.785Z">
 <meta property="article:author" content="Haotian Tang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/scrapy_architecture.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
 
 <link rel="canonical" href="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/">
 
@@ -190,7 +190,7 @@
   </li>
         <li class="menu-item menu-item-image">
 
-    <a href="https://github.com/MaverickTang/Images" rel="noopener" target="_blank"><i class="fa fa-fw fa-image"></i>图床</a>
+    <a href="https://imgchr.com/album/Y0zVS" rel="noopener" target="_blank"><i class="fa fa-fw fa-image"></i>图床</a>
 
   </li>
         <li class="menu-item menu-item-schedule">
@@ -286,7 +286,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-20 17:29:30" itemprop="dateModified" datetime="2020-03-20T17:29:30-07:00">2020-03-20</time>
+                <time title="修改时间：2020-04-01 19:50:11" itemprop="dateModified" datetime="2020-04-01T19:50:11-07:00">2020-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -339,7 +339,7 @@
 <p>不知道大家会遇到什么麻烦，博主只用了这一句代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Scrapy</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、基础准备"><a href="#三、基础准备" class="headerlink" title="三、基础准备"></a>三、基础准备</h2><h3 id="Scrapy简介（大牛的文章）"><a href="#Scrapy简介（大牛的文章）" class="headerlink" title="Scrapy简介（大牛的文章）"></a>Scrapy简介（<a href="https://blog.csdn.net/c406495762/article/details/72858983" target="_blank" rel="noopener">大牛的文章</a>）</h3><pre><code>Scrapy Engine(Scrapy核心) 负责数据流在各个组件之间的流。Spiders(爬虫)发出Requests请求，经由Scrapy Engine(Scrapy核心) 交给Scheduler(调度器)，Downloader(下载器)Scheduler(调度器) 获得Requests请求，然后根据Requests请求，从网络下载数据。Downloader(下载器)的Responses响应再传递给Spiders进行分析。根据需求提取出Items，交给Item Pipeline进行下载。Spiders和Item Pipeline是需要用户根据响应的需求进行编写的。除此之外，还有两个中间件，Downloaders Mddlewares和Spider Middlewares，这两个中间件为用户提供方面，通过插入自定义代码扩展Scrapy的功能，例如去重等。</code></pre><p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/scrapy_architecture.png" alt="Scrapy"></p>
+<h2 id="三、基础准备"><a href="#三、基础准备" class="headerlink" title="三、基础准备"></a>三、基础准备</h2><h3 id="Scrapy简介（大牛的文章）"><a href="#Scrapy简介（大牛的文章）" class="headerlink" title="Scrapy简介（大牛的文章）"></a>Scrapy简介（<a href="https://blog.csdn.net/c406495762/article/details/72858983" target="_blank" rel="noopener">大牛的文章</a>）</h3><pre><code>Scrapy Engine(Scrapy核心) 负责数据流在各个组件之间的流。Spiders(爬虫)发出Requests请求，经由Scrapy Engine(Scrapy核心) 交给Scheduler(调度器)，Downloader(下载器)Scheduler(调度器) 获得Requests请求，然后根据Requests请求，从网络下载数据。Downloader(下载器)的Responses响应再传递给Spiders进行分析。根据需求提取出Items，交给Item Pipeline进行下载。Spiders和Item Pipeline是需要用户根据响应的需求进行编写的。除此之外，还有两个中间件，Downloaders Mddlewares和Spider Middlewares，这两个中间件为用户提供方面，通过插入自定义代码扩展Scrapy的功能，例如去重等。</code></pre><p><img src="https://s1.ax1x.com/2020/04/02/GGY3Ct.png" alt="Scrapy"></p>
 <h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>注意！这篇文章并不是official文章，一切还以<a href="https://www.osgeo.cn/scrapy/intro/tutorial.html" target="_blank" rel="noopener">官方教程</a>为准。这里只讲本次操作用到的知识。</p>
 <ul>
 <li>创建一个Scrapy项目；</li>
@@ -369,7 +369,7 @@
 <p>博主也学习了一些时间，建议各位去康康这个<a href="https://www.jianshu.com/p/489c5d21cdc7" target="_blank" rel="noopener">教程</a>(<del>求作者给广告费恰饭</del>)</p>
 <p>理清思路，现在我们要找到各话的url，通过观察发现这些url都在<a>标签下</p>
 <p>观察方法：鼠标右键然后点击inspect，再点一下左上角的选择器就可以查看页面元素的所在位置了</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect.png" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGNf91.png" alt="Inspect"></p>
 <p>于是输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.xpath(&#39;&#x2F;&#x2F;li&#x2F;a[1]&#x2F;@href&#39;).extract()</span><br></pre></td></tr></table></figure>
 
@@ -395,7 +395,7 @@
 <p>我们这么才能知道这一章什么时候结束呢？</p>
 <p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect3.png" alt="Inspect"></p>
 <p>这是我们的最后一页的代码，看起来从url上一点头绪都没有，但是从旁边的文字上我们又有了新的线索，一般它会给出如：下一页这样的信息，最后一页则没有这样的信息，只要我们知道是否有“下一页”，我们就能知道是否为最后一页</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/last.png" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGN2N9.png" alt="Inspect"></p>
 <p>所以要获取上面的文字，使用如下方法：</p>
 <p>请看第一页与最后一页的对比</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;a[contains(@href, &quot;index&quot;)]&#x2F;text()&#39;).extract()</span><br><span class="line">[&#39;第1页&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;下一页&#39;]</span><br></pre></td></tr></table></figure>
@@ -409,15 +409,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;img&#x2F;@src&#39;).extract()</span><br><span class="line">[&#39;https:&#x2F;&#x2F;static.fzdm.com&#x2F;css&#x2F;logo.png&#39;, &#39;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;fzdm&#x2F;st@75839ec8feb53ac89fe52134fc648a17bd1bd31f&#x2F;img&#x2F;loading.gif&#39;]</span><br></pre></td></tr></table></figure>
 
 <p>woc居然找不到图片的url？？？</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/heirque.jpeg" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGNsnU.jpg" alt="Inspect"></p>
 <p>于是康康这个蜘蛛获取到的整个html代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.body</span><br><span class="line">b&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&gt;&lt;meta http-equiv&#x3D;&quot;Content-Language&quot; content&#x3D;&quot;utf-8&quot;&gt;&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;Edge,chrome&#x3D;1&quot;&gt;&lt;meta http-equiv&#x3D;&quot;x-dns-prefetch-control&quot; content&#x3D;&quot;on&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;www.fzdm.com&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;manhua.fzdm.com&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;p1.manhuapan.com&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;p2.manhuapan.com&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;p5.manhuapan.com&quot;&gt;&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;p17.manhuapan.com&quot;&gt;&lt;meta content&#x3D;&quot;all&quot; name&#x3D;&quot;robots&quot;&gt;&lt;title&gt;\xe8\xbf\x9b\xe5\x87\xbb\xe7\x9a\x84\xe5\xb7\xa8\xe4\xba\xba126\xe8\xaf\x9d </span><br><span class="line">……以下省略</span><br></pre></td></tr></table></figure>
 
 <p>我们复制之后打开任意代码编译器然后<code>Command+f</code>寻找这个“2020/02/08055441539556.jpg”url在哪里。</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/pic2.png" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGN7He.png" alt="Inspect"></p>
 <p>我们发现这个url放在javascript里面，使用<code>document.write()</code>。。。</p>
 <p>你以为我有什么骚操作？？？</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/saocaozuo.gif" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGUpDS.gif" alt="Inspect"></p>
 <p>我还真没有。。。</p>
 <p>找到script</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;script&#x2F;text()&#39;).extract()</span><br><span class="line">[&quot;if (&#39;serviceWorker&#39; in navigator) &#123;\n      navigator.serviceWorker.register(&#39;&#x2F;sw.js&#39;, &#123; scope: &#39;&#x2F;&#39; &#125;).then(function (registration) &#123;\n        &#x2F;&#x2F; registration.unregister().then(function(boolean) &#123;\n        &#x2F;&#x2F; if boolean &#x3D; true, unregister is successful\n        &#x2F;&#x2F; &#125;);\n        &#x2F;&#x2F; 注册成功\n        &#x2F;*\n      var serviceWorker;\n      if (registration.installing) &#123;\n        console.log(&#39;installing&#39;);\n      &#125; else if (registration.waiting) &#123;\n        console.log(&#39;waiting&#39;);\n      &#125; else if (registration.active) &#123;\n        console.log(&#39;active&#39;);\n      &#125;\n      *&#x2F;\n        console.log(&#39;ServiceWorker registration successful with scope: &#39;, registration.scope);\n      &#125;).catch(function (err) &#123;\n        &#x2F;&#x2F; 注册失败 :(\n        console.log(&#39;ServiceWorker registration failed: &#39;, err);\n        let refreshing &#x3D; false\n        navigator.serviceWorker.addEventListener(&#39;controllerchange&#39;, () &#x3D;&gt; &#123;\n          if (refreshing) &#123;\n            return\n</span><br><span class="line">……以下省略</span><br></pre></td></tr></table></figure>
@@ -445,9 +445,9 @@
 
 <p>记得把保存的本机地址还有想爬取的漫画地址改一下</p>
 <p>当然只要编程的速度够快，这种下载速度绝对比某网盘快得多，最关键的是方便并且可以装B。。。</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/xiazai.gif" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGNvgP.gif" alt="Inspect"></p>
 <p>放上自己爬到的兵长帅照哈哈哈哈哈</p>
-<p><img src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/%E7%AC%AC1%E9%A1%B5.jpg" alt="Inspect"></p>
+<p><img src="https://s1.ax1x.com/2020/04/02/GGNX9I.jpg" alt="Inspect"></p>
 <h2 id="六、参考链接及版权说明"><a href="#六、参考链接及版权说明" class="headerlink" title="六、参考链接及版权说明"></a>六、参考链接及版权说明</h2><p>博主是第一次写博客，如果侵权请联系我删除，还有对两个大佬写的博客表示诚挚感谢，链接第一与第二个为两个大佬的博客。</p>
 <p>参考链接：</p>
 <p>1(合法).<a href="https://blog.csdn.net/c406495762/article/details/72858983" target="_blank" rel="noopener">https://blog.csdn.net/c406495762/article/details/72858983</a></p>
