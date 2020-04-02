@@ -1331,7 +1331,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #09ffff;
+  background: #a78725;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2764,7 +2764,7 @@ body footer > div > div {
   color: #000;
 }
 body {
-  background: url("https://raw.githubusercontent.com/MaverickTang/Images/master/bkg.jpg");
+  background: url("https://s1.ax1x.com/2020/04/02/GGGEI1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
