@@ -1,5 +1,4 @@
-<!--崩溃欺骗-->
- var OriginTitle = document.title;
+<!--崩溃欺骗--><html><head></head><body>var OriginTitle = document.title;
  var titleTime;
  document.addEventListener('visibilitychange', function () {
 	  if (document.hidden) {
@@ -14,4 +13,4 @@
 				 document.title = OriginTitle;
 			}, 2000);
 	  }
- });
+ });</body></html>

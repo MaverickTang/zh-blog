@@ -1,20 +1,20 @@
-<h1 align="center"><a href="https://github.com/MoOx/pjax" target="_blank" rel="noopener">PJAX</a> for <a href="https://github.com/theme-next" target="_blank" rel="noopener">NexT</a></h1>
+<html><head></head><body><h1 align="center"><a href="https://github.com/MoOx/pjax" target="_blank" rel="noopener">PJAX</a> for <a href="https://github.com/theme-next" target="_blank" rel="noopener">NexT</a></h1>
 
 <h1 align="center">Installation</h1>
 
 <h2>If you want to use the CDN instead of clone this repo, please jump to the Step 3.</h2>
 
-<h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
+<h2 align="center">Step 1 → Go to NexT dir</h2>
 
 <p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
 <pre><code class="sh">$ <span class="built_in">cd</span> themes/next
 $ ls
 _config.yml  crowdin.yml  docs  gulpfile.js  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="built_in">source</span></code></pre>
-<h2 align="center">Step 2 &rarr; Get module</h2>
+<h2 align="center">Step 2 → Get module</h2>
 
 <p>Install module to <code>source/lib</code> directory:</p>
 <pre><code class="sh">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</code></pre>
-<h2 align="center">Step 3 &rarr; Set it up</h2>
+<h2 align="center">Step 3 → Set it up</h2>
 
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file and select your theme:</p>
 <pre><code class="yml"><span class="attr">pjax:</span> <span class="literal">true</span></code></pre>
@@ -36,16 +36,16 @@ $ git pull</code></pre>
 <p><em>Pjax does not rely on other libraries, like jQuery or similar. It is written entirely in vanilla JS.</em></p>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
 <li><p>You can link directly to the <a href="https://cdn.jsdelivr.net/npm/pjax/pjax.js" target="_blank" rel="noopener">bundle</a>:</p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pjax@VERSION/pjax.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<pre><code class="html"><span class="tag"><<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pjax@VERSION/pjax.js"</span>></span><span class="tag"></<span class="name">script</span>></span></code></pre>
 </li>
 <li><p>Or the <a href="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js" target="_blank" rel="noopener">minified bundle</a>:</p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pjax@VERSION/pjax.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<pre><code class="html"><span class="tag"><<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pjax@VERSION/pjax.min.js"</span>></span><span class="tag"></<span class="name">script</span>></span></code></pre>
 </li>
 <li><p>You can also install Pjax from <strong>npm</strong>:</p>
 <pre><code class="shell">npm install pjax</code></pre>
 <p><strong>Note</strong>: If you use this option, you will need to do one of the following:</p>
 <ul>
-<li>Link a script tag to either <code>pjax.js</code> or <code>pjax.min.js</code>. E.g.:<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/pjax/pjax.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<li>Link a script tag to either <code>pjax.js</code> or <code>pjax.min.js</code>. E.g.:<pre><code class="html"><span class="tag"><<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/pjax/pjax.js"</span>></span><span class="tag"></<span class="name">script</span>></span></code></pre>
 </li>
 <li>Use a bundler like Webpack. (<code>index.js</code> cannot be used in the browser without a bundler).</li>
 </ul>
@@ -56,7 +56,7 @@ cd pjax
 npm install
 npm run build</code></pre>
 <p>and then link a script tag to either <code>pjax.js</code> or <code>pjax.min.js</code>. E.g.:</p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./pjax.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<pre><code class="html"><span class="tag"><<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./pjax.min.js"</span>></span><span class="tag"></<span class="name">script</span>></span></code></pre>
 </li>
 </ul>
 <hr>
@@ -87,50 +87,50 @@ npm run build</code></pre>
 </ul>
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><em>Pjax is fully automatic</em>. You don’t need to change anything about your existing HTML,<br>you just need to designate which elements on your page that you want to be replaced when your site is navigated.</p>
 <p>Consider the following page.</p>
-<pre><code class="html"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-  <span class="comment">&lt;!-- metas, title, styles, etc --&gt;</span>
-  <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Cool Blog<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"Welcome to My Cool Blog"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/styles.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+<pre><code class="html"><span class="meta"><!DOCTYPE <span class="meta-keyword">html</span>></span>
+<span class="tag"><<span class="name">html</span>></span>
+<span class="tag"><<span class="name">head</span>></span>
+  <span class="comment"><!-- metas, title, styles, etc --></span>
+  <span class="tag"><<span class="name">title</span>></span>My Cool Blog<span class="tag"></<span class="name">title</span>></span>
+  <span class="tag"><<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"Welcome to My Cool Blog"</span>></span>
+  <span class="tag"><<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/styles.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>></span>
+<span class="tag"></<span class="name">head</span>></span>
 
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"the-header"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">nav</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span> <span class="attr">class</span>=<span class="string">"is-active"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/contact"</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">header</span>&gt;</span>
+<span class="tag"><<span class="name">body</span>></span>
+  <span class="tag"><<span class="name">header</span> <span class="attr">class</span>=<span class="string">"the-header"</span>></span>
+    <span class="tag"><<span class="name">nav</span>></span>
+      <span class="tag"><<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span> <span class="attr">class</span>=<span class="string">"is-active"</span>></span>Home<span class="tag"></<span class="name">a</span>></span>
+      <span class="tag"><<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/about"</span>></span>About<span class="tag"></<span class="name">a</span>></span>
+      <span class="tag"><<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/contact"</span>></span>Contact<span class="tag"></<span class="name">a</span>></span>
+    <span class="tag"></<span class="name">nav</span>></span>
+  <span class="tag"></<span class="name">header</span>></span>
 
-  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"the-content"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My Cool Blog<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">p</span>&gt;</span>
+  <span class="tag"><<span class="name">section</span> <span class="attr">class</span>=<span class="string">"the-content"</span>></span>
+    <span class="tag"><<span class="name">h1</span>></span>My Cool Blog<span class="tag"></<span class="name">h1</span>></span>
+    <span class="tag"><<span class="name">p</span>></span>
       Thanks for stopping by!
 
-      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/about"</span>&gt;</span>Click Here to find out more about me.<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">p</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">section</span>&gt;</span>
+      <span class="tag"><<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/about"</span>></span>Click Here to find out more about me.<span class="tag"></<span class="name">a</span>></span>
+    <span class="tag"></<span class="name">p</span>></span>
+  <span class="tag"></<span class="name">section</span>></span>
 
-  <span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">"the-sidebar"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Recent Posts<span class="tag">&lt;/<span class="name">h3</span>&gt;</span>
-    <span class="comment">&lt;!-- sidebar content --&gt;</span>
-  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span>
+  <span class="tag"><<span class="name">aside</span> <span class="attr">class</span>=<span class="string">"the-sidebar"</span>></span>
+    <span class="tag"><<span class="name">h3</span>></span>Recent Posts<span class="tag"></<span class="name">h3</span>></span>
+    <span class="comment"><!-- sidebar content --></span>
+  <span class="tag"></<span class="name">aside</span>></span>
 
-  <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"the-footer"</span>&gt;</span>
-    <span class="symbol">&amp;copy;</span> My Cool Blog
-  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span>
+  <span class="tag"><<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"the-footer"</span>></span>
+    <span class="symbol">&copy;</span> My Cool Blog
+  <span class="tag"></<span class="name">footer</span>></span>
 
-  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"onDomReadystuff.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">script</span>&gt;</span>
+  <span class="tag"><<span class="name">script</span> <span class="attr">src</span>=<span class="string">"onDomReadystuff.js"</span>></span><span class="tag"></<span class="name">script</span>></span>
+  <span class="tag"><<span class="name">script</span>></span>
 <span class="actionscript">    <span class="comment">// analytics</span></span>
-  <span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span></code></pre>
+  <span class="tag"></<span class="name">script</span>></span>
+<span class="tag"></<span class="name">body</span>></span>
+<span class="tag"></<span class="name">html</span>></span></code></pre>
 <p>We want Pjax to intercept the URL <code>/about</code>, and replace <code>.the-content</code> with the resulting content of the request.</p>
-<p>It would also be nice if we could replace the <code>&lt;nav&gt;</code> to show that the <code>/about</code> link is active, as well as update our page meta and the <code>&lt;aside&gt;</code> sidebar.</p>
+<p>It would also be nice if we could replace the <code><nav></code> to show that the <code>/about</code> link is active, as well as update our page meta and the <code><aside></code> sidebar.</p>
 <p>So all in all we want to update the page title and meta, header, content area, and sidebar, <strong>without reloading styles or scripts</strong>.</p>
 <p>We can easily do this by telling Pjax to listen on all <code>a</code> tags (which is the default) and use CSS selectors defined above (without forgetting minimal meta):</p>
 <pre><code class="javascript"><span class="keyword">var</span> pjax = <span class="keyword">new</span> Pjax({
@@ -160,10 +160,10 @@ npm run build</code></pre>
   elements: <span class="string">"a"</span>, <span class="comment">// default is "a[href], form[action]"</span>
   selectors: [<span class="string">"title"</span>, <span class="string">".the-header"</span>, <span class="string">".the-content"</span>, <span class="string">".the-sidebar"</span>]
 })</code></pre>
-<p>This will enable Pjax on all links, and designate the part to replace using CSS selectors <code>&quot;title&quot;, &quot;.the-header&quot;, &quot;.the-content&quot;, &quot;.the-sidebar&quot;</code>.</p>
+<p>This will enable Pjax on all links, and designate the part to replace using CSS selectors <code>"title", ".the-header", ".the-content", ".the-sidebar"</code>.</p>
 <p>In some cases, you might want to only target some specific elements to apply Pjax behavior. In that case, you can do two different things:</p>
 <ol>
-<li>Use a custom CSS selector( such as <code>&quot;a.js-Pjax&quot;</code> or <code>&quot;.js-Pjax a&quot;</code>, etc).</li>
+<li>Use a custom CSS selector( such as <code>"a.js-Pjax"</code> or <code>".js-Pjax a"</code>, etc).</li>
 <li>Override <code>Pjax.prototype.getElements</code>.<ul>
 <li><strong>Note</strong>: If doing this, make sure to return a <code>NodeList</code>.</li>
 </ul>
@@ -200,7 +200,7 @@ pjax.loadUrl(<span class="string">"/your-other-url"</span>, { <span class="attr"
 pjax._handleResponse = pjax.handleResponse;
 
 pjax.handleResponse = <span class="function"><span class="keyword">function</span>(<span class="params">responseText, request, href, options</span>) </span>{
-  <span class="keyword">if</span> (request.responseText.match(<span class="string">"&lt;html"</span>)) {
+  <span class="keyword">if</span> (request.responseText.match(<span class="string">"<html"</span>)) {
     pjax._handleResponse(responseText, request, href, options);
   } <span class="keyword">else</span> {
     <span class="comment">// handle non-HTML response here</span>
@@ -213,7 +213,7 @@ pjax.handleResponse = <span class="function"><span class="keyword">function</spa
 pjax.refresh(newContent);</code></pre>
 <h3 id="reload"><a href="#reload" class="headerlink" title="reload()"></a><code>reload()</code></h3><p>A helper shortcut for <code>window.location.reload()</code>. Used to force a page reload.</p>
 <pre><code class="js">pjax.reload()</code></pre>
-<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><h3 id="elements-String-default-quot-a-href-form-action-quot"><a href="#elements-String-default-quot-a-href-form-action-quot" class="headerlink" title="elements (String, default: &quot;a[href], form[action]&quot;)"></a><code>elements</code> (String, default: <code>&quot;a[href], form[action]&quot;</code>)</h3><p>CSS selector(s) used to find links to apply Pjax to. If needing multiple specific selectors, separate them by a comma.</p>
+<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><h3 id="elements-String-default-quot-a-href-form-action-quot"><a href="#elements-String-default-quot-a-href-form-action-quot" class="headerlink" title="elements (String, default: "a[href], form[action]")"></a><code>elements</code> (String, default: <code>"a[href], form[action]"</code>)</h3><p>CSS selector(s) used to find links to apply Pjax to. If needing multiple specific selectors, separate them by a comma.</p>
 <pre><code class="js"><span class="comment">// Single element</span>
 <span class="keyword">var</span> pjax = <span class="keyword">new</span> Pjax({
   elements: <span class="string">".ajax"</span>
@@ -222,7 +222,7 @@ pjax.refresh(newContent);</code></pre>
 <span class="keyword">var</span> pjax = <span class="keyword">new</span> Pjax({
   elements: <span class="string">".pjax, .ajax"</span>,
 })</code></pre>
-<h3 id="selectors-Array-default-quot-title-quot-quot-js-Pjax-quot"><a href="#selectors-Array-default-quot-title-quot-quot-js-Pjax-quot" class="headerlink" title="selectors (Array, default: [&quot;title&quot;, &quot;.js-Pjax&quot;])"></a><code>selectors</code> (Array, default: <code>[&quot;title&quot;, &quot;.js-Pjax&quot;]</code>)</h3><p>CSS selectors used to find which content to replace.</p>
+<h3 id="selectors-Array-default-quot-title-quot-quot-js-Pjax-quot"><a href="#selectors-Array-default-quot-title-quot-quot-js-Pjax-quot" class="headerlink" title="selectors (Array, default: ["title", ".js-Pjax"])"></a><code>selectors</code> (Array, default: <code>["title", ".js-Pjax"]</code>)</h3><p>CSS selectors used to find which content to replace.</p>
 <pre><code class="js"><span class="keyword">var</span> pjax = <span class="keyword">new</span> Pjax({
   selectors: [
     <span class="string">"title"</span>,
@@ -231,18 +231,18 @@ pjax.refresh(newContent);</code></pre>
 })</code></pre>
 <p>If a query returns multiples items, it will just keep the index.</p>
 <p>Example of what you can do:</p>
-<pre><code class="html"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page title<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">section</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"the-footer"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">footer</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">script</span>&gt;</span>...<span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span></code></pre>
+<pre><code class="html"><span class="meta"><!DOCTYPE <span class="meta-keyword">html</span>></span>
+<span class="tag"><<span class="name">html</span>></span>
+<span class="tag"><<span class="name">head</span>></span>
+  <span class="tag"><<span class="name">title</span>></span>Page title<span class="tag"></<span class="name">title</span>></span>
+<span class="tag"></<span class="name">head</span>></span>
+<span class="tag"><<span class="name">body</span>></span>
+  <span class="tag"><<span class="name">header</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>></span>...<span class="tag"></<span class="name">header</span>></span>
+  <span class="tag"><<span class="name">section</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>></span>...<span class="tag"></<span class="name">section</span>></span>
+  <span class="tag"><<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"the-footer"</span>></span>...<span class="tag"></<span class="name">footer</span>></span>
+  <span class="tag"><<span class="name">script</span>></span>...<span class="tag"></<span class="name">script</span>></span>
+<span class="tag"></<span class="name">body</span>></span>
+<span class="tag"></<span class="name">html</span>></span></code></pre>
 <p>This example is correct and should work “as expected”.</p>
 <p><strong>NOTE:</strong> <em>If the current page and new page do not have the same amount of DOM elements, Pjax will fall back to normal page load.</em></p>
 <h3 id="switches-Object-default"><a href="#switches-Object-default" class="headerlink" title="switches (Object, default: {})"></a><code>switches</code> (Object, default: <code>{}</code>)</h3><p>This is an object containing callbacks that can be used to switch old elements with new elements.</p>
@@ -298,7 +298,7 @@ pjax.refresh(newContent);</code></pre>
       callbacks: {
         <span class="comment">// to make a nice transition with 2 pages at the same time</span>
         <span class="comment">// we are playing with absolute positioning for the element we are removing</span>
-        <span class="comment">// &amp; we need live metrics to have something great</span>
+        <span class="comment">// & we need live metrics to have something great</span>
         <span class="comment">// see associated CSS below</span>
         removeElement: <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>{
           el.style.marginLeft = <span class="string">"-"</span> + (el.getBoundingClientRect().width/<span class="number">2</span>) + <span class="string">"px"</span>
@@ -307,7 +307,7 @@ pjax.refresh(newContent);</code></pre>
     }
   }
 })</code></pre>
-<p><em>Note that <code>remove</code> includes <code>Animated--reverse</code> which is a simple way to not have to have a duplicate transition (slideIn + reverse =&gt; slideOut).</em></p>
+<p><em>Note that <code>remove</code> includes <code>Animated--reverse</code> which is a simple way to not have to have a duplicate transition (slideIn + reverse => slideOut).</em></p>
 <p>Here is some css that works well with the above configuration:</p>
 <pre><code class="css"><span class="comment">/*</span>
 <span class="comment">  <span class="doctag">Note:</span> If your content elements don't have a fixed width it can cause</span>
@@ -364,31 +364,31 @@ pjax.refresh(newContent);</code></pre>
   }
 }</code></pre>
 <p>To give context to this CSS, here is an HTML snippet:</p>
-<pre><code class="html"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"js-Pjax-child"</span>&gt;</span>
+<pre><code class="html"><span class="meta"><!doctype <span class="meta-keyword">html</span>></span>
+<span class="tag"><<span class="name">html</span>></span>
+<span class="tag"><<span class="name">head</span>></span>
+  <span class="tag"><<span class="name">title</span>></span>Page Title<span class="tag"></<span class="name">title</span>></span>
+<span class="tag"></<span class="name">head</span>></span>
+<span class="tag"><<span class="name">body</span>></span>
+  <span class="tag"><<span class="name">section</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>></span>
+    <span class="tag"><<span class="name">div</span> <span class="attr">class</span>=<span class="string">"js-Pjax-child"</span>></span>
       Your content here
-    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-    <span class="comment">&lt;!--</span>
+    <span class="tag"></<span class="name">div</span>></span>
+    <span class="comment"><!--</span>
 <span class="comment">    During the replacement process, you'll have the following tree:</span>
 <span class="comment"></span>
-<span class="comment">    &lt;div class="js-Pjax-child js-Pjax-remove Animate..."&gt;</span>
+<span class="comment">    <div class="js-Pjax-child js-Pjax-remove Animate..."></span>
 <span class="comment">      Your OLD content here</span>
-<span class="comment">    &lt;/div&gt;</span>
-<span class="comment">    &lt;div class="js-Pjax-child js-Pjax-add Animate..."&gt;</span>
+<span class="comment">    </div></span>
+<span class="comment">    <div class="js-Pjax-child js-Pjax-add Animate..."></span>
 <span class="comment">      Your NEW content here</span>
-<span class="comment">    &lt;/div&gt;</span>
+<span class="comment">    </div></span>
 <span class="comment"></span>
-<span class="comment">    --&gt;</span>
-  <span class="tag">&lt;/<span class="name">section</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">script</span>&gt;</span>...<span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span></code></pre>
+<span class="comment">    --></span>
+  <span class="tag"></<span class="name">section</span>></span>
+  <span class="tag"><<span class="name">script</span>></span>...<span class="tag"></<span class="name">script</span>></span>
+<span class="tag"></<span class="name">body</span>></span>
+<span class="tag"></<span class="name">html</span>></span></code></pre>
 <h3 id="history-Boolean-default-true"><a href="#history-Boolean-default-true" class="headerlink" title="history (Boolean, default: true)"></a><code>history</code> (Boolean, default: <code>true</code>)</h3><p>Enable the use of <code>pushState()</code>. Disabling this will prevent Pjax from updating browser history. While possible, there is almost no use case where you would want to do this.</p>
 <p>Internally, this option is used when a <code>popstate</code> event triggers Pjax (to not <code>pushState()</code> again).</p>
 <h3 id="analytics-Function-Boolean-default-a-function-that-pushes-gaq-trackPageview-or-sends-ga-pageview"><a href="#analytics-Function-Boolean-default-a-function-that-pushes-gaq-trackPageview-or-sends-ga-pageview" class="headerlink" title="analytics (Function | Boolean, default: a function that pushes _gaq _trackPageview or sends ga pageview"></a><code>analytics</code> (Function | Boolean, default: a function that pushes <code>_gaq</code> <code>_trackPageview</code> or sends <code>ga</code> <code>pageview</code></h3><p>Function that allows you to add behavior for analytics. By default it tries to track<br>a pageview with Google Analytics (if it exists on the page). It’s called every time a page is switched, even for history navigation.</p>
@@ -405,7 +405,7 @@ pjax.refresh(newContent);</code></pre>
 <p>Here is some sample code:</p>
 <pre><code class="js"><span class="keyword">var</span> links = <span class="built_in">document</span>.querySelectorAll(<span class="string">".js-Pjax"</span>);
 
-<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; links.length; i++) {
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i < links.length; i++) {
   <span class="keyword">var</span> el = links[i]
 
   el.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>{
@@ -435,8 +435,8 @@ pjax.refresh(newContent);</code></pre>
 <h2 id="HTTP-Headers"><a href="#HTTP-Headers" class="headerlink" title="HTTP Headers"></a>HTTP Headers</h2><p>Pjax uses several custom headers when it makes and receives HTTP requests. If the requests are going to your server, you can use those headers for some meta information about the response.</p>
 <h3 id="Request-Headers"><a href="#Request-Headers" class="headerlink" title="Request Headers"></a>Request Headers</h3><p>Pjax sends the following headers with every request:</p>
 <ul>
-<li><code>X-Requested-With: &quot;XMLHttpRequest&quot;</code></li>
-<li><code>X-PJAX: &quot;true&quot;</code></li>
+<li><code>X-Requested-With: "XMLHttpRequest"</code></li>
+<li><code>X-PJAX: "true"</code></li>
 <li><code>X-PJAX-Selectors</code>:<br>  A serialized JSON array of selectors, taken from <code>options.selectors</code>. You can use this to send back only the elements that Pjax will use to switch, instead of sending the whole page. Note that you’ll need to deserialize this on the server (Such as by using <code>JSON.parse()</code>)</li>
 </ul>
 <h3 id="Response-Headers"><a href="#Response-Headers" class="headerlink" title="Response Headers"></a>Response Headers</h3><p>Pjax looks for the following headers on the response:</p>
@@ -470,12 +470,12 @@ whenContainerReady()
 
 <span class="built_in">document</span>.addEventListener(<span class="string">"pjax:success"</span>, whenContainerReady)</code></pre>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Q-Disqus-doesn’t-work-anymore-how-can-I-fix-that"><a href="#Q-Disqus-doesn’t-work-anymore-how-can-I-fix-that" class="headerlink" title="Q: Disqus doesn’t work anymore, how can I fix that ?"></a>Q: Disqus doesn’t work anymore, how can I fix that ?</h3><h4 id="A-There-are-a-few-things-you-need-to-do"><a href="#A-There-are-a-few-things-you-need-to-do" class="headerlink" title="A: There are a few things you need to do:"></a>A: There are a few things you need to do:</h4><ul>
-<li><p>Wrap your Disqus snippet into a DOM element that you will add to the <code>selector</code> property (or just wrap it with <code>class=&quot;js-Pjax&quot;</code>) and be sure to have at least an empty wrapper on each page (to avoid differences of DOM between pages).</p>
+<li><p>Wrap your Disqus snippet into a DOM element that you will add to the <code>selector</code> property (or just wrap it with <code>class="js-Pjax"</code>) and be sure to have at least an empty wrapper on each page (to avoid differences of DOM between pages).</p>
 </li>
 <li><p>Edit your Disqus snippet like the one below.</p>
 </li>
 </ul>
-<h4 id="Disqus-snippet-before-Pjax-integration"><a href="#Disqus-snippet-before-Pjax-integration" class="headerlink" title="Disqus snippet before Pjax integration"></a>Disqus snippet <em>before</em> Pjax integration</h4><pre><code class="html"><span class="tag">&lt;<span class="name">script</span>&gt;</span>
+<h4 id="Disqus-snippet-before-Pjax-integration"><a href="#Disqus-snippet-before-Pjax-integration" class="headerlink" title="Disqus snippet before Pjax integration"></a>Disqus snippet <em>before</em> Pjax integration</h4><pre><code class="html"><span class="tag"><<span class="name">script</span>></span>
 <span class="actionscript">  <span class="keyword">var</span> disqus_shortname = <span class="string">'YOURSHORTNAME'</span></span>
 <span class="actionscript">  <span class="keyword">var</span> disqus_identifier = <span class="string">'PAGEID'</span></span>
 <span class="actionscript">  <span class="keyword">var</span> disqus_url = <span class="string">'PAGEURL'</span></span>
@@ -485,23 +485,23 @@ whenContainerReady()
 <span class="actionscript">  s = d.createElement(<span class="string">'script'</span>);s.async=<span class="number">1</span>;s.src = <span class="string">'//'</span> + disqus_shortname + <span class="string">'.disqus.com/'</span>+disqus_script;</span>
 <span class="actionscript">  (d.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>]).appendChild(s);</span>
 <span class="javascript">  })(<span class="built_in">document</span>)</span>
-<span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
-<h4 id="Disqus-snippet-after-Pjax-integration"><a href="#Disqus-snippet-after-Pjax-integration" class="headerlink" title="Disqus snippet after Pjax integration"></a>Disqus snippet <em>after</em> Pjax integration</h4><pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>&gt;</span><span class="comment">&lt;!-- needs to be here on every Pjax-ified page, even if empty --&gt;</span>
-<span class="comment">&lt;!-- if (some condition) { // eventual server-side test to know whether or not you include this script --&gt;</span>
-  <span class="tag">&lt;<span class="name">script</span>&gt;</span>
+<span class="tag"></<span class="name">script</span>></span></code></pre>
+<h4 id="Disqus-snippet-after-Pjax-integration"><a href="#Disqus-snippet-after-Pjax-integration" class="headerlink" title="Disqus snippet after Pjax integration"></a>Disqus snippet <em>after</em> Pjax integration</h4><pre><code class="html"><span class="tag"><<span class="name">div</span> <span class="attr">class</span>=<span class="string">"js-Pjax"</span>></span><span class="comment"><!-- needs to be here on every Pjax-ified page, even if empty --></span>
+<span class="comment"><!-- if (some condition) { // eventual server-side test to know whether or not you include this script --></span>
+  <span class="tag"><<span class="name">script</span>></span>
 <span class="actionscript">    <span class="keyword">var</span> disqus_shortname = <span class="string">'YOURSHORTNAME'</span></span>
 <span class="actionscript">    <span class="keyword">var</span> disqus_identifier = <span class="string">'PAGEID'</span></span>
 <span class="actionscript">    <span class="keyword">var</span> disqus_url = <span class="string">'PAGEURL'</span></span>
 <span class="actionscript">    <span class="keyword">var</span> disqus_script = <span class="string">'embed.js'</span></span>
 
-<span class="actionscript">    <span class="comment">// here we will only load the disqus &lt;script&gt; if not already loaded</span></span>
+<span class="actionscript">    <span class="comment">// here we will only load the disqus <script> if not already loaded</span></span>
 <span class="javascript">    <span class="keyword">if</span> (!<span class="built_in">window</span>.DISQUS) {</span>
 <span class="actionscript">      (<span class="function"><span class="keyword">function</span><span class="params">(d,s)</span> </span>{</span>
 <span class="actionscript">      s = d.createElement(<span class="string">'script'</span>);s.async=<span class="number">1</span>;s.src = <span class="string">'//'</span> + disqus_shortname + <span class="string">'.disqus.com/'</span>+disqus_script;</span>
 <span class="actionscript">      (d.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>]).appendChild(s);</span>
 <span class="javascript">      })(<span class="built_in">document</span>)</span>
     }
-<span class="actionscript">    <span class="comment">// if disqus &lt;script&gt; is already loaded, we just reset disqus the right way</span></span>
+<span class="actionscript">    <span class="comment">// if disqus <script> is already loaded, we just reset disqus the right way</span></span>
 <span class="actionscript">    <span class="comment">// see https://help.disqus.com/developer/using-disqus-on-ajax-sites</span></span>
 <span class="actionscript">    <span class="keyword">else</span> {</span>
       DISQUS.reset({
@@ -512,14 +512,14 @@ whenContainerReady()
         }
       })
     }
-  <span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="comment">&lt;!-- } --&gt;</span>
-<span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
-<p><strong>Note: Pjax only handles inline <code>&lt;script&gt;</code> blocks for the container you are switching.</strong></p>
+  <span class="tag"></<span class="name">script</span>></span>
+<span class="comment"><!-- } --></span>
+<span class="tag"></<span class="name">div</span>></span></code></pre>
+<p><strong>Note: Pjax only handles inline <code><script></code> blocks for the container you are switching.</strong></p>
 <h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>Clone this repository and run <code>npm run example</code>, which will open the example app in your browser.</p>
 <h2 id="CONTRIBUTING"><a href="#CONTRIBUTING" class="headerlink" title="CONTRIBUTING"></a>CONTRIBUTING</h2><ul>
 <li>⇄ Pull requests and ★ Stars are always welcome.</li>
 <li>For bugs and feature requests, please create an issue.</li>
 <li>Pull requests must be accompanied by passing automated tests (<code>npm test</code>). If the API is changed, please update the Typescript definitions as well (<code>pjax.d.ts</code>).</li>
 </ul>
-<h2 id="CHANGELOG"><a href="#CHANGELOG" class="headerlink" title="CHANGELOG"></a><a href="CHANGELOG.md">CHANGELOG</a></h2><h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a><a href="LICENSE">LICENSE</a></h2>
+<h2 id="CHANGELOG"><a href="#CHANGELOG" class="headerlink" title="CHANGELOG"></a><a href="CHANGELOG.md">CHANGELOG</a></h2><h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a><a href="LICENSE">LICENSE</a></h2><script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>

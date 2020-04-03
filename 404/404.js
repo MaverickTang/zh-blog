@@ -1,4 +1,4 @@
-/**
+<html><head></head><body>/**
  * Created by Noisky on 17/05/13.
  * Revised by Noisky on 18/11/27.
  */
@@ -53,4 +53,4 @@ $(document).ready(function() {
 		
 		$('.btn-mobile-menu__icon').toggleClass('fa fa-list fa fa-angle-up animated fadeIn');
 	});
-});
+});</body></html>
