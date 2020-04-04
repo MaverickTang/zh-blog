@@ -7,6 +7,8 @@
 <p>但是因为在国外呆一年</p>
 <p>数学科学语文等学科全部被削</p>
 <p>英语跟别人比也弱的一批</p>
+<a id="more"></a>
+
 <p>托福只有76分</p>
 <p>像我这种人只有靠努力qaq</p>
 <p><img data-src="https://s1.ax1x.com/2020/04/04/Gd5Rdx.jpg" alt="Gd5Rdx.jpg"></p>
@@ -413,6 +415,8 @@
     <url>/Blogs/2020/03/26/Markdown-guide/</url>
     <content><![CDATA[<html><head></head><body><p>转载自<a href="https://siriusq.top/Markdown写作语法.html" target="_blank" rel="noopener">siriusq</a></p>
 <p>编写博客需要使用Markdown，因此需要熟记语法规则，虽然Markdown语法比较少，但是一个一个查起来也是很蛋疼的</p>
+<a id="more"></a>
+
 <p><strong>常用的Markdown语法规则有：</strong></p>
 <ul>
 <li><p>标题（我把标题扔到网页最后面了，目录被打乱了。。。）</p>
@@ -454,8 +458,6 @@
 <li><p>选项卡</p>
 </li>
 <li><p>按钮</p>
-<a id="more"></a>
-
 </li>
 </ul>
 <h1 id="字体加粗倾斜"><a href="#字体加粗倾斜" class="headerlink" title="字体加粗倾斜"></a>字体加粗倾斜</h1><p>字体倾斜需要在文本两端各加一个<code>*</code>号<br>字体加粗需要在文本两端各加两个<code>*</code>号<br>字体同时倾斜加粗需要在文本两端各加三个<code>*</code>号<br>字体加入删除线需要在文本两端各加两个<code>~~</code></p>
