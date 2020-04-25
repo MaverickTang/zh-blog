@@ -67,12 +67,12 @@
       var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
       switchLang.onclick = function() {
           var href = window.location.href;
-          var indexOfEn = href.toLowerCase().indexOf('/Zh-Blog/');
+          var indexOfEn = href.toLowerCase().indexOf('/Zh-Blog');
           if(indexOfEn !== -1) {
-              window.location.href = href.replace('/Zh-Blog/', '/Blogs');
+              window.location.href = href.replace('/Zh-Blog', '/Blogs');
           }
           else {
-              window.location.href = href.replace('/Blogs', '/Zh-Blog/');
+              window.location.href = href.replace('/Blogs', '/Zh-Blog');
           }
           if(typeof(_prevOnload) === 'function') {
               _prevOnload();
