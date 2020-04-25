@@ -3,25 +3,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/Blogs/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/Blogs/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/Blogs/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/Blogs/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Zh-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Zh-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Zh-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Zh-Blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/Blogs/css/main.css">
+<link rel="stylesheet" href="/Zh-Blog/css/main.css">
 
 
-<link rel="stylesheet" href="/Blogs/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Zh-Blog/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mavericktang.github.io","root":"/Blogs/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/Zh-Blog/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="使用Scrapy爬取进击的巨人漫画一、简介​        自己看到网上有两个大牛分别爬取了合法(Naruto)与非法(你懂的)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(丧尽天良),所以就只有自己写了一个算是结合版的代码，爬取了这个网站。在此分享给大家，授人以both🐟。 ​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬取进击的巨人漫画">
-<meta property="og:url" content="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/index.html">
+<meta property="og:url" content="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/index.html">
 <meta property="og:site_name" content="Mavericreate.Blog">
 <meta property="og:description" content="使用Scrapy爬取进击的巨人漫画一、简介​        自己看到网上有两个大牛分别爬取了合法(Naruto)与非法(你懂的)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(丧尽天良),所以就只有自己写了一个算是结合版的代码，爬取了这个网站。在此分享给大家，授人以both🐟。 ​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个">
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
@@ -37,12 +37,12 @@
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNX9I.jpg">
 <meta property="article:published_time" content="2020-02-23T23:13:57.000Z">
 <meta property="article:modified_time" content="2020-04-03T22:52:45.557Z">
-<meta property="article:author" content="Haotian Tang">
+<meta property="article:author" content="唐浩天">
 <meta property="article:tag" content="Python爬虫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
 
-<link rel="canonical" href="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/">
+<link rel="canonical" href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/">
 
 
 <script id="page-configurations">
@@ -106,7 +106,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/Blogs/atom.xml" title="Mavericreate.Blog" type="application/atom+xml">
+<link rel="alternate" href="/Zh-Blog/atom.xml" title="Mavericreate.Blog" type="application/atom+xml">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script>
   $("body").backstretch("https://raw.githubusercontent.com/MaverickTang/Images/master/bkg.jpg");
   </script></head>
@@ -131,7 +131,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/Blogs/" class="brand" rel="start">
+      <a href="/Zh-Blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Mavericreate.Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -153,37 +153,37 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/Blogs/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/Zh-Blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/Blogs/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/Zh-Blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/Blogs/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">7</span></a>
+    <a href="/Zh-Blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/Blogs/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">3</span></a>
+    <a href="/Zh-Blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/Blogs/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">8</span></a>
+    <a href="/Zh-Blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-switch_lang">
 
-    <a href="https://mavericktang.github.io/en" rel="section"><i class="fa fa-fw fa-language"></i>English</a>
+    <a href="https://mavericktang.github.io/en" rel="noopener" target="_blank"><i class="fa fa-fw fa-language"></i>English</a>
 
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/Blogs/tools/" rel="section"><i class="fa fa-fw fa-legal"></i>工具</a>
+    <a href="/Zh-Blog/tools/" rel="section"><i class="fa fa-fw fa-legal"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-image">
@@ -193,7 +193,7 @@
   </li>
         <li class="menu-item menu-item-schedule">
 
-    <a href="/Blogs/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+    <a href="/Zh-Blog/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -234,7 +234,7 @@
   <div class="reading-progress-bar"></div>
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-  <a href="https://github.com/MaverickTang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+  <a href="https://github.com/MaverickTang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
 
 
     <main class="main">
@@ -250,11 +250,11 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/Blogs/images/Levi.gif">
-      <meta itemprop="name" content="Haotian Tang">
+      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
+      <meta itemprop="name" content="唐浩天">
       <meta itemprop="description" content="Live without Barricades!">
     </span>
 
@@ -290,7 +290,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blogs/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                  <a href="/Zh-Blog/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
                 </span>
             </span>
 
@@ -434,7 +434,7 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">comics_parse</span><span class="params">(self, response)</span>:</span><span class="comment">#另一个函数爬取下层页面</span></span><br><span class="line">		pre_img_url = response.xpath(<span class="string">'//script/text()'</span>).extract()<span class="comment">#获取script</span></span><br><span class="line">		img_url = <span class="string">''</span></span><br><span class="line">		ptitle=response.xpath(<span class="string">'//title/text()'</span>).extract()<span class="comment">#获取章节名称</span></span><br><span class="line">		prepage_num=response.xpath(<span class="string">'//a[contains(@href, "index")]/text()'</span>).extract()<span class="comment">#获取页面名字</span></span><br><span class="line">		page_num=<span class="string">''</span></span><br><span class="line">		a=<span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(prepage_num)):<span class="comment">#寻找page number来作为文件名</span></span><br><span class="line">			<span class="keyword">for</span> _char <span class="keyword">in</span> prepage_num[j]:<span class="comment">#判断中文字符来找到当前页码（它会是“第n页”）</span></span><br><span class="line">				<span class="keyword">if</span> <span class="string">'\u4e00'</span> <= _char <= <span class="string">'\u9fa5'</span>:</span><br><span class="line">					page_num=prepage_num[j]</span><br><span class="line">					<span class="keyword">if</span> page_num == <span class="string">'下一页'</span>:<span class="comment">#如果是‘下一页’叫表示它漏过了‘第一页’</span></span><br><span class="line">						page_num=<span class="string">'第1页'</span></span><br><span class="line">					a=<span class="number">1</span></span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">			<span class="keyword">if</span>(a==<span class="number">1</span>):</span><br><span class="line">				<span class="keyword">break</span>	 </span><br><span class="line">		t=ptitle[<span class="number">0</span>]</span><br><span class="line">		index=ptitle[<span class="number">0</span>].find(<span class="string">'话'</span>)<span class="comment">#通过找到‘话’来找到章节的名字</span></span><br><span class="line">		title=t[<span class="number">0</span>:(index+<span class="number">1</span>)]<span class="comment">#截取章节名字</span></span><br><span class="line"><span class="comment">#		matchObj = re.search( r'url=\"()\s*(.*)jpg', line, re.M|re.I)</span></span><br><span class="line"> 	 <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pre_img_url)):<span class="comment">#记录的时候是以array存储的      </span></span><br><span class="line">   		matchObj = re.search( <span class="string">r'url=\"()\s*(.*)jpg'</span>, pre_img_url[i], re.M|re.I)<span class="comment">#正则表达式寻找      </span></span><br><span class="line">    	<span class="keyword">if</span> matchObj:        </span><br><span class="line">      	ppreimgurl = matchObj.group()<span class="comment">#里面就包含了我们要找的url（本例是“2020/02/08055441539556.jpg”）        img_url= 'http://p2.manhuapan.com/' + ppreimgurl[5:len(ppreimgurl)]#在前面加上存储图片的网址</span></span><br><span class="line">				self.log(<span class="string">'>>>>>>>>>>>开始下载<<<<<<<<<<<<<'</span>)</span><br><span class="line"><span class="comment">#				self.save_img(page_num[len(page_num)], title, img_url)</span></span><br><span class="line">				document = <span class="string">'/Users/maverick/Desktop/test/One punch'</span></span><br><span class="line">				comics_path = document + <span class="string">'/'</span> + title</span><br><span class="line">				exists = os.path.exists(comics_path)</span><br><span class="line">				<span class="keyword">if</span> <span class="keyword">not</span> exists:<span class="comment">#如果没有创建过文件夹</span></span><br><span class="line"><span class="comment">#					self.log('create document: ' + title)</span></span><br><span class="line">					os.makedirs(comics_path)</span><br><span class="line">				pic_name = comics_path + <span class="string">'/'</span> + page_num + <span class="string">'.jpg'</span></span><br><span class="line">				exists = os.path.exists(pic_name)</span><br><span class="line">				<span class="keyword">if</span> <span class="keyword">not</span> exists:</span><br><span class="line">					time.sleep(<span class="number">0.1</span>)<span class="comment">#延时防止锁ip</span></span><br><span class="line">					urlretrieve(img_url, pic_name)<span class="comment">#下载图片</span></span><br><span class="line">				<span class="keyword">break</span>		</span><br><span class="line">		pages_urls = response.xpath(<span class="string">'//a[contains(@href, "index")]/@href'</span>).extract()<span class="comment">#找到下一页的url</span></span><br><span class="line">		page_situation = response.xpath(<span class="string">'//a[contains(@href, "index")]/text()'</span>).extract()<span class="comment">#与是否为最后一页有关</span></span><br><span class="line">		ans=<span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> _char <span class="keyword">in</span> page_situation[len(page_situation)<span class="number">-1</span>]:<span class="comment">#还是通过中文来判断是否为最后一页</span></span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> <span class="string">'\u4e00'</span> <= _char <= <span class="string">'\u9fa5'</span>:</span><br><span class="line">				ans=<span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span>(ans==<span class="number">0</span>):</span><br><span class="line">			premyfront = response.request.url<span class="comment">#找到当前页面的url，再通过字符串操作得到基础页</span></span><br><span class="line">			fenge = premyfront.split(<span class="string">'/'</span>)</span><br><span class="line">			myfont=<span class="string">''</span></span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">				myfont=myfont+fenge[i]+<span class="string">'/'</span></span><br><span class="line">			next_page = myfont+pages_urls[len(pages_urls)<span class="number">-1</span>]<span class="comment">#得到下一页</span></span><br><span class="line">			self.log(next_page)</span><br><span class="line">			<span class="keyword">yield</span> scrapy.Request(next_page, callback=self.comics_parse, dont_filter=<span class="literal">True</span>)	<span class="comment">#递归自己</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			self.log(<span class="string">'parse comics:'</span> + title + <span class="string">'finished.'</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>然后我们就可以欣赏它爬取的漫画了。因为整个网站的机制是一样的，所以我们只需要修改url地址，就可以任意爬取自己想看的漫画了。</p>
-<h2 id="五、后记"><a href="#五、后记" class="headerlink" title="五、后记"></a>五、后记</h2><p>如果是自己想用的话，代码已经在<a href="https://github.com/MaverickTang/Attack-on-titan-download" target="_blank" rel="noopener">GitHub</a>上面了，下载下来就可以直接用。</p>
+<h2 id="五、后记"><a href="#五、后记" class="headerlink" title="五、后记"></a>五、后记</h2><p>如果是自己想用的话，代码已经在<a href="https://github.com/MaverickTang/Attack-on-titan-download">GitHub</a>上面了，下载下来就可以直接用。</p>
 <p>不仅是巨人，这个爬虫还可以爬取整个网站上的其他漫画，比如：</p>
 <p>一拳超人，火影忍者，海贼王,鬼灭之刃等。</p>
 <p>请求星星✨</p>
@@ -454,7 +454,7 @@
 <p>4(xpath与css学习).<a href="https://www.jianshu.com/p/489c5d21cdc7" target="_blank" rel="noopener">https://www.jianshu.com/p/489c5d21cdc7</a></p>
 <p>5(下载图片方法).<a href="https://morvanzhou.github.io/tutorials/data-manipulation/scraping/3-02-download/" target="_blank" rel="noopener">https://morvanzhou.github.io/tutorials/data-manipulation/scraping/3-02-download/</a></p>
 <p>6(进击的巨人在线观看).<a href="https://manhua.fzdm.com/39/" target="_blank" rel="noopener">https://manhua.fzdm.com/39/</a></p>
-<script src="/Blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
     </div>
 
     
@@ -468,12 +468,12 @@
   <div id="qr" style="display: none;">
       
       <div style="display: inline-block;">
-        <img src="/Blogs/images/wechatpay.png" alt="Haotian Tang 微信支付">
+        <img src="/Zh-Blog/images/wechatpay.png" alt="唐浩天 微信支付">
         <p>微信支付</p>
       </div>
       
       <div style="display: inline-block;">
-        <img src="/Blogs/images/alipay.png" alt="Haotian Tang 支付宝">
+        <img src="/Zh-Blog/images/alipay.png" alt="唐浩天 支付宝">
         <p>支付宝</p>
       </div>
 
@@ -485,11 +485,11 @@
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>Haotian Tang
+    <strong>本文作者： </strong>唐浩天
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on%20t-titan/" title="爬取进击的巨人漫画">https://mavericktang.github.io/Blogs/2020/02/24/Crawl-Attack-on t-titan/</a>
+    <a href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/" title="爬取进击的巨人漫画">https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on t-titan/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -519,7 +519,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/Blogs/tags/Python%E7%88%AC%E8%99%AB/" rel="tag"># Python爬虫</a>
+              <a href="/Zh-Blog/tags/Python%E7%88%AC%E8%99%AB/" rel="tag"># Python爬虫</a>
           </div>
 
         
@@ -529,7 +529,7 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/Blogs/2020/03/21/American-Memory/" rel="next" title="尽管我们的手中一无所有——美国留学告别篇">
+    <a href="/Zh-Blog/2020/03/21/American-Memory/" rel="next" title="尽管我们的手中一无所有——美国留学告别篇">
       尽管我们的手中一无所有——美国留学告别篇 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -598,28 +598,28 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Haotian Tang"
-      src="/Blogs/images/Levi.gif">
-  <p class="site-author-name" itemprop="name">Haotian Tang</p>
+    <img class="site-author-image" itemprop="image" alt="唐浩天"
+      src="/Zh-Blog/images/Levi.gif">
+  <p class="site-author-name" itemprop="name">唐浩天</p>
   <div class="site-description" itemprop="description">Live without Barricades!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/Blogs/archives/">
+          <a href="/Zh-Blog/archives/">
         
           <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/Blogs/categories/">
+            <a href="/Zh-Blog/categories/">
           
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/Blogs/tags/">
+            <a href="/Zh-Blog/tags/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
@@ -628,14 +628,14 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/MaverickTang" title="GitHub → https://github.com/MaverickTang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/MaverickTang" title="GitHub → https://github.com/MaverickTang"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/Blogs/agodsfor@gmail.com" title="E-Mail → agodsfor@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="/Zh-Blog/agodsfor@gmail.com" title="E-Mail → agodsfor@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="/Blogs/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="/Zh-Blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -646,7 +646,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="/Blogs/recc.xyz" title="recc.xyz">Rec</a>
+          <a href="/Zh-Blog/recc.xyz" title="recc.xyz">Rec</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://siriusq.top/" title="https://siriusq.top" rel="noopener" target="_blank">Sirius</a>
@@ -727,24 +727,24 @@
   </div>
 
   
-  <script src="/Blogs/lib/anime.min.js"></script>
-  <script src="/Blogs/lib/pjax/pjax.min.js"></script>
+  <script src="/Zh-Blog/lib/anime.min.js"></script>
+  <script src="/Zh-Blog/lib/pjax/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/Blogs/lib/velocity/velocity.min.js"></script>
-  <script src="/Blogs/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/Zh-Blog/lib/velocity/velocity.min.js"></script>
+  <script src="/Zh-Blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/Blogs/js/utils.js"></script>
+<script src="/Zh-Blog/js/utils.js"></script>
 
-<script src="/Blogs/js/motion.js"></script>
-
-
-<script src="/Blogs/js/schemes/pisces.js"></script>
+<script src="/Zh-Blog/js/motion.js"></script>
 
 
-<script src="/Blogs/js/next-boot.js"></script>
+<script src="/Zh-Blog/js/schemes/pisces.js"></script>
 
-<script src="/Blogs/js/bookmark.js"></script>
+
+<script src="/Zh-Blog/js/next-boot.js"></script>
+
+<script src="/Zh-Blog/js/bookmark.js"></script>
 
   <script>
 var pjax = new Pjax({
@@ -813,7 +813,7 @@ window.addEventListener('pjax:success', () => {
 
 
   
-<script src="/Blogs/js/local-search.js"></script>
+<script src="/Zh-Blog/js/local-search.js"></script>
 
 
 
@@ -843,7 +843,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'gitalk-commnet# Repository name to store issues',
       owner       : 'MaverickTang# GitHub repo owner',
       admin       : ['MaverickTang'],
-      id          : '7caf1bfd79756278d4ee9af6dfb3cd6b',
+      id          : '5ef3df351aa370c4b96d757e23cf6d7f',
         language: '',
       distractionFreeMode: false
     });
@@ -864,6 +864,6 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     </div>
   <!--崩溃欺骗-->
   <script type="text/javascript" src="/Blogs/js/crash_cheat.js"></script>
-<script src="/Blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 </title></span></pre></td></tr></tbody></table></figure></div></article></div></div></div></div></main></div><script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
