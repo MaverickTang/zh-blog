@@ -18,34 +18,38 @@
     var CONFIG = {"hostname":"mavericktang.github.io","root":"/Blogs/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="背景Coronavirus期间回国，在网上继续上学校网课，需要使用Google docs还有Youtube. 幸好自己提前在米国部署了威PN。。。然后感觉写个科学上网指南是国内博客基操，就顺便写写。 注：科学上网一定是学习使用，不要不注意身体😯">
+  <meta name="description" content="概率论表示不确定性声明的数学框架，提供量化不确定性的方法，也提出不确定声明的公理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何搭建Outline-VPN科学上网">
-<meta property="og:url" content="https://mavericktang.github.io/Blogs/2020/04/04/How-to-Outline/index.html">
+<meta property="og:title" content="编程中的概率">
+<meta property="og:url" content="https://mavericktang.github.io/Blogs/2020/04/26/Probability/index.html">
 <meta property="og:site_name" content="Mavericreate.Blog">
-<meta property="og:description" content="背景Coronavirus期间回国，在网上继续上学校网课，需要使用Google docs还有Youtube. 幸好自己提前在米国部署了威PN。。。然后感觉写个科学上网指南是国内博客基操，就顺便写写。 注：科学上网一定是学习使用，不要不注意身体😯">
+<meta property="og:description" content="概率论表示不确定性声明的数学框架，提供量化不确定性的方法，也提出不确定声明的公理。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/GdBCLQ.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0OII.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0jit.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0vJP.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0xRf.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0zz8.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/GdBpQS.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/GdB9sg.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0qZd.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0LdA.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd07se.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0HqH.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/04/Gd0TMD.png">
-<meta property="article:published_time" content="2020-04-03T22:17:03.000Z">
-<meta property="article:modified_time" content="2020-04-03T22:52:34.666Z">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/7MOBCdjAWilqXbh.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/utCJYwjsiU84ZNo.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/bupQSMmvg2J1l6N.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/aHCpzIAmsV2DfO7.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/bEASKtlVgad8Dw5.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/d2xvcHhbi4twDoX.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/lTIVMay8EU53hOX.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/gKhc1TC6DJZtoN3.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/24/XEsioTpeVzuS9kn.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/9y6zlFtRSxpOku5.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/dn8r39Z51pwWQIs.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/G2QuNhSAHjxCF9n.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/PV7oGMZH4AIvQhk.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/DqYm4WgyJZz1tAM.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/ZXEqlR39T2ujAC5.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/NhJLM3B6Tf9bktl.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/04/25/Ag8aWQ4KmjZ6zpD.jpg">
+<meta property="article:published_time" content="2020-04-25T22:35:12.000Z">
+<meta property="article:modified_time" content="2020-04-25T07:59:10.458Z">
 <meta property="article:author" content="Haotian Tang">
-<meta property="article:tag" content="博客必备">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/04/GdBCLQ.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/24/7MOBCdjAWilqXbh.jpg">
 
-<link rel="canonical" href="https://mavericktang.github.io/Blogs/2020/04/04/How-to-Outline/">
+<link rel="canonical" href="https://mavericktang.github.io/Blogs/2020/04/26/Probability/">
 
 
 <script id="page-configurations">
@@ -78,7 +82,7 @@
   }
 </script>
 
-  <title>如何搭建Outline-VPN科学上网 | Mavericreate.Blog</title>
+  <title>编程中的概率 | Mavericreate.Blog</title>
   
 
 
@@ -253,7 +257,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mavericktang.github.io/Blogs/2020/04/04/How-to-Outline/">
+    <link itemprop="mainEntityOfPage" href="https://mavericktang.github.io/Blogs/2020/04/26/Probability/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/Blogs/images/Levi.gif">
@@ -266,7 +270,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何搭建Outline-VPN科学上网
+          编程中的概率
         </h1>
 
         <div class="post-meta">
@@ -279,7 +283,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-03 15:17:03 / 修改时间：15:52:34" itemprop="dateCreated datePublished" datetime="2020-04-03T15:17:03-07:00">2020-04-03</time>
+              <time title="创建时间：2020-04-25 15:35:12 / 修改时间：00:59:10" itemprop="dateCreated datePublished" datetime="2020-04-25T15:35:12-07:00">2020-04-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,92 +327,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Coronavirus期间回国，在网上继续上学校网课，需要使用Google docs还有Youtube. 幸好自己提前在米国部署了威PN。。。然后感觉写个科学上网指南是国内博客基操，就顺便写写。</p>
-<p>注：科学上网一定是学习使用，不要不注意身体😯</p>
+        <h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><p>表示不确定性声明的数学框架，提供量化不确定性的方法，也提出不确定声明的公理。</p>
 <a id="more"></a>
 
-<h2 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h2><p>Macos系统</p>
-<p>5美元（支付宝）</p>
-<p>有一定Terminal（终端）的基础</p>
-<p>一个可以用的云主机（需要地址在国外）</p>
-<p>注意，vultr可能需要翻墙后才能访问，建议大家在mac上下载<strong>windscribe</strong>之后蹭免费流量搞一波</p>
-<h2 id="购置服务器"><a href="#购置服务器" class="headerlink" title="购置服务器"></a>购置服务器</h2><p>打开<a href="https://www.vultr.com" target="_blank" rel="noopener">Vult官网</a></p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/GdBCLQ.png" alt="vultr"></p>
-<p>注册就不用我多讲了吧。。。</p>
-<p>然后这个是要充值10美元好像</p>
-<p>不过比市面上的vpn便宜多了吧</p>
-<p>而且云电脑还有很多其他的事可以干（立Flag）</p>
-<p>进入账户后，点击products</p>
-<p>点右上角</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0OII.png" alt="Server1"></p>
-<p>然后选择<strong>服务器</strong></p>
-<p>默认<strong>Cloud Compute</strong></p>
-<p>我选的是<strong>新加坡</strong>的服务器</p>
-<p>因为离中国近…</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0jit.png" alt="Server2"></p>
-<p>然后Debian服务器</p>
-<p>选5美元一月的就好</p>
-<p>10美元太<strong>奢侈</strong></p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0vJP.png" alt="Server3"></p>
-<p>其他设置都别管</p>
-<p>默认</p>
-<h2 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h2><h3 id="远程连接主机"><a href="#远程连接主机" class="headerlink" title="远程连接主机"></a>远程连接主机</h3><p>回到Product</p>
-<p>点击刚添加好的服务器</p>
-<p>会弹出以下页面</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0xRf.png" alt="Server4"></p>
-<p>点击眼睛查看<strong>ip password</strong></p>
-<p>然后将<strong>IP Adress</strong>复制下来之后</p>
-<p>打开terminal</p>
-<p>右键点击Terminal图标</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0zz8.png" alt="Terminal1"></p>
-<p>点击弹出窗口中的➕加号</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/GdBpQS.png" alt="Terminal2"></p>
-<p>在前面加上一个ssh就可以点击链接</p>
-<p><strong>User记得填 root</strong></p>
-<p>看图</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/GdB9sg.png" alt="Terminal3"></p>
-<h3 id="Outline准备"><a href="#Outline准备" class="headerlink" title="Outline准备"></a>Outline准备</h3><p><a href="https://www.getoutline.org" target="_blank" rel="noopener">Outline</a> 是一款基于 ss 的开源富强软件，来自于 Jigsaw 公司，致力于供新闻组织用自家服务器上设定从而富强，来保障新闻工作者的网络存储安全，并且号称不需要技术人员就能完成部署。</p>
-<p>Jigsaw 前身为 Google Ideas，是 Google 旗下的技术孵化器公司，目标是以技术来客服全球的安全难题，包括地址网络神茶制度、降低网络攻击的威胁，以及防止大众收到网络骚扰等。Outline 即为 Jigsaw 的专案成果之一。</p>
-<p>去官网下载<strong>Outline Manager</strong>之后（官网地址上方超链接）</p>
-<p>国内点不进去。。。</p>
-<p><del>用windscribe蹭</del></p>
-<p>mac用户建议去app store搜索</p>
-<p>windows还有Linux可以去Github找</p>
-<p>（找不到的可以私信博主）</p>
-<p>下载Outline Manager打开</p>
-<p>点击➕加号</p>
-<p>随便选一个进去（误</p>
-<p><strong>别选第一个就对了</strong></p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0qZd.png" alt="Outline1"></p>
-<p>可以看到这个</p>
-<p>然后跟着指示走</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0LdA.png" alt="Outline2"></p>
-<h3 id="SSH安装"><a href="#SSH安装" class="headerlink" title="SSH安装"></a>SSH安装</h3><p>回到先前的ssh链接窗口</p>
-<h4 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h4><p>Centos 7.4 64 位 安装 Docke</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update  </span><br><span class="line">curl -fsSL https://get.docker.com/ | sh   </span><br><span class="line">sudo service docker start   </span><br><span class="line">#验证 docker 是否安装成功并在容器中执行一个测试的镜像 </span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></tbody></table></figure>
-
-<p>Ubuntu 17.04 ×64 Docker</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get install curl   </span><br><span class="line">sudo apt update   </span><br><span class="line">sudo apt install apt-transport-https ca-certificates curl software-properties-common   </span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –   </span><br><span class="line">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"   </span><br><span class="line">sudo apt update   </span><br><span class="line">sudo apt -y install docker-ce</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="安装Outline在虚拟机上"><a href="#安装Outline在虚拟机上" class="headerlink" title="安装Outline在虚拟机上"></a>安装Outline在虚拟机上</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh | bash</span><br></pre></td></tr></tbody></table></figure>
-
-<p>会出现下列代码</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd07se.png" alt="Outline4"></p>
-<p>复制URL</p>
-<p>然后粘贴进Outline Manager</p>
-<h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>这个时候在手机还有电脑上下载Outline</p>
-<p>方法不赘述</p>
-<p>你能下载manager肯定可以下载这个</p>
-<p>点击加号</p>
-<p>加号在哪里看下面第二张图片</p>
-<p>然后输入它生成的Access key</p>
-<p>大功告成</p>
-<p>不得不舔一下Outline真的好看</p>
-<p>简洁无广告。。。</p>
-<p>Manager：</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0HqH.png" alt="Outline3"></p>
-<p>Server</p>
-<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd0TMD.png" alt="Outline5"></p>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>P(x)=0.5<br>频率派概率(Frequentist probablity)<br>抛硬币正面向上概率0.t<br><strong>可重复</strong>事件的频率<br>贝叶斯派概率(Bayesian probablity)<br>病人患病的概率<br><strong>不可重复</strong>事件的概率<br><strong>随机变量</strong>(random variable)是可以随机取不同值的变量<br>样本空间(概率对应面积)<br><img data-src="https://i.loli.net/2020/04/24/7MOBCdjAWilqXbh.jpg" alt="Alt"></p>
+<h3 id="离散型概率分布"><a href="#离散型概率分布" class="headerlink" title="离散型概率分布"></a>离散型概率分布</h3><p>(Probablity mass function, PMF)将随机变量取得的每个状态映射到随机变量取得该状态的概率。</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
+<li>P的定义域必须是X所有状态的集合。</li>
+<li>对于x，0<=p<=1,不可能事件为0，必然发生的事件为1</li>
+<li>归一化条件<br><img data-src="https://i.loli.net/2020/04/24/utCJYwjsiU84ZNo.jpg" alt="Alt"></li>
+</ul>
+<h3 id="离散型均匀分布"><a href="#离散型均匀分布" class="headerlink" title="离散型均匀分布"></a>离散型均匀分布</h3><p>给定一个离散型变量x，有k种可能的状态(x1,x2,x3…)每种状态的可能性是相同的，即均匀分布(Uniform distribution),则其概率分布为：<br><img data-src="https://i.loli.net/2020/04/24/bupQSMmvg2J1l6N.jpg" alt="Alt"></p>
+<h3 id="连续型概率分布"><a href="#连续型概率分布" class="headerlink" title="连续型概率分布"></a>连续型概率分布</h3><p>如果一个数为概率密度函数(Probabilty Density Function, PDF),则必须满足以下条件：</p>
+<ul>
+<li>P的定义域必须是X所有状态的集合</li>
+<li>对于x，p(x)>=0(不要求小于等于1)</li>
+<li>fP(x)dx=1</li>
+<li>P(x)没有直接给出特定状态的概率，而是：落在面积为Sx的无限小区域内的概率为p(x)Sx<br><img data-src="https://i.loli.net/2020/04/24/aHCpzIAmsV2DfO7.jpg" alt="Alt"><br>只要<strong>所有面积加起来等于一</strong>就可以<br><img data-src="https://i.loli.net/2020/04/24/bEASKtlVgad8Dw5.jpg" alt="Alt"><h3 id="联合概率"><a href="#联合概率" class="headerlink" title="联合概率"></a>联合概率</h3>P(联合)=P(事件一)*P(事件二)<h3 id="边缘概率"><a href="#边缘概率" class="headerlink" title="边缘概率"></a>边缘概率</h3>P(边缘)=P(部分)+P(部分)<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3>P(y=yi|x=xi)=P(y=yi,x=xi(联合))/P(x=xi(其他情况))<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><img data-src="https://i.loli.net/2020/04/24/d2xvcHhbi4twDoX.jpg" alt="Alt"><br><img data-src="https://i.loli.net/2020/04/24/lTIVMay8EU53hOX.jpg" alt="Alt"><h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="链式法则"><a href="#链式法则" class="headerlink" title="链式法则"></a>链式法则</h3>P(x,y,z)=P(x|y,z)P(y,z)=P(x|y,z)P(y|z)P(z)<br>若随机变量X，Y互相独立，则：</li>
+</ul>
+<p>1.条件概率与条件<strong>无关</strong><br>P(x|y)=P(x|yprime(这里是y的反面))<br>2.添加/去除条件<strong>无影响</strong><br>P(x)=P(x|y)<br>3.联合概率<strong>等于</strong>边缘概率乘积<br>P(x,y)=P(x)P(Y)<br>独立：没有关系，不能提出线索</p>
+<ul>
+<li>独立不是均匀，互斥</li>
+<li>但是互斥一定不独立</li>
+</ul>
+<h2 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h2><h3 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h3><h4 id="图形化认识"><a href="#图形化认识" class="headerlink" title="图形化认识"></a>图形化认识</h4><p>概率=面积<br>期望=体积</p>
+<p><img data-src="https://i.loli.net/2020/04/24/gKhc1TC6DJZtoN3.jpg" alt="Alt"></p>
+<p><strong>Ex.</strong><br>投一枚均匀骰子，期望？<br>E[x]=1/6+2 /6+3/6+4/6+5/6+6/6=3.5</p>
+<h4 id="期望值的数学性质"><a href="#期望值的数学性质" class="headerlink" title="期望值的数学性质"></a>期望值的数学性质</h4><p><img data-src="https://i.loli.net/2020/04/24/XEsioTpeVzuS9kn.jpg" alt="Alt"><br>E[x+c]=E[x]+c<br>E[cx]=cE[x]<br>E[x+y]=E[x]+E[y]<br>下条当且仅当<strong>xy相互独立</strong>时成立<br>E[xy]=E[x]E [y]</p>
+<h4 id="期望与均值"><a href="#期望与均值" class="headerlink" title="期望与均值"></a>期望与均值</h4><p>期望E[x]为固定值，平均值是变化值<br>重复次数越多，平均值愈接近期望值</p>
+<h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><p>衡量随机变量的离散情况<br>也是一种期望，是随机变量偏离度的期望<br>V[x]=E[(x-u(平均值))^(2)]<br>V[x+c]=v[x]<br>V[cx]=c^(2)V[x]<br><strong>方差非线性</strong><br>仅当<strong>x，y相互独立</strong>时<br>V[x+y]=v[x]+v[y]</p>
+<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><p>给出了两个变量线性相关性的强度<br>Cov[x,y]=E[(x-u)(y-v)]<br>对比方差<br>V[x]=E[(x-u)^(2)]<br>协方差是方差定义的补充</p>
+<h4 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h4><p>(x-u)与(x-v)符号相同：协方差为正<br>代表一方大于期望值，另一方<strong>也</strong>大于期望值的概率高<br>(x-u)与(x-v)符号相反：协方差为负</p>
+<h4 id="数学性质"><a href="#数学性质" class="headerlink" title="数学性质"></a>数学性质</h4><p>Cov[x,x]=(方差)V[x]<br>Cov[x,y]=Cov[y,x]<br>Cov[x+a,y+b]=Cov[x,y]<br>Cov[ax,by]=abCov[x,y]<br>Cov[ax,by]=E[(ax-au)(by-bv)]=abE[(a-u)(b-v)]</p>
+<h4 id="独立变量的协方差"><a href="#独立变量的协方差" class="headerlink" title="独立变量的协方差"></a>独立变量的协方差</h4><p>若x，y相互独立，则协方差为0<br>cov[x,y]=E[(x-u)(y-u)]=E[x-u][y-u]=0<br>变量独立则线性无关，=协方差为0</p>
+<h4 id="Ex"><a href="#Ex" class="headerlink" title="Ex."></a>Ex.</h4><p><img data-src="https://i.loli.net/2020/04/25/9y6zlFtRSxpOku5.jpg" alt="Alt"></p>
+<h3 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h3><p>方差是随机变量的平方，不能直接比较<br><img data-src="https://i.loli.net/2020/04/25/dn8r39Z51pwWQIs.jpg" alt="Alt"></p>
+<h4 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h4><p><img data-src="https://i.loli.net/2020/04/25/G2QuNhSAHjxCF9n.jpg" alt="Alt"></p>
+<p>##常用概率分布</p>
+<h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>(Bernouli distribution)是单个二值随机变量的分布，由p属于[0,1]控制，p即是随机变量=1的概率<br>P(x=1)=p<br>P(x=0)=1-p=q<br>E[x]=1p+0(1-p)=p<br>V[x]=E[x^(2)]-E[x]^(2)=p-p^(2)=p(1-p)=pq</p>
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>(Binomial distribution):硬币正面向上的概率为P时，抛硬币n次后正面向上的概率。<br>二项分布是伯努利分布的叠加x=z1+z2+…+zn,计作Bn(n,p)<br><img data-src="https://i.loli.net/2020/04/25/PV7oGMZH4AIvQhk.jpg" alt="Alt"></p>
+<h3 id="正态分布（高斯分布）"><a href="#正态分布（高斯分布）" class="headerlink" title="正态分布（高斯分布）"></a>正态分布（高斯分布）</h3><p>标准正态分布<br>期望为0，方差为1<br><img data-src="https://i.loli.net/2020/04/25/DqYm4WgyJZz1tAM.jpg" alt="Alt"></p>
+<h2 id="贝叶斯定律"><a href="#贝叶斯定律" class="headerlink" title="贝叶斯定律"></a>贝叶斯定律</h2><p><img data-src="https://i.loli.net/2020/04/25/ZXEqlR39T2ujAC5.jpg" alt="Alt"><br>Ex.<br><img data-src="https://i.loli.net/2020/04/25/NhJLM3B6Tf9bktl.jpg" alt="Alt"><br><img data-src="https://i.loli.net/2020/04/25/Ag8aWQ4KmjZ6zpD.jpg" alt="Alt"></p>
 <script src="/Blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script>
     </div>
 
@@ -444,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mavericktang.github.io/Blogs/2020/04/04/How-to-Outline/" title="如何搭建Outline-VPN科学上网">https://mavericktang.github.io/Blogs/2020/04/04/How-to-Outline/</a>
+    <a href="https://mavericktang.github.io/Blogs/2020/04/26/Probability/" title="编程中的概率">https://mavericktang.github.io/Blogs/2020/04/26/Probability/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -474,7 +433,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/Blogs/tags/%E5%8D%9A%E5%AE%A2%E5%BF%85%E5%A4%87/" rel="tag"># 博客必备</a>
+              <a href="/Blogs/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
         
@@ -483,13 +442,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Blogs/2020/03/30/Codes/" rel="prev" title="代码集">
-      <i class="fa fa-chevron-left"></i> 代码集
+    <a href="/Blogs/2020/04/05/Summer-plan/" rel="prev" title="暑假计划">
+      <i class="fa fa-chevron-left"></i> 暑假计划
     </a></div>
-      <div class="post-nav-item">
-    <a href="/Blogs/2020/04/05/Summer-plan/" rel="next" title="暑假计划">
-      暑假计划 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -550,7 +506,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础准备"><span class="nav-number">2.</span> <span class="nav-text">基础准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#购置服务器"><span class="nav-number">3.</span> <span class="nav-text">购置服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始操作"><span class="nav-number">4.</span> <span class="nav-text">开始操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程连接主机"><span class="nav-number">4.1.</span> <span class="nav-text">远程连接主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline准备"><span class="nav-number">4.2.</span> <span class="nav-text">Outline准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH安装"><span class="nav-number">4.3.</span> <span class="nav-text">SSH安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Docker"><span class="nav-number">4.3.1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Outline在虚拟机上"><span class="nav-number">4.3.2.</span> <span class="nav-text">安装Outline在虚拟机上</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收尾"><span class="nav-number">5.</span> <span class="nav-text">收尾</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概率论"><span class="nav-number">1.</span> <span class="nav-text">概率论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明"><span class="nav-number">1.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型概率分布"><span class="nav-number">1.2.</span> <span class="nav-text">离散型概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件"><span class="nav-number">1.2.1.</span> <span class="nav-text">条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型均匀分布"><span class="nav-number">1.3.</span> <span class="nav-text">离散型均匀分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续型概率分布"><span class="nav-number">1.4.</span> <span class="nav-text">连续型概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合概率"><span class="nav-number">1.5.</span> <span class="nav-text">联合概率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边缘概率"><span class="nav-number">1.6.</span> <span class="nav-text">边缘概率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率"><span class="nav-number">1.7.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">1.8.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立性"><span class="nav-number">2.</span> <span class="nav-text">独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链式法则"><span class="nav-number">2.1.</span> <span class="nav-text">链式法则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更进一步"><span class="nav-number">3.</span> <span class="nav-text">更进一步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#期望"><span class="nav-number">3.1.</span> <span class="nav-text">期望</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图形化认识"><span class="nav-number">3.1.1.</span> <span class="nav-text">图形化认识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#期望值的数学性质"><span class="nav-number">3.1.2.</span> <span class="nav-text">期望值的数学性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#期望与均值"><span class="nav-number">3.1.3.</span> <span class="nav-text">期望与均值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差"><span class="nav-number">3.2.</span> <span class="nav-text">方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差"><span class="nav-number">3.3.</span> <span class="nav-text">协方差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#意义"><span class="nav-number">3.3.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数学性质"><span class="nav-number">3.3.2.</span> <span class="nav-text">数学性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#独立变量的协方差"><span class="nav-number">3.3.3.</span> <span class="nav-text">独立变量的协方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ex"><span class="nav-number">3.3.4.</span> <span class="nav-text">Ex.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准差"><span class="nav-number">3.4.</span> <span class="nav-text">标准差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关系数"><span class="nav-number">3.4.1.</span> <span class="nav-text">相关系数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伯努利分布"><span class="nav-number">3.5.</span> <span class="nav-text">伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项分布"><span class="nav-number">3.6.</span> <span class="nav-text">二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正态分布（高斯分布）"><span class="nav-number">3.7.</span> <span class="nav-text">正态分布（高斯分布）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯定律"><span class="nav-number">4.</span> <span class="nav-text">贝叶斯定律</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -800,7 +756,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'gitalk-commnet# Repository name to store issues',
       owner       : 'MaverickTang# GitHub repo owner',
       admin       : ['MaverickTang'],
-      id          : 'f80c9c0ce11a21e274f931ed3c7dc393',
+      id          : 'f182c4ec1c87e51e5e5aad55c06c7be1',
         language: '',
       distractionFreeMode: false
     });
