@@ -4,6 +4,8 @@
     <title>线性代数</title>
     <url>/Zh-Blog/2020/04/26/Linear-Algebra/</url>
     <content><![CDATA[<html><head></head><body><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>线性代数是<a href="https://baike.baidu.com/item/代数学" target="_blank" rel="noopener">代数学</a>的一个分支，主要处理线性关系问题。线性关系意即数学对象之间的关系是以一次形式来表达的。</p>
+<a id="more"></a>
+
 <h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><p>Scalar，单独数字，通常小写</p>
 <p>s $\in$ R : 定义实数标量s</p>
 <p>n $\in$ N: 定义整数标量</p>
