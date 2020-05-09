@@ -1,6 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>微积分</title>
+    <url>/Zh-Blog/2020/04/28/Calculus/</url>
+    <content><![CDATA[<html><head></head><body><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>微积分的英语 “Calculus” 源自拉丁语，意思是 “小石头”，<br>因为它是从分析小的部分来了解大的整体。</p>
+<p><strong>微分</strong>是把整体分拆为小部分来求它怎样改变。</p>
+<p><strong>积分</strong>是把小部分连接（积）在一起来求整体有多大。</p>
+<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><p>割圆术书中说写：</p>
+<p>“割之弥细，所失弥少，割之又割，以至于不可割，则与圆周盒体而无所失矣”</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_D72A687BA35F-1.jpeg" alt="IMG_D72A687BA35F-1"></p>
+<p>其实就是我们今天学习微积分的思想</p>
+<h3 id="无穷大的概念"><a href="#无穷大的概念" class="headerlink" title="无穷大的概念"></a>无穷大的概念</h3><p><a href="https://www.shuxuele.com/numbers/infinity.html" target="_blank" rel="noopener">无穷大</a> 是个很特别的概念。我们知道不能达到无穷大，但我们可以尝试去求含有无穷大的函数的值。</p>
+<p>$$\cfrac{1}{\infty}$$就好像 $$\cfrac{1}{美}$$or $$\cfrac{1}{高}$$一样。</p>
+<p>虽然我们不能低于无穷</p>
+<p>但是我们可以趋近于它</p>
+<p>所以就有了极限标志</p>
+<p>lim下面加箭头表示趋近于</p>
+<p>前置笔记：</p>
+<p>$$\lim$$：极限标志</p>
+<h3 id="Ex"><a href="#Ex" class="headerlink" title="Ex."></a>Ex.</h3><p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-1-x.png" alt="lim-1-x"></p>
+<p>不要被这个 “=”号迷惑了！我们其实无法<strong>等于</strong>0，但在 “极限” 的语言里，<strong>极限是无穷大</strong> （意思其实是函数没有极限）。</p>
+<h3 id="Harder-Ex"><a href="#Harder-Ex" class="headerlink" title="Harder Ex."></a>Harder Ex.</h3><p>有一个 <a href="https://www.shuxuele.com/numbers/e-eulers-number.html" target="_blank" rel="noopener"><strong>e(欧拉数)</strong></a> 的公式是基于无穷大和这个公式的：</p>
+<p>$$(1+\cfrac{1}{n})^n$$</p>
+<p><del>So, what the hell is $$(1+\cfrac{1}{\infin})^\infin$$????</del></p>
+<p>先用枚举看看吧：</p>
+<table>
+<thead>
+<tr>
+<th align="center">n</th>
+<th align="center">$$(1+\cfrac{1}{n})^n$$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">2.00000</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">2.59374</td>
+</tr>
+<tr>
+<td align="center">1,000</td>
+<td align="center">2.71692</td>
+</tr>
+<tr>
+<td align="center">100,000</td>
+<td align="center">2.71827</td>
+</tr>
+</tbody></table>
+<p>结果会无限趋近于<strong>2.71828</strong>…,这就是$$e$$的值</p>
+<p>所以</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-1-1n-n.png" alt="lim-1-1n-n"></p>
+<h3 id="不要犯错-……"><a href="#不要犯错-……" class="headerlink" title="不要犯错 …… !"></a>不要犯错 …… !</h3><p>在图和列列表上我们看到当 <strong>n</strong> 越来越大时，函数趋近 <strong>2.71828……</strong></p>
+<p>但如果我们想把无穷大当作一个 “很大的实数” （<strong><em>它不是！</em></strong>），我们会得到：</p>
+<p>$$(1+\cfrac{1}{\infin})^\infin=(1+0)^\infin=1$$</p>
+<p>故事的寓意是：不要把无穷大当作一个实数：你会得到<strong>错误的答案</strong>！</p>
+<p>极限才是正途。</p>
+<h3 id="极限的求法"><a href="#极限的求法" class="headerlink" title="极限的求法"></a>极限的求法</h3><h4 id="一、代入变量的值"><a href="#一、代入变量的值" class="headerlink" title="一、代入变量的值"></a>一、代入变量的值</h4><p>首先要尝试的方法是代入变量的值，来看看可不可以直接算出答案（换句话说，<a href="https://www.shuxuele.com/algebra/substitution.html" target="_blank" rel="noopener">代换</a>）。</p>
+<p>试试一些例子：</p>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th>代入</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-x2m1-xm1.png" alt="lim-x2m1-xm1"></td>
+<td>$$\cfrac{1-1}{1-1}=\cfrac{0}{0}$$</td>
+<td>失败</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-x-2a.png" alt="lim-x-2a"></td>
+<td>$$\cfrac{10}{2}=5$$</td>
+<td>成功</td>
+</tr>
+</tbody></table>
+<p>在第一个例子里，代换法不管用，但在第二个例子里我们很容易得到答案。 </p>
+<h4 id="二、因式"><a href="#二、因式" class="headerlink" title="二、因式"></a>二、因式</h4><p>我们可以尝试 <a href="https://www.shuxuele.com/algebra/factoring.html" target="_blank" rel="noopener">因式分解</a>。</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/1.png" alt="1"></p>
+<h4 id="三、共轭"><a href="#三、共轭" class="headerlink" title="三、共轭"></a>三、共轭</h4><p>若函数是个分数，把上面和下面乘以<a href="https://www.shuxuele.com/algebra/conjugate.html" target="_blank" rel="noopener">共轭</a> 可能会有帮助。</p>
+<p><strong>共轭</strong>是把 把两个项之间的正负号倒转…</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/2.png" alt="2"> </p>
+<h4 id="正式方法"><a href="#正式方法" class="headerlink" title="正式方法"></a>正式方法</h4><p><strong>前置概念</strong></p>
+<p>$$\delta$$:|x−a| 要小于的值</p>
+<p>$$\epsilon$$:|f(x)−L| 要小于的值</p>
+<p>然后。。。（引出定义</p>
+<p>*”对于任何$$\epsilon$$>0，有$$\delta$$>0，从而使得当 0<|x−a|</p>
+<p>其实就是<em>当 *</em>x 趋近 a** 时，<strong>f(x) 趋近 L</strong>。</p>
+<p><strong>Ex .</strong></p>
+<p>证明：<img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-2xp4.png" alt="lim-2xp4"></p>
+<p>用上面的字母：</p>
+<p>x 趋近的值 “a” 是 3</p>
+<p>极限 “L” 是 10</p>
+<p>所以我们需要知道：</p>
+<p>怎样从：0<|x-3|<$$\delta$$</p>
+<p>得到|(2x+4)-10|<$$\epsilon$$</p>
+<p>我们发现：<br>$$<br>|(2x+4)-10|=2|x-3|<br>$$<br>所以需要证明</p>
+<p>$$\delta=\cfrac{\epsilon}{2}$$</p>
+<p>操作一波</p>
+<p>![Screen Shot 2020-04-27 at 11.28.24 AM](/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/Screen Shot 2020-04-27 at 11.28.24 AM.png)</p>
+<p>所以$$\delta=\cfrac{\epsilon}{2}$$</p>
+<p>所以<img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/lim-2xp4.png" alt="lim-2xp4">为真</p>
+<h2 id="导数（微分）"><a href="#导数（微分）" class="headerlink" title="导数（微分）"></a>导数（微分）</h2><p>如果我们要求出一个曲线函数的在某点切线的斜率</p>
+<p>我们先找到另一个点做出它的割线</p>
+<p>我们知道另一个点横坐标为x+$$x\prime$$</p>
+<p>当这个$$x\prime$$无限接近于0</p>
+<p>这个割线就无限接近切线</p>
+<p>所以我们得出以下式子</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_16F54B4F06AE-1.jpeg" alt="IMG_16F54B4F06AE-1"></p>
+<h3 id="Ex-1"><a href="#Ex-1" class="headerlink" title="Ex."></a>Ex.</h3><p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_6B3BCEF400D1-1.jpeg" alt="IMG_6B3BCEF400D1-1"></p>
+<h3 id="Harder-EX"><a href="#Harder-EX" class="headerlink" title="Harder EX."></a>Harder EX.</h3><p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_0040.JPG" alt="IMG_0040"></p>
+<h3 id="组合函数求导"><a href="#组合函数求导" class="headerlink" title="组合函数求导"></a>组合函数求导</h3><h4 id="函数相加求导"><a href="#函数相加求导" class="headerlink" title="函数相加求导"></a>函数相加求导</h4><p>证明：$$(u+v)\prime=u\prime+v\prime$$</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_09FE7B91BA3D-1.jpeg" alt="IMG_09FE7B91BA3D-1"></p>
+<p>所以相加就是导函数相加</p>
+<p>减法同理</p>
+<h4 id="函数相乘求导"><a href="#函数相乘求导" class="headerlink" title="函数相乘求导"></a>函数相乘求导</h4><p>证明：$$(uv)\prime=vu\prime+uv\prime$$</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_AD8B13A27E62-1.jpeg" alt="IMG_AD8B13A27E62-1"></p>
+<h4 id="函数相除求导"><a href="#函数相除求导" class="headerlink" title="函数相除求导"></a>函数相除求导</h4><p>求$$(\cfrac{u}{v})\prime$$</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_17F3417BF094-1.jpeg" alt="IMG_17F3417BF094-1"></p>
+<p>所以</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_0A2DE40926AF-1.jpeg" alt="IMG_0A2DE40926AF-1"></p>
+<h4 id="链式法则"><a href="#链式法则" class="headerlink" title="链式法则"></a>链式法则</h4><p>就是函数套函数</p>
+<p>$$\cfrac{d}{dt}f(g(t))=f\prime(g(t))g\prime(t)$$</p>
+<p><strong>Ex.</strong></p>
+<p>$$\cfrac{d}{dt}cos(\cfrac{1}{x})=?$$</p>
+<p>$$u=\cfrac{1}{x}$$</p>
+<p>$$\cfrac{d}{dt}cos(\cfrac{1}{x})=\cfrac{d}{dt}cos(u)=\cfrac{dy}{du}\cfrac{du}{dx}$$</p>
+<p>$$\cfrac{dy}{du}=-sin(x)$$,$$\cfrac{du}{dx}=-\cfrac{1}{x^2}$$</p>
+<p>所以$$\cfrac{d}{dt}cos(\cfrac{1}{x})=\cfrac{sin(x)}{x^2}$$</p>
+<h3 id="常见函数导数表"><a href="#常见函数导数表" class="headerlink" title="常见函数导数表"></a>常见函数导数表</h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">原函数</th>
+<th align="left">导函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong><a href="https://baike.baidu.com/item/常函数" target="_blank" rel="noopener">常函数</a></strong>（即<a href="https://baike.baidu.com/item/常数" target="_blank" rel="noopener">常数</a>）</td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/6f48ec146bf185699bc793e94d05f60c.svg" alt="img"> （<strong><em>C</em></strong>为常数）</td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/15f6a7e0845b60eb9ed8427160296c47.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/指数函数" target="_blank" rel="noopener">指数函数</a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/e3ce5e293d27391048a34d21dcfc3567.svg" alt="img">)<img data-src="https://bkimg.cdn.bcebos.com/formula/05e9641809287619ff141f1164b91e53.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/4b6aee932e78102b6f74485207ea795a.svg" alt="img">)<img data-src="https://bkimg.cdn.bcebos.com/formula/de427c0dc7c47809361c6a97589488a6.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/幂函数" target="_blank" rel="noopener">幂函数</a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/ef7655a674eb56e73d9d99106359cacc.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/f6dc7856db120842c79d1ca28a478dd4.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/对数函数" target="_blank" rel="noopener"><strong>对数函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/e3a5370faa1c321a77c71dd984575883.svg" alt="img">)<img data-src="https://bkimg.cdn.bcebos.com/formula/59db1598da0941dd96c8e4117487da5b.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/94427a5ba59d65f7ae25adc82bcaeaa7.svg" alt="img">)<img data-src="https://bkimg.cdn.bcebos.com/formula/04522b1455260aae6b2cd8fcbf4e38a0.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/正弦函数" target="_blank" rel="noopener"><strong>正弦函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/0f2cbbfff8dfdeb1795031afd5f4a447.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/9b173723cd04f95cfe4baf428379aad7.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/余弦函数" target="_blank" rel="noopener"><strong>余弦函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/30270e38ed05100aa0d81333c4e23c7b.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/dc299b291d088d3610622cd8b0fc1ac6.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/正切函数" target="_blank" rel="noopener"><strong>正切函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/0dd48f9fe0bac0914637e5681228b6b3.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/f5384f2521c4739922680bd28169b921.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/余切函数" target="_blank" rel="noopener"><strong>余切函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/268e7f44dade45f540c5b7c7b1cbe1a2.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/4cfb86aa2f73f9515e04e8f524fa119e.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/正割函数" target="_blank" rel="noopener">正割函数</a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/ea45be3b8ffb045e9fb3d47302b51821.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/9e846814627a3a723deae8a734aac0ac.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/余割函数" target="_blank" rel="noopener">余割函数</a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/a2970da37d9e09326df1d5d179731f0b.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/939714ac80e2f42f2a390c3cf969fbdf.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/反正弦函数" target="_blank" rel="noopener"><strong>反正弦函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/a8ed3000d5b75b60f541968571db44ed.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/c41fb542290f578b45c5ed357218b457.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/反余弦函数" target="_blank" rel="noopener"><strong>反余弦函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/be4fe67defefcb2eac6169117c181c75.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/133f624a66aacaf29fb99b9a817e5243.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/反正切函数" target="_blank" rel="noopener"><strong>反正切函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/e205cc5545e96047c124a85cfd2ffd4b.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/cbd133df57d7a708144f6d6045437cb7.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/反余切函数" target="_blank" rel="noopener"><strong>反余切函数</strong></a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/5321da938d4f77b15cfd7fcb8a96708c.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/e5ea6b41b6741a475c3e935700b4e543.svg" alt="img"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://baike.baidu.com/item/双曲线函数" target="_blank" rel="noopener">双曲线函数</a></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/10e067f173633456b45f91334f1e56ef.svg" alt="img"></td>
+<td align="left"><img data-src="https://bkimg.cdn.bcebos.com/formula/7c508809a7081cc904bd5e143e6b701a.svg" alt="img"></td>
+</tr>
+</tbody></table>
+<p>指数函数求导证明</p>
+<p>Q：$$\cfrac{d}{dx}a^{x}=?$$</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_E7E19843F9EB-1.jpeg" alt="IMG_E7E19843F9EB-1"></p>
+<p>对数函数求导证明</p>
+<p>Q: $$\cfrac{d}{dx}lnx=?$$</p>
+<p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_1432BDEF57F6-1.jpeg" alt="IMG_1432BDEF57F6-1"></p>
+<h3 id="上凹下凸（没有变色"><a href="#上凹下凸（没有变色" class="headerlink" title="上凹下凸（没有变色"></a>上凹下凸（没有变色</h3><p>![Screen Shot 2020-04-27 at 3.04.04 PM](/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/Screen Shot 2020-04-27 at 3.04.04 PM.png)</p>
+<h2 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h2><h2 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h2><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.shuxuele.com/calculus/index.html" target="_blank" rel="noopener">数学乐</a></p>
+</body></html>]]></content>
+      <categories>
+        <category>程序员的数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线性代数</title>
     <url>/Zh-Blog/2020/04/26/Linear-Algebra/</url>
     <content><![CDATA[<html><head></head><body><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>线性代数是<a href="https://baike.baidu.com/item/代数学" target="_blank" rel="noopener">代数学</a>的一个分支，主要处理线性关系问题。线性关系意即数学对象之间的关系是以一次形式来表达的。</p>
@@ -128,7 +363,7 @@
 
 </body></html>]]></content>
       <categories>
-        <category>Coding</category>
+        <category>程序员的数学</category>
       </categories>
       <tags>
         <tag>数学</tag>
@@ -143,16 +378,22 @@
 <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>P(x)=0.5<br>频率派概率(Frequentist probablity)<br>抛硬币正面向上概率0.t<br><strong>可重复</strong>事件的频率<br>贝叶斯派概率(Bayesian probablity)<br>病人患病的概率<br><strong>不可重复</strong>事件的概率<br><strong>随机变量</strong>(random variable)是可以随机取不同值的变量<br>样本空间(概率对应面积)<br><img data-src="https://i.loli.net/2020/04/24/7MOBCdjAWilqXbh.jpg" alt="Alt"></p>
 <h3 id="离散型概率分布"><a href="#离散型概率分布" class="headerlink" title="离散型概率分布"></a>离散型概率分布</h3><p>(Probablity mass function, PMF)将随机变量取得的每个状态映射到随机变量取得该状态的概率。</p>
 <h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
-<li>P的定义域必须是X所有状态的集合。</li>
-<li>对于x，0<=p<=1,不可能事件为0，必然发生的事件为1</li>
-<li>归一化条件<br><img data-src="https://i.loli.net/2020/04/24/utCJYwjsiU84ZNo.jpg" alt="Alt"></li>
+<li><p>P的定义域必须是X所有状态的集合。</p>
+</li>
+<li><p>对于x，0<=p<=1,不可能事件为0，必然发生的事件为1</p>
+</li>
+<li><p>归一化条件</p>
+<p>$$\sum P(x)=1$$</p>
+</li>
 </ul>
-<h3 id="离散型均匀分布"><a href="#离散型均匀分布" class="headerlink" title="离散型均匀分布"></a>离散型均匀分布</h3><p>给定一个离散型变量x，有k种可能的状态(x1,x2,x3…)每种状态的可能性是相同的，即均匀分布(Uniform distribution),则其概率分布为：<br><img data-src="https://i.loli.net/2020/04/24/bupQSMmvg2J1l6N.jpg" alt="Alt"></p>
+<h3 id="离散型均匀分布"><a href="#离散型均匀分布" class="headerlink" title="离散型均匀分布"></a>离散型均匀分布</h3><p>给定一个离散型变量x，有k种可能的状态(x1,x2,x3…)每种状态的可能性是相同的，即均匀分布(Uniform distribution),则其概率分布为：</p>
+<p>$$P{(x=x_{i})}=\cfrac{1}{k}$$</p>
+<p>$$\sum P(x=x_{i})=\sum P(\cfrac{1}{k})=\cfrac{k}{k}$$</p>
 <h3 id="连续型概率分布"><a href="#连续型概率分布" class="headerlink" title="连续型概率分布"></a>连续型概率分布</h3><p>如果一个数为概率密度函数(Probabilty Density Function, PDF),则必须满足以下条件：</p>
 <ul>
 <li>P的定义域必须是X所有状态的集合</li>
 <li>对于x，p(x)>=0(不要求小于等于1)</li>
-<li>fP(x)dx=1</li>
+<li>$$\int P(x)dx=1$$</li>
 <li>P(x)没有直接给出特定状态的概率，而是：落在面积为Sx的无限小区域内的概率为p(x)Sx<br><img data-src="https://i.loli.net/2020/04/24/aHCpzIAmsV2DfO7.jpg" alt="Alt"><br>只要<strong>所有面积加起来等于一</strong>就可以<br><img data-src="https://i.loli.net/2020/04/24/bEASKtlVgad8Dw5.jpg" alt="Alt"><h3 id="联合概率"><a href="#联合概率" class="headerlink" title="联合概率"></a>联合概率</h3>P(联合)=P(事件一)*P(事件二)<h3 id="边缘概率"><a href="#边缘概率" class="headerlink" title="边缘概率"></a>边缘概率</h3>P(边缘)=P(部分)+P(部分)<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3>P(y=yi|x=xi)=P(y=yi,x=xi(联合))/P(x=xi(其他情况))<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><img data-src="https://i.loli.net/2020/04/24/d2xvcHhbi4twDoX.jpg" alt="Alt"><br><img data-src="https://i.loli.net/2020/04/24/lTIVMay8EU53hOX.jpg" alt="Alt"><h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="链式法则"><a href="#链式法则" class="headerlink" title="链式法则"></a>链式法则</h3>P(x,y,z)=P(x|y,z)P(y,z)=P(x|y,z)P(y|z)P(z)<br>若随机变量X，Y互相独立，则：</li>
 </ul>
 <p>1.条件概率与条件<strong>无关</strong><br>P(x|y)=P(x|yprime(这里是y的反面))<br>2.添加/去除条件<strong>无影响</strong><br>P(x)=P(x|y)<br>3.联合概率<strong>等于</strong>边缘概率乘积<br>P(x,y)=P(x)P(Y)<br>独立：没有关系，不能提出线索</p>
@@ -161,26 +402,26 @@
 <li>但是互斥一定不独立</li>
 </ul>
 <h2 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h2><h3 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h3><h4 id="图形化认识"><a href="#图形化认识" class="headerlink" title="图形化认识"></a>图形化认识</h4><p>概率=面积<br>期望=体积</p>
-<p><img data-src="https://i.loli.net/2020/04/24/gKhc1TC6DJZtoN3.jpg" alt="Alt"></p>
-<p><strong>Ex.</strong><br>投一枚均匀骰子，期望？<br>E[x]=1/6+2 /6+3/6+4/6+5/6+6/6=3.5</p>
+<p>$$E[x]=\sum kP(x=k)$$(离散)</p>
+<p>$$E[x]=\int f(x)p(x)dx$$(连续)</p>
+<p><strong>Ex.</strong><br>投一枚均匀骰子，期望？<br>$$E[x]=\cfrac{1}{6}<em>1+\cfrac{1}{6}</em>2+\cfrac{1}{6}<em>3+\cfrac{1}{6}</em>4+\cfrac{1}{6}<em>5+\cfrac{1}{6}</em>6=3.5$$</p>
 <h4 id="期望值的数学性质"><a href="#期望值的数学性质" class="headerlink" title="期望值的数学性质"></a>期望值的数学性质</h4><p><img data-src="https://i.loli.net/2020/04/24/XEsioTpeVzuS9kn.jpg" alt="Alt"><br>E[x+c]=E[x]+c<br>E[cx]=cE[x]<br>E[x+y]=E[x]+E[y]<br>下条当且仅当<strong>xy相互独立</strong>时成立<br>E[xy]=E[x]E [y]</p>
 <h4 id="期望与均值"><a href="#期望与均值" class="headerlink" title="期望与均值"></a>期望与均值</h4><p>期望E[x]为固定值，平均值是变化值<br>重复次数越多，平均值愈接近期望值</p>
 <h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><p>衡量随机变量的离散情况<br>也是一种期望，是随机变量偏离度的期望<br>V[x]=E[(x-u(平均值))^(2)]<br>V[x+c]=v[x]<br>V[cx]=c^(2)V[x]<br><strong>方差非线性</strong><br>仅当<strong>x，y相互独立</strong>时<br>V[x+y]=v[x]+v[y]</p>
-<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><p>给出了两个变量线性相关性的强度<br>Cov[x,y]=E[(x-u)(y-v)]<br>对比方差<br>V[x]=E[(x-u)^(2)]<br>协方差是方差定义的补充</p>
+<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><p>给出了两个变量线性相关性的强度<br>Cov[x,y]=E[(x-u)(y-v)]<br>对比方差<br>$$V[x]=E[(x-u)^2]$$<br>协方差是方差定义的补充</p>
 <h4 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h4><p>(x-u)与(x-v)符号相同：协方差为正<br>代表一方大于期望值，另一方<strong>也</strong>大于期望值的概率高<br>(x-u)与(x-v)符号相反：协方差为负</p>
 <h4 id="数学性质"><a href="#数学性质" class="headerlink" title="数学性质"></a>数学性质</h4><p>Cov[x,x]=(方差)V[x]<br>Cov[x,y]=Cov[y,x]<br>Cov[x+a,y+b]=Cov[x,y]<br>Cov[ax,by]=abCov[x,y]<br>Cov[ax,by]=E[(ax-au)(by-bv)]=abE[(a-u)(b-v)]</p>
 <h4 id="独立变量的协方差"><a href="#独立变量的协方差" class="headerlink" title="独立变量的协方差"></a>独立变量的协方差</h4><p>若x，y相互独立，则协方差为0<br>cov[x,y]=E[(x-u)(y-u)]=E[x-u][y-u]=0<br>变量独立则线性无关，=协方差为0</p>
 <h4 id="Ex"><a href="#Ex" class="headerlink" title="Ex."></a>Ex.</h4><p><img data-src="https://i.loli.net/2020/04/25/9y6zlFtRSxpOku5.jpg" alt="Alt"></p>
 <h3 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h3><p>方差是随机变量的平方，不能直接比较<br><img data-src="https://i.loli.net/2020/04/25/dn8r39Z51pwWQIs.jpg" alt="Alt"></p>
 <h4 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h4><p><img data-src="https://i.loli.net/2020/04/25/G2QuNhSAHjxCF9n.jpg" alt="Alt"></p>
-<p>##常用概率分布</p>
-<h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>(Bernouli distribution)是单个二值随机变量的分布，由p属于[0,1]控制，p即是随机变量=1的概率<br>P(x=1)=p<br>P(x=0)=1-p=q<br>E[x]=1p+0(1-p)=p<br>V[x]=E[x^(2)]-E[x]^(2)=p-p^(2)=p(1-p)=pq</p>
+<h2 id="常用概率分布"><a href="#常用概率分布" class="headerlink" title="常用概率分布"></a>常用概率分布</h2><h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>(Bernouli distribution)是单个二值随机变量的分布，由p属于[0,1]控制，p即是随机变量=1的概率<br>P(x=1)=p<br>P(x=0)=1-p=q<br>E[x]=1p+0(1-p)=p<br>V[x]=E[x^(2)]-E[x]^(2)=p-p^(2)=p(1-p)=pq</p>
 <h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>(Binomial distribution):硬币正面向上的概率为P时，抛硬币n次后正面向上的概率。<br>二项分布是伯努利分布的叠加x=z1+z2+…+zn,计作Bn(n,p)<br><img data-src="https://i.loli.net/2020/04/25/PV7oGMZH4AIvQhk.jpg" alt="Alt"></p>
 <h3 id="正态分布（高斯分布）"><a href="#正态分布（高斯分布）" class="headerlink" title="正态分布（高斯分布）"></a>正态分布（高斯分布）</h3><p>标准正态分布<br>期望为0，方差为1<br><img data-src="https://i.loli.net/2020/04/25/DqYm4WgyJZz1tAM.jpg" alt="Alt"></p>
 <h2 id="贝叶斯定律"><a href="#贝叶斯定律" class="headerlink" title="贝叶斯定律"></a>贝叶斯定律</h2><p><img data-src="https://i.loli.net/2020/04/25/ZXEqlR39T2ujAC5.jpg" alt="Alt"><br>Ex.<br><img data-src="https://i.loli.net/2020/04/25/NhJLM3B6Tf9bktl.jpg" alt="Alt"><br><img data-src="https://i.loli.net/2020/04/25/Ag8aWQ4KmjZ6zpD.jpg" alt="Alt"></p>
 </body></html>]]></content>
       <categories>
-        <category>Coding</category>
+        <category>程序员的数学</category>
       </categories>
       <tags>
         <tag>数学</tag>
@@ -189,15 +430,186 @@
   <entry>
     <title>暑假计划</title>
     <url>/Zh-Blog/2020/04/05/Summer-plan/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">私密计划，需要密码</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="92a8f66a2a72445ea37081ab4537a0008d453c97d6ebc576520ad75f5b17fb56">0498aa891c3d42a839c8e288505072c6e46f1f802cba6a2548bc0ec443ee4f82a196454406a8f2f7f92baa4800968882d25b74976879ffb9b2e70d1f115c8c7ce0f7e89cede1682fb93c27bfbc13e81450701d59155a3292178f8de88be3a4c927b613747d1008c12f4b3936fda6b097e14314620b5c01d51a872bfa9b6743cff2b6552ad84c1d17c6409ae1e43504522ce0b52f10d7af30317812e3382b4404bee49f1ece7ae50d449850479c73c7fcbab186aea5504b921ebc46b0789b296053496c89c21b82cf3ca6dfad417aba074d058483a5c12e15d16c96518c9919ed04ea070c3d4170315b5553a629400513e2dbae6aaf1eeff9a070f12b07449e57c5f1c59cb2667ec635439b6271d7280233c4c03ace6a00443504d6daa08788242768beb1f52f97bd8350dc6e72da3f9e5f0e39be28086807d3afeecbf1f1a2ce22298b9179ddd54dcb2a31960f7fd63b52f76b96f466ac966ca9ded6815a4622ee630fbca576e4da5eb89cc298a72c68b3e76ad832793ed0153e428ecf5e76809f1baa76d536a72fbed15a7c83356e07b1b7af681239effd5319a93b3a8205b25eb85ff9206c7ee809b700cbea212380b201d7a01c2b5fe6e847480f90e6fa73177306c1c10037f2b6b9fa5a1fd795e741266d52839a3aac4497eec9e66cf0ed1c42cf863dc5ff284b2a8c2c532835169b26ca684fe6d2ca570d91218d66ccaa6cf540afb79193e34dbc34580ddc5013e892c59dd0864d24982e91c6b592993a4904c7b08b1ef19be3007f6ff63622c35f659881d9a33ff9fb974f61a3d8d7e65e05824d075715871d358768e6041a28426455909f64df3af35b1278fa7d1e22890a596791a190a41bdfaec4a1849444614693750c8085c1d3af78ac6ea7ce5cbd8601a6f4119a58963671a4c460ac822f1a5cf2b468178c6e8fc228cf08c8c2cbfc3263f05e42ed2573a7fa7d8fa948d3fe34c90ad926288fed1449ea692b1004724970b98a6e7bc18359d4da3bf56ebea8aa7708c2dd2be4e19875304bb9d31d288eade6f74724424a2a46ca3d0c75435c6aed3dd8acddf91c57cd15e087ca96c19473907b732103cc8fca5e5291ab18fb7968f387b2ab84e2de60ceb2dace9f3744d9580ae4e4ac4aae7959990df9e06883607c3d12fb997e61a5cdde90bd979140a17fdade7b1408cfe58aa80098a232df3e6859462b1b0f203eaef2ad14d31c1aa6435255b24eca97a72b264506aceba9dd476dc49d27612f29f91d6582e2bfe8e9b50e989dc41c4f3c2a9554ec9a7921c8f0eba6636855a895887f40c934d4da7af16fbb13008c81a937235a624b0c300bd407aca61377c51071daf81447cb54d75fa503fba9047402a649c95d3bda7d2243811ba28ba428918135973ed1519bcea6816e71e80fb82e86b01fcc52e009f6f5a86fae169abeb7eca3d271f5b6b40c6a31e4c21367d06b79ad45d4660750a3c8dd804623a1f98e54d6ed027539a015f311af0483e4fb852f27cd0655ad27b5af46cdd4aa5dd0105240680d6abb7235e4987358ebad4eafcaff8e18dbc0ab6c9a7a9580bb7a0c7a29f095e3340755ebe4bdf859ce99bb4cb8570cd3f2331359a6039c9e98a87e6f082c3b3165dba4062998277090042fec3a814a51e5153810e74e2d5187a8afc1413ede1250f9210a4fa7dc7cf8579a2505a5fb562807dd7224932a7c415571a277242b5b8e2caefdbbe9bb1705efb89098bae90035aeba62993f6ca98da2164d0224452a07085bc49b872af00e4ff304cb5adfaf3f664d1ddc190a78c0408d9917ec688d46ea848a27a0401a4cabbf541edfc206027510b00fd28df20b2f05e31d96df9a76056173967b24e6a995d354a114b985bc48b70a463185829738b3ddfcbe596ff57c98c64ac25cb036c86f7b0e5127bd924f5e7b8a47687310dae8c5b61c324879615513f8bc56aa61331522599c94bfd4a77d8c5102d0fc410f9c94d547419b489cad0c514752c51152b4a61d498d360240fbfbf63410d0b9567339beb7d9fc2e96de7ce9f1f05d8dd5832e44ba583b3fedb71212c143b65693d55ad356f457d4db53576816b825d3e7f289b8a10a8661d9d9bb5057c1b3a03d01675f4242d31f483ee5f4e2166a25bc0d72d276d3c6cb69f52d639f66ae6bf135b64a185292d5559cdb9b61674bb685deeaa4d564085389ff9f59cc62a13c168329bc9ed3f788b503704d92d999a7298ce88ab3e25a13bc46c6dad4fb01805bf932b853d0258f2e92cf18c3b57ea5003d9c979919a0537d3c4f6ee2b2986ebee5d45d54e8c32fd1cf54de855da4d3b91824608191b5ea39b554a8fcc7ed898c6fbff7369118bced3158a18fbb2227a3177fde934eecd441ad4d33f92fd7abf8db071fa0c412c66ee17c039499bf3964156f4ad5a643433dfa28f45833d19b9abe124fd314c1f52cc2349075edfe5ddac5b728015b81ed1a4418cb8e8e58d30d3d764f07513cbf455a4f09a18d7b7e616fb3284b22befea270ddb4658a93012406924aa74ff71574710c6b21044ac729a3858c4ce8968ba2b3514de7af31032ee0eb8de9afe875eb18cd1d815cdb56e0f8c97e97d87996c9d395dc6ad6e838b431010287ea7b981f24ad2e912acacbbd01b33dd4dc4c900bb796a8f0316b6a4ff92c38c20f00fb06a212bd6461f71c1e92a899f9e81996efd8eeab05ffed3ef45a49d471dd96e42d120e17fcb04d3300b3f1f4bce6e551d9b7751765c1f8f606809967be583f5220308b6aa739585c36db505c4ece0194abba662f5a62da0f7159faa0c4aee52e8fd5206b4c93b11613e47f4cfe4ed2af3dcd234561615868d98582aafe6f46aa25365daff3f5d937eb40c71522cee6e2566262e0a5a75fd0fa6d461e679d0830c82abef82becbf20bc36a32d72c4bb5d1a4f985674c0ddc37d45350bc62f6bed687138ca891bd8f3fb3760a8c5d3a6cf6d686254c6a688787a70010ae609e0964a7a0200cdab886b36513328f01133a746d5563f3178eb2d1b762e4989a37b06f7e5fe38df80189272ddb5de8603547e9f0ae1c65de5f0a59d67038a5327c55159c49b472a51a8ef24ce1100d64687c3d363b3d0f72bac4df5682a25cf0fad5c07e09e6ff1ed9fc04cc3fc53d85bd2aef51d73a33fdf1216f3d3711af265e3c6323ab373b31a3b6cdc42f434c1611a85f67c3d4db49f144778577412d2fe1f060151cfde0de69717ebb3afe604caa67c3c3cbb7fd6360a9a8f21b25528adac8cbc9fd0fbdda2e1533330db03bfc03bf9f4deb788409de8b031faa045ea77fb24b874bf61f869e4faf8d2fdf21d2ff3b80a627be5cadb17cbf648559b4eb611c86268dc60077224417a52647ef2a0d91f5f52fe994fec40fc3c3ab66d614658a034746680bcac1fe8702526c20c8c1bd322eebd46f15b5403b37ad8ca1dc9e81e1e5432c3c495f00c4aea6e2d127c75e494dc332097b1dbbb2110cc28af9e92cc95c4f4ea3c25c59702e3b902aaa69b20e5aaa2031d5f264166cf2e9e695c2f1ab9760dc61149837c43734448e8c7bf756766b16c76e30ada3e5016f6958f6c383665ef4762125d9e96bb44d947127dc16388217b07579f56ca3b1f60a2a5742ce741c6c26af87ae265d574c5d96ef3c1d83ab6aa4ac2456f0e530dccc19192fec01c7d71f80513d4402a485343db78fb18fefd41747c7014546202513074cdad45b971e1fd113dcaa6d794b0f95e2f2c06a4984c2ec01ceb2e19523fd2b98fc421bcdbcec02a0e7558dd7e89267ed300ce442c5d29c7cf6c0da45b8ce0a84a4e36b07511fd66a9b14a97221dfa4b5c84850bc7fac6c0f875bbdc0b5da1fce37caf33be54dda4b0539ac176fbc8b67b6e90f0174fd302b25067862f58b13fd4707aa0e82dcfdb5ca2381e35a54a9bdc0ebd9a45e545f9f5aca9b02a48f8bc79c13dd27634a239c905ce0a83d1def430b105177b290bb28e779c52fdcd33622bf4605eff0e12e2e7dd6e4694589869479d052e7bb18edd5a6376b295aa193d87ff1587948f814382cdb87393338a235bdc08785648334eea212879e4052af307cc144bb88429daf6ef909be2950ab48b6dc2eee43621cc19ce3b6d00f8ae6ab306982ff434da151ba69c9d05b72477e3bd290eb51a9fb02819e2518fb7f2a2345736a60fe2a81f0b6b568a13ba4ab5ef2c6d2284c166047be8fd6dfb8b08cb70728f6fe912f7da7f7bc7a5501de3d700af4bae3efdb49907cdd75f46d1c2459f2c266b5fc29b233e3533c9307c2bacc591a320d7c4a58d286f15b69a7be829f044510bc5026fa2058c387e9ed009902108464425fd48fcc32b6f74d00f151c9242986eb2b18dacfc6df5e5c70e6ffc5bf6f1f7dbe4d07670e149e310d48e81ba797bd4bc49470a53848180d7d2c00dcf165d40951e49af1eaee09587662a097276cdbd77739c56292fe815da96dcb76ab3b7355782ad61d8b6c2f4d01a332387e64b010eca81bd2d0bfe4c3b657e72d7ec8e55d038056d0606c14fc977cccc9a724020418d990fc402a4b1ba68720fa90018d60e37039e946eb7c3be2ad81e08bb27fdfed5267b65f6a98debc68db16c42fe5008af8b141aa0a8657e6d912d470bec7410072db3fd9884553b90be15366795f9df883df6d0cf7802899ae47fc130006f06bf021637fa5ab09b9e16d806cee1085688294e19c09d29559fdb88e54e392e5e2baf4fd59e2abe7c7438a547c52c78776002917443ef58215a8f74178757e108adb66a4eae3ed9b8c5e515f1fe8071557a8ea9d0a2fdaace89935849a8d578568c5fca55fcd1a5bf77303e0b6aed5d2e003cb64c0bd6a581dc0e7dd06fd19b9e7509ff18720d297cf4a1e8edc8fc9e964ed285fa6d37ce62efd28bdb9ba3f78425e780277779006a0d4c37896a28232d1c61ba68963852207c74ae707509df6e5a890c2fb27e799f5ba2ea3705e7b32bbe7d2fba651a527f268c42f59fedffb4dd20910708b71c16eab19e3b238ac0180fc2cebaf5130592461ff5850d70b0e8cb6ab3a3bfdcd507fcf6a2a4f04ea2f3b523cf48950fa4f74e0113cda1c14f7a3c46897ffb5d92c471867ff5fd71b2601266e835df5dba9072c294b2bf70c455c823dbf35563b535c015c7243bec4b1592da862012fce9235e5a5fddb9b6721e0aea7358baa389ed5271ce281d129c92e2524239b3cc50fd61e0f22056038171134cdcea05e01b83427c06129e099b3ad6486f349ec531a75243fd017f4eefeadaeb86fc51548e154e96e41ab9f555d72a59ecd722aa841603d87766bccaa70f6c20f6652a78fc69e822de9134def4aad5e8c315767dbe00c54388471e67d6ff2044c71c0432977d68259104f56e7b520d057c3aa40a62a8b9f30eecedd17d1f8900044b1001ccaa30e29818d5fb22852103bf51a3a28302d8c173f85aa83f15015e39ba67551e30804fcf40259c4fcb2f6f783a9765cbbf52a84f8bad4e10e144f732b637660d902df5d3992b818351c374fb264abc76787aefcef721ec7207f66b19b113e6dc99894eefe0bac816d059b553e418d84749cdf937e96c635cd4266b4738538456b5fcbe37d17cf14f01feb2b1ec3b1af0d570d107b377f3c25eeccccd833d0dac486362c598bd986416b2b7d1188ecd2ac67c8e53c6ab1d980c7ffb777690e9ae20983aa40c8c2584ed0c38fa811d3a5994f22a129c95b5358196e2dd67c32c79ba9c9b5c7a5b9b287ea0d84c82ce8204b2643d5b2c61bd24a8176f32b9507b970d9a26fa1999db985841594a3a53e7a2917584e6ab4d23aab3a9da2d68d71923ca2417f11f20c7a791ccae203a1ac40262514b4b63be96902e85e66cb36cf3a4b98e5ab8cc740b56aabc30931569f2b9e44bbe9ab2269e431b257c22f7a6656863260ef9a83c8f3db44e5ace3d590a16d79c5842a74759393a3a1d9ce0fa6c60c69eb7078ace507c9c995fe17089d480b260b8e8c10fd278d5946a13f20d1e5a1d05facae9f30ecc8e27659bd3c716e19c4ac7555ae8431c0694033fe825d1de63d0b07eb294a8ed7691f027f2fc023046cebbaaedbe827044403380e6305c46ba38f6e7abca1537495b44c1122ef727bb3b9a55917744dc6853c6e2bd4f4febd8e3dfcaf0a638ac89a1b3d6760350ccc4cbebee4198081cec128cd7f7ae2929f9794882e4d066d608b95ec742278285fd2dd4419d0911ade0626131ffe724c3f14a9fbd9ee73156516d4584a894f183479ca0faf5d12fc6cdc5dbc8e5ebf07d61fe8e85c5abe3f1d08bd7bc9512002eaba3bd28bfebfa8d3745c482ec26283f0598782942c8ae1087b138a888bd58dd5e62f73933e5aeb6b1fa24a3f45a8aced34ed1f17664ccd9ed8bb0c1d75c907c416a512bd91df1e41830a2f98d4c891dd0f8faa3d591d54129d33e7d61e6421f4037936a80aa3f025933f355b20a1778802e220aa5d181259354ae2fe19473f11fa44446dc437990a4120959e3d3ae93c00932942a30a02f7e9b3c39317a463b2080bcc4d13fb7ebb8a34b791c462eb4fd1bb8a7438713882cb1dcd896e5f05273b295fb167d16ba44a8984e3f4448b66b48b602872bf04f0d4d1b4586814253815f6562837ef70114c46a2625cad891ef6ad9aa6e5a5c67b79ace6e5c23f89947fe26954539afc636b66a4cdb6b6812154a0d7e0604712b5e84816942cc6c6e2551a8a910d11d1a5722fdd46891ba614ad868315bbaaf59a24d7f97bc09129ddab081a2e41c53cb5fe89777f990e1052c6735c2321683aa4ed51db9b00d4b5ac088c7716bb6e9abfabc47eaad3e6fb71bfbc787aced4bdda25d429712cff501293f3d3eddfff328029e4dcf35d29b7ac5b68c27dfc8dde677e6227317597023940934f02f227938678df2fa1b1f4893f8a8b404ca8d81db52c5f6af1a041fcdd491d4361636089d5d14e56b48c80c7515492f662dd84108cfd2f8d123b8769ba8bac2cf354314049328fbdda40edea05aba49f85b3f9618959277b98e75eb8ca293cadddc2611673206cd763e0fff7e438cc179c854851079dfc4d519a2b34c231cbcceefeff54529ba879f3461da304627ea17f215c7ad1ad63c7997670c6d397cddf10f2287aeb87646bb3da40a74efd4be4a8a98597884e3b2626c17972634e78f3def9cdce2e8315b57ae87babd9d7be22fb73363e32cb0ef6923b33dfa2db0d9b8f0d85b676fbf5bbca7094c0a53cd64902926fe288bfb5e290b2b623ffd3c240d80c6ea2e6c9fa94285c2a62cc5d3223a63e9cc798ac83cee14d07db297e6ac7733197237ecb41490f0a4f5053f9004392d7832823619fb94f15c072ea9733bc091d3f4f3b7aec8c54f9d585f5c62cee04f424098411f942306cfc5becdfc2c72cc3b49675f0bd0a3dcd4923a2d703f0f23d397e74b591621ff4c77704c6cfd57168b9e14568a0889fdcad55d290a3de796df9760bf9fcfe2f395a45879b075eb85e5caea15d9fdd6007d5543fc90585371a12f28d3723338ef99e99565ddc56993455d8579be888696d8fb0ae80ce6cb82834fc2a65b485ca632f8c903de427d1c9d317f551c209f08586e22d7e657ccf18b1802378853aa0eb20490dfb4b806d31994699c3e8c34e99df2e3e4bbe4af1b1892ea27aead0d9a839c18b35065d14ca3442d1f16b806615c649f182573c3c7fe8dc140ca917bdc483e549f981b62204b41b0916739b6865f489e820680d162c02ec5e81b542703b5a0787b37f0a1f0f067ca4b479220460fe168302b3c4738487a4e578225db22f4bbfcec6ca13b0a819edbfc89b54a23498d117fe772a9651deef44fc7f7a02247da9945ceaceed0f78d94552dc9a8e3987ab2f0afb199e564f905d6c5ade8f8e0a1a5839c5c06e596dd9ac912c13f9ded5b1fb0651442cb5f6e8ba6ee4a16f677981421c38b142e764d3e7750c5fe2c53a6544b64bc68b86b2c3805bfd4c47f47c9b9b5dc440a7e524d8ee25f870eb79831ec231f95633b57eb13770399c180f2b0dadbfb17b5668341ac870d4515a8f4bc1ef4e19532a372acc7eeee4bcda7d0820bfddfd14a2df638b853caae716400b600c769e01acfd25a4e49018344d7b62494eef1ea7ef9584aa640593efe9ae18a4e70854d1d003adb04208d063eb888ca8d73d7d3e091181b0c537ea08b3c975b5b3a234abe8b97edd1fea1ef546f26b43bd247a1bf486bbb15602c68b90b4e7480d00052a5f21d873a0a8acbd17b5c79f189bdf981f8ebf43551a7a1feff87ee0b6cb6361b536606ebc2311dbf0df24ebb56648f5b5b24a27f83be5a24e2123ac98f249032e9b731fb69f012fcdeb243a7998a02d649750093ddda69df50106c0716f29760c324ac523e5e237485e6827653a0c7a926d2e4ef491bde9348c812b3a5beeb1bf2ee4d878182eb0e78ed4712a0446ad4b4feee66e38d8148b8713a6357bb7b3f2b2aa81603e7cb4cf8420ca64b452f1e5311189fc12f1250b530d2c9f5fce77cfd4e38ed3cfaf96a28bbf47ad92513b72906af6482b15c28a45af0d3494de935c9c839ee60de359b7c97af6a43beca6e0d9379ee1f49ea325a253a277cc2e9610f4c207fdd5ee14cef4526ed394f7f6e282f1af7b66aa664bcb33b277e403f61bb54202640485ee315f9585fe8c2010253fc9d72588c6e29432d3faa9ebe563fb159e9ca46868713a89837509b8a839ce4e3bcd200607588118d98ac5998a723e4c8be78ce56394eec1448d96c2f80a492310310368fd81000f3cc604de463bdc1907c91d425f2301e7a6db88d68272309b8054bd893f0811b0c15c7bf22835e6534b011f95a59bf17e9e6061295d3f0b3a28c0715540544ab1bc538a6bb872b84517db9a9aa6de132c1be9175427261bc162ff325018d78d245a6696fe7ce92abc410f887fbfb4d3c9097c78f58eea7b463836904adf58c0d92faabc4a1906d5852aed34680cde206cad927044bf0a3da05c1690699c036140a2b61ef0716bc0a01717353df2826655798992ab0da437c660ecd0463f037d894503ac9f4914b6ed2ead5074beb455f11a90b3027abaa9f83f67a9863711f0dc0afc26eef3b61756c220f1dc93d6b2c0b3b7d0256246853ffe6dffbad2d29b6a97a8f7995d07ee2b0b50274cdb40cc67d79d843535030542fced359e2ac1034fd54587af13467b60fe623af107b89154fdbebbd4922f08abea0461f5409e33d047b5c6a59b69d9cda8af4dcf7aa66712ba23722d78f9bdd1b8a9789d052d59110982aa30055726c900161ed19273b3ec973678139a41f2781fdea7b76ed82833c45b1c30997c0c5f83a391e14b26a0a36b3bdddf6588a04bb15e89979cce14c11f53383b41660fc4f3c07932a77750f3b9047d68bacef664751e591a9578a6ccda564acc9769560f1ff5ca4693d31a111839526629a747053a00bbb52b4eae348dab3344f78a3469f23e6da3d49b00cceed5365d3bd4c23a4bccd9b78a49cb3b7999203a4b933d0de813f4a80f45f5133f4efd1ad8fa878d991d7a4283f838897fc374d173e91fd7026d82a199b5ebca5dc2645efc5c0e9bcfeb2a885d0b9578e4edee4bfe8afbaa2d4a2eef0ac70e9f55460a70b4241456bf75f6a8f816b3dd3595842b199110f8dad3150455ad35aaf9f46b4fd87208a692511a59cdeb67aafb3cc3a6f812838e0a287f30f83949599f46cc555e054d93375d956082ddd3c7f8571b6b2fa87c13e7e7ce19299e67ec13c92cc452335a67232e5c15bee74a6c390be1f2d8a5db8ec2e9ed7b001862664f177e4de0476f9de85f1a06b67b415b7de1113e7ca3f35445bd9786200f7cea164d617f5cce11a17cdb99ad6223dbb59f3dff95b452147c496ab713dc62709e41d36c4ac8c46f1a17e23df6f4744a3cc0d6d4a727b5a4b6c7046743550a8c820142dfb7effee76d21ce4684d2d7b8f378b6c41f2686e80567082595e19a2632371d6517d27c8f350d7190554255f2039bc6a3f622acd2ec7c619b572cd400b0638a1ac75b40c0fa47883a56c8b7f39df5107e3730beada46f77bc4bf08d9f57d294431695db35a2007e2448928e6dbe85727c2aeb8b76db65ddc5082c284ecfaea7344336b57692056b09c282a085e7fed4fc1863672fb104ef1fb5a2490eb18acde0f61d94a307dbd730562db5e5ff6748c88e6df505894bbe475194a9ff1a1444489dc9458f1707705546574af040118b309aef3eaccdaa05ad08bd5dd087508dc3e8d962d6e18ac8747514f86467ce94dbee6281cfbf0bfe814fa344c4fd87ad28320f98ecc86338dadd9f6d2a234d4863032702c1b81f342774c952ae9f9492f8ca78d6ea56eb6fa0febf16953936371c7d678612fdb42f42fc66c18618d7c991fea6bd0d1306fcbd0b6adac7d929f4b1c0563bb99ef6dc51d2d3132fadf6e5b571b30a9bb50b36c1f9d443fa2f26e59c40a49d04089ef32cb34934403ef1503581fdc79d509ef8056081fac3b8cfe11903954dc48f8356c40af900367a02b0b29e9e292bbcbb6739a976c7094036b6263b428d46f20d74482df80f2f8619fcd31b37814fd</script>
-</div>
-<script src="/Zh-Blog/lib/blog-encrypt.js"></script><link href="/Zh-Blog/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content><![CDATA[<html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>博主因为太菜了所以被迫回国继续国内高中（<a href="https://mavericreate.top/Blogs/2020/03/21/American-Memory/#more" target="_blank" rel="noopener">详情</a></p>
+<p>但是因为在国外呆一年</p>
+<p>数学科学语文等学科全部被削</p>
+<p>英语跟别人比也弱的一批</p>
+<a id="more"></a>
+
+<p>托福只有76分</p>
+<p>像我这种人只有靠努力qaq</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/04/Gd5Rdx.jpg" alt="Gd5Rdx.jpg"></p>
+<p>关键是努力还不自觉</p>
+<p>就只有先把计划打在公屏上</p>
+<p>反正博主这个暑假又是一个没有作业的暑假qaq</p>
+<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><h3 id="语文"><a href="#语文" class="headerlink" title="语文"></a>语文</h3><h4 id="背书"><a href="#背书" class="headerlink" title="背书"></a>背书</h4><p>暑假精通<strong>文言文</strong></p>
+<p><del>想屁吃</del></p>
+<p>和英语晨读一天换一个</p>
+<h4 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h4><p>家里一堆书慢慢啃</p>
+<p>优先读<strong>心理学与哲学</strong></p>
+<p>不要问为什么</p>
+<p><del>因为原本计划明年学AP Psychology</del></p>
+<h4 id="写书（误"><a href="#写书（误" class="headerlink" title="写书（误"></a>写书（误</h4><p>作文太差了</p>
+<p>多写<strong>写博客</strong>吧（逃</p>
+<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><p>快被削成美国人的水平了。。。</p>
+<p>先按照板块复习学校的东西（最好做N到模拟题）</p>
+<p>模考分数做到<strong>135+</strong>吧（想屁吃ing</p>
+<p>学有余力可以学学<strong>程序员的数学</strong></p>
+<p>再有余力就去康康<strong>AMC</strong>的题</p>
+<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>考完托福后就松懈下来没怎么看托福了</p>
+<p>国内英语考试肯定不怂了</p>
+<p>那就<strong>一周熟读三篇新概念英语4</strong>吧</p>
+<p>然后背托福单词</p>
+<p>学习托福句型</p>
+<p>总之英语不能被削成中国人水平了</p>
+<h3 id="理科"><a href="#理科" class="headerlink" title="理科"></a>理科</h3><p>物理化学生物实际上也快忘完了</p>
+<p>还是得补</p>
+<p>科科<strong>模拟考上85</strong>吧。。。</p>
+<p>（想屁。。。。</p>
+<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><p>虽然不知道竞赛还有没有用</p>
+<p>Noip还是要打的</p>
+<p>然后。。。</p>
+<p>为网站做一个<strong>微信小程序</strong></p>
+<h1 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h1><h2 id="日计划"><a href="#日计划" class="headerlink" title="日计划"></a>日计划</h2><table>
+<thead>
+<tr>
+<th align="center">时间</th>
+<th align="center">Activity</th>
+<th align="center">目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7:00—8:00</td>
+<td align="center">起床，吃饭，状态准备</td>
+<td align="center">起床每次都想认真学习，后面才发现不可能，少浪费时间就够了</td>
+</tr>
+<tr>
+<td align="center">8:00—9:00</td>
+<td align="center">英语 || 语文 背诵学习</td>
+<td align="center">早起背东西效率高（开始迷信</td>
+</tr>
+<tr>
+<td align="center">9:00—12:00</td>
+<td align="center">学习，主要是复习中国学校内容</td>
+<td align="center">中间可以考虑休息10-20分钟，就是学的时候一定要认真，不求学多少，但是要有质量</td>
+</tr>
+<tr>
+<td align="center">12:00—13:30</td>
+<td align="center">（做饭，吃饭               depends</td>
+<td align="center">在美国学了做饭的话就不能麻烦家里人一直帮自己了</td>
+</tr>
+<tr>
+<td align="center">13:30—14:30</td>
+<td align="center">午休，看书</td>
+<td align="center">开始编程之后看书的时间变少了，多看书思考，（睡觉是不可能睡觉的</td>
+</tr>
+<tr>
+<td align="center">14:30—17:00</td>
+<td align="center">学习，<strong>条件允许</strong>的话就多学学新东西</td>
+<td align="center">这里就可以是编程一类的拓展，还有疯狂练题，允许休息♨️</td>
+</tr>
+<tr>
+<td align="center">17:00—18:00</td>
+<td align="center">健身  || 足球 || 吉他</td>
+<td align="center">不能胖回原来那样，多运动减肥长高，而且足球，吉他约等于玩</td>
+</tr>
+<tr>
+<td align="center">18:00—19:00</td>
+<td align="center">（做饭，吃饭，休息，depends</td>
+<td align="center">享受家庭时光</td>
+</tr>
+<tr>
+<td align="center">19:30—21:00</td>
+<td align="center">查漏<strong>补缺</strong>，如果没有什么好查漏的就看书</td>
+<td align="center">学了就忘那就真的太溴了，关键是要感悟做题</td>
+</tr>
+<tr>
+<td align="center">21:00—22:00</td>
+<td align="center">写博客 || 练英语 || 考模拟卷(?</td>
+<td align="center">自由安排时间，千万别浪费</td>
+</tr>
+<tr>
+<td align="center">22:00—23:00</td>
+<td align="center">学语文，背英语这种无聊的事适合睡前做</td>
+<td align="center">这种时候就可以搞搞AP，SAT，TOFEL</td>
+</tr>
+</tbody></table>
+<h2 id="周期计划"><a href="#周期计划" class="headerlink" title="周期计划"></a>周期计划</h2><p>学校的任务能够提前完成，是因为老师不知道你的极限，那么就只有靠自己试了</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>Activity</th>
+<th>目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.10-4.20</td>
+<td>游玩广州，回到成都，计划预实行与修改</td>
+<td>美国时间4.20开学，中国则是21号</td>
+</tr>
+<tr>
+<td>4.21-5.28</td>
+<td>美国学校继续上课</td>
+<td>不求别的，走之前先拿到全A（想屁吃</td>
+</tr>
+</tbody></table>
+<p>然后从5.29到8月20号都不用担心开学的事了，差不多三个月的时间，提分看起来也不是想屁吃（前提是别浪费时间</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>Activity</th>
+<th>目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.28—6.10</td>
+<td>物化生以及数学水平恢复</td>
+<td>先画思维导图，至少要把学过的内容每章都复习一遍，找到不好的章节（尤其是化学）</td>
+</tr>
+<tr>
+<td>6.10—6.15</td>
+<td>弱势知识点训练</td>
+<td>先系统梳理概念，在集中练题</td>
+</tr>
+<tr>
+<td>6.15—6.25</td>
+<td>第一次模拟+弱点查找</td>
+<td>做模拟题，找到自己的弱势知识点</td>
+</tr>
+<tr>
+<td>6.25—7.1</td>
+<td>总结，回馈，梳理</td>
+<td>罗列弱点，根据差距制定下轮复习计划</td>
+</tr>
+<tr>
+<td>7.1—7.10</td>
+<td>复习+试探性新内容学习</td>
+<td>巩固原来的知识，再自学原来没学过的地方</td>
+</tr>
+<tr>
+<td>7.11—7.20</td>
+<td>第二次模拟+弱点查找</td>
+<td>做模拟题，找到自己的弱势知识点</td>
+</tr>
+<tr>
+<td>7.21—7.31</td>
+<td>补充弱势知识点，学习程序员的数学</td>
+<td>对竞赛内容适当复习</td>
+</tr>
+<tr>
+<td>。。。</td>
+<td>。。。（根据复习情况决定）</td>
+<td>。。。</td>
+</tr>
+<tr>
+<td>8.31</td>
+<td></td>
+<td>不管怎样，保证自学完新概念英语4，把电脑里的托福资料背完，理化生模拟达到85分以上，数学达到135以上，语文英语随缘</td>
+</tr>
+</tbody></table>
+</body></html>]]></content>
       <categories>
         <category>随笔</category>
       </categories>
