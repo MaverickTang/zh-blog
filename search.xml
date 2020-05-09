@@ -6,6 +6,8 @@
     <content><![CDATA[<html><head></head><body><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>微积分的英语 “Calculus” 源自拉丁语，意思是 “小石头”，<br>因为它是从分析小的部分来了解大的整体。</p>
 <p><strong>微分</strong>是把整体分拆为小部分来求它怎样改变。</p>
 <p><strong>积分</strong>是把小部分连接（积）在一起来求整体有多大。</p>
+<a id="more"></a> 
+
 <h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><p>割圆术书中说写：</p>
 <p>“割之弥细，所失弥少，割之又割，以至于不可割，则与圆周盒体而无所失矣”</p>
 <p><img data-src="/Users/maverick/Desktop/Mavericreate/Zh-Blog/source/_posts/Calculus/IMG_D72A687BA35F-1.jpeg" alt="IMG_D72A687BA35F-1"></p>
