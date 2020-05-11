@@ -18,12 +18,12 @@
     var CONFIG = {"hostname":"github.com","root":"/Zh-Blog/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="简介在特定约束条件下，选择变量值，是目标函数最大化/最小化 分类： 优化  数据 离散 连续   条件 无拘束 有拘束   函数 线性 非线性   目标 单目标 多目标    方法梯度下降法（局部最优）理论指导基本思想可以类比为一个下山的过程。假设这样一个场景：一个人被困在山上，需要从山上下来(i.e. 找到山的最低点，也就是山谷)。但此时山上的浓雾很大，导致可视度很低。因此，下山的路径就无法确定">
+  <meta name="description" content="简介在特定约束条件下，选择变量值，是目标函数最大化/最小化 分类： 优化  数据 离散 连续   条件 无拘束 有拘束   函数 线性 非线性   目标 单目标 多目标">
 <meta property="og:type" content="article">
 <meta property="og:title" content="优化理论">
 <meta property="og:url" content="https://github.com/MaverickTang/Zh-Blog/2020/05/11/Optimization-theory/index.html">
 <meta property="og:site_name" content="Mavericreate.Blog">
-<meta property="og:description" content="简介在特定约束条件下，选择变量值，是目标函数最大化/最小化 分类： 优化  数据 离散 连续   条件 无拘束 有拘束   函数 线性 非线性   目标 单目标 多目标    方法梯度下降法（局部最优）理论指导基本思想可以类比为一个下山的过程。假设这样一个场景：一个人被困在山上，需要从山上下来(i.e. 找到山的最低点，也就是山谷)。但此时山上的浓雾很大，导致可视度很低。因此，下山的路径就无法确定">
+<meta property="og:description" content="简介在特定约束条件下，选择变量值，是目标函数最大化/最小化 分类： 优化  数据 离散 连续   条件 无拘束 有拘束   函数 线性 非线性   目标 单目标 多目标">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121201301798.png">
 <meta property="og:image" content="https://github.com/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121202415914.png">
@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://github.com/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/0_1307264725FBQm.gif.png">
 <meta property="og:image" content="https://github.com/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/0_1307264821uw1Y.gif.png">
 <meta property="article:published_time" content="2020-05-10T16:12:50.000Z">
-<meta property="article:modified_time" content="2020-05-11T06:42:24.940Z">
+<meta property="article:modified_time" content="2020-05-11T13:05:19.870Z">
 <meta property="article:author" content="唐浩天">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -284,10 +284,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-10 09:12:50 / 修改时间：23:42:24" itemprop="dateCreated datePublished" datetime="2020-05-10T09:12:50-07:00">2020-05-10</time>
+              <time title="创建时间：2020-05-10 09:12:50" itemprop="dateCreated datePublished" datetime="2020-05-10T09:12:50-07:00">2020-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-11 06:05:19" itemprop="dateModified" datetime="2020-05-11T06:05:19-07:00">2020-05-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -355,6 +361,7 @@
 </ul>
 </li>
 </ul>
+<a id="more"></a>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="梯度下降法（局部最优）"><a href="#梯度下降法（局部最优）" class="headerlink" title="梯度下降法（局部最优）"></a>梯度下降法（局部最优）</h2><h3 id="理论指导"><a href="#理论指导" class="headerlink" title="理论指导"></a>理论指导</h3><p>基本思想可以类比为一个下山的过程。假设这样一个场景：一个人被困在山上，需要从山上下来(i.e. 找到山的最低点，也就是山谷)。但此时山上的浓雾很大，导致可视度很低。因此，下山的路径就无法确定，他必须利用自己周围的信息去找到下山的路径。这个时候，他就可以利用梯度下降算法来帮助自己下山。具体来说就是，以他当前的所处的位置为基准，寻找这个位置最陡峭的地方，然后朝着山的高度下降的地方走，同理，如果我们的目标是上山，也就是爬到山顶，那么此时应该是朝着最陡峭的方向往上走。然后每走一段距离，都反复采用同一个方法，最后就能成功的抵达山谷。</p>
 <p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121201301798.png" alt="20190121201301798"></p>
 <p>我们同时可以假设这座山最陡峭的地方是无法通过肉眼立马观察出来的，而是需要一个复杂的工具来测量，同时，这个人此时正好拥有测量出最陡峭方向的能力。所以，此人每走一段距离，都需要一段时间来测量所在位置最陡峭的方向，这是比较耗时的。那么为了在太阳下山之前到达山底，就要尽可能的减少测量方向的次数。这是一个两难的选择，如果测量的频繁，可以保证下山的方向是绝对正确的，但又非常耗时，如果测量的过少，又有偏离轨道的风险。所以需要找到一个合适的测量方向的频率，来确保下山的方向不错误，同时又不至于耗时太多！</p>
@@ -362,8 +369,11 @@
 <h4 id="前置知识：微分"><a href="#前置知识：微分" class="headerlink" title="前置知识：微分"></a>前置知识：微分</h4><p>看待微分的意义，可以有不同的角度，最常用的两种是：</p>
 <ul>
 <li>函数图像中，某点的切线的斜率</li>
-<li>函数的变化率<br>几个微分的例子：</li>
 </ul>
+</li>
+</ul>
+<ul>
+<li><p>函数的变化率<br>  几个微分的例子：</p>
 <p>学习坡度下降法，必须以微分作为辅助</p>
 <p>博主写过<a href="https://mavericreate.top/Zh-Blog/2020/04/28/Calculus/" target="_blank" rel="noopener">微积分</a>有关的笔记,感兴趣可以去看看</p>
 <p>这里补充一下<strong>多变量微分</strong></p>
