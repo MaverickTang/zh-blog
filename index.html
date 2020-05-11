@@ -159,7 +159,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/Zh-Blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">10</span></a>
+    <a href="/Zh-Blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-switch_lang">
@@ -236,6 +236,281 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/05/11/Optimization-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
+      <meta itemprop="name" content="唐浩天">
+      <meta itemprop="description" content="Live without Barricades!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mavericreate.Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/Zh-Blog/2020/05/11/Optimization-theory/" class="post-title-link" itemprop="url">优化理论</a>
+        </h1>
+
+        <div class="post-meta">
+
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-10 09:12:50 / 修改时间：20:30:18" itemprop="dateCreated datePublished" datetime="2020-05-10T09:12:50-07:00">2020-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Zh-Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">程序员的数学</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在特定约束条件下，选择变量值，是目标函数最大化/最小化</p>
+<h2 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h2><ul>
+<li><p>优化</p>
+<ul>
+<li>数据<ul>
+<li>离散</li>
+<li>连续</li>
+</ul>
+</li>
+<li>条件<ul>
+<li>无拘束</li>
+<li>有拘束</li>
+</ul>
+</li>
+<li>函数<ul>
+<li>线性</li>
+<li>非线性</li>
+</ul>
+</li>
+<li>目标<ul>
+<li>单目标</li>
+<li>多目标</li>
+</ul>
+</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="梯度下降法（局部最优）"><a href="#梯度下降法（局部最优）" class="headerlink" title="梯度下降法（局部最优）"></a>梯度下降法（局部最优）</h2><h3 id="理论指导"><a href="#理论指导" class="headerlink" title="理论指导"></a>理论指导</h3><p>基本思想可以类比为一个下山的过程。假设这样一个场景：一个人被困在山上，需要从山上下来(i.e. 找到山的最低点，也就是山谷)。但此时山上的浓雾很大，导致可视度很低。因此，下山的路径就无法确定，他必须利用自己周围的信息去找到下山的路径。这个时候，他就可以利用梯度下降算法来帮助自己下山。具体来说就是，以他当前的所处的位置为基准，寻找这个位置最陡峭的地方，然后朝着山的高度下降的地方走，同理，如果我们的目标是上山，也就是爬到山顶，那么此时应该是朝着最陡峭的方向往上走。然后每走一段距离，都反复采用同一个方法，最后就能成功的抵达山谷。</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121201301798.png" alt="20190121201301798"></p>
+<p>我们同时可以假设这座山最陡峭的地方是无法通过肉眼立马观察出来的，而是需要一个复杂的工具来测量，同时，这个人此时正好拥有测量出最陡峭方向的能力。所以，此人每走一段距离，都需要一段时间来测量所在位置最陡峭的方向，这是比较耗时的。那么为了在太阳下山之前到达山底，就要尽可能的减少测量方向的次数。这是一个两难的选择，如果测量的频繁，可以保证下山的方向是绝对正确的，但又非常耗时，如果测量的过少，又有偏离轨道的风险。所以需要找到一个合适的测量方向的频率，来确保下山的方向不错误，同时又不至于耗时太多！</p>
+<p>所以首先，我们需要有一个可微分的函数。这个函数就代表着一座山。我们的目标就是找到这个函数的最小值，也就是山底。根据之前的场景假设，最快的下山的方式就是找到当前位置最陡峭的方向，然后沿着此方向向下走，对应到函数中，就是找到给定点的梯度 ，然后朝着梯度相反的方向，就能让函数值下降的最快！因为梯度的方向就是函数之变化最快的方向(在后面会详细解释)</p>
+<h4 id="前置知识：微分"><a href="#前置知识：微分" class="headerlink" title="前置知识：微分"></a>前置知识：微分</h4><p>看待微分的意义，可以有不同的角度，最常用的两种是：</p>
+<ul>
+<li>函数图像中，某点的切线的斜率</li>
+<li>函数的变化率<br>几个微分的例子：</li>
+</ul>
+<p>学习坡度下降法，必须以微分作为辅助</p>
+<p>博主写过<a href="https://mavericreate.top/Zh-Blog/2020/04/28/Calculus/" target="_blank" rel="noopener">微积分</a>有关的笔记,感兴趣可以去看看</p>
+<p>这里补充一下<strong>多变量微分</strong></p>
+<p>就是对每个变量进行分别微分</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121202211493.png" alt="20190121202211493"></p>
+<h4 id="梯度的概念"><a href="#梯度的概念" class="headerlink" title="梯度的概念"></a>梯度的概念</h4><p>梯度实际上就是多变量微分的一般化。</p>
+</li>
+</ul>
+<p>  <img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121202415914.png" alt="20190121202415914"></p>
+<p>我们可以看到，梯度就是分别对每个变量进行微分，然后用逗号分割开，梯度是用<>包括起来，说明梯度其实一个向量。</p>
+<p>梯度是微积分中一个很重要的概念，之前提到过梯度的意义</p>
+<ul>
+<li>在<strong>单变量</strong>的函数中，梯度其实就是函数的<strong>微分</strong>，代表着函数在某个给定点的切线的斜率</li>
+<li>在<strong>多变量</strong>函数中，梯度是一个<strong>向量</strong>，向量有方向，梯度的方向就指出了函数在给定点的上升最快的方向</li>
+</ul>
+<p><strong>这也就说明了为什么我们需要千方百计的求取梯度！</strong>我们需要到达山底，就需要在每一步观测到此时最陡峭的地方，梯度就恰巧告诉了我们这个方向。梯度的方向是函数在给定点上升最快的方向，那么梯度的反方向就是函数在给定点下降最快的方向，这正是我们所需要的。所以我们只要沿着梯度的方向一直走，就能走到局部的最低点。</p>
+<p><strong>梯度垂直于等值线</strong></p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/IMG_7F1340CFFEE8-1.jpeg" alt="IMG_7F1340CFFEE8-1"></p>
+<h3 id="数学解释"><a href="#数学解释" class="headerlink" title="数学解释"></a><strong>数学解释</strong></h3><p>J是关于Θ的一个函数，我们当前所处的位置为Θ0点，要从这个点走到J的最小值点，也就是山底。首先我们先确定前进的方向，也就是梯度的反向，然后走一段距离的步长，也就是α，走完这个段步长，就到达了Θ1这个点！</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121203434245.png" alt="20190121203434245"></p>
+<h4 id="α"><a href="#α" class="headerlink" title="α"></a>α</h4><p>α在梯度下降算法中被称作为学习率或者步长，意味着我们可以通过α来控制每一步走的距离，以保证不要步子跨的太大扯着蛋，哈哈，其实就是不要走太快，错过了最低点。同时也要保证不要走的太慢，导致太阳下山了，还没有走到山下。所以α的选择在梯度下降法中往往是很重要的！α不能太大也不能太小，太小的话，可能导致迟迟走不到最低点，太大的话，会导致错过最低点！</p>
+<h4 id="⚠️"><a href="#⚠️" class="headerlink" title="⚠️"></a>⚠️</h4><p>梯度前加一个负号，就意味着朝着梯度相反的方向前进！我们在前文提到，梯度的方向实际就是函数在此点上升最快的方向！而我们需要朝着下降最快的方向走，自然就是负的梯度的方向，所以此处需要加上负号；<strong>那么如果时上坡，也就是梯度上升算法，当然就不需要添加负号了。</strong></p>
+<h3 id="两个栗子🌰"><a href="#两个栗子🌰" class="headerlink" title="两个栗子🌰"></a>两个栗子🌰</h3><h4 id="单变量函数"><a href="#单变量函数" class="headerlink" title="单变量函数"></a>单变量函数</h4><p>有一个二次函数</p>
+<script type="math/tex; mode=display">J(x)=x^2</script><p>轻易求出微分</p>
+<script type="math/tex; mode=display">J\prime(x)=x^2</script><p>然后设置容易起点</p>
+<script type="math/tex; mode=display">x^0=1</script><p>将学习率设置成<script type="math/tex">a</script></p>
+<p>然后根据公式我们进行迭代计算</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121204443599.png" alt="20190121204443599"></p>
+<p>如图，经过四次的运算，也就是走了四步，基本就抵达了函数的最低点，也就是山底</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121204511639.png" alt="20190121204511639"></p>
+<h4 id="多变量函数"><a href="#多变量函数" class="headerlink" title="多变量函数"></a>多变量函数</h4><p>有一个复合函数</p>
+<script type="math/tex; mode=display">J(x)=a^2+b^2</script><p>现在要通过梯度下降法计算这个函数的最小值。我们通过观察就能发现最小值其实就是 (0，0)点。但是接下来，我们会从梯度下降算法开始一步步计算到这个最小值！<br>我们假设初始的起点为：</p>
+<script type="math/tex; mode=display">(1,3)</script><p>假设学习率为：</p>
+<script type="math/tex; mode=display">a=0.1</script><p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/Screen Shot 2020-05-10 at 11.38.38 AM.png" alt="Screen Shot 2020-05-10 at 11.38.38 AM"></p>
+<p>我们发现，已经基本靠近函数的最小值点</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121205401244.png" alt="20190121205401244"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>下面我们将用python实现一个简单的梯度下降算法。场景是一个简单的线性回归的例子：假设现在我们有一系列的点，如下图所示：</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190122144234426.png" alt="20190122144234426"></p>
+<p>我们将用梯度下降法来拟合出这条直线！</p>
+<p>首先，我们需要定义一个代价函数，在此我们选用<a href="https://en.wikipedia.org/wiki/Least_squares" target="_blank" rel="noopener"><strong>均方误差代价函数</strong></a>（也称平方误差代价函数）</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121205801690.png" alt="20190121205801690"></p>
+<p>此公式中</p>
+<ul>
+<li>m是数据集中数据点的个数，也就是样本数</li>
+<li>½是一个常量，这样是为了在求梯度的时候，二次方乘下来的2就和这里的½抵消了，自然就没有多余的常数系数，方便后续的计算，同时对结果不会有影响</li>
+<li>y 是数据集中每个点的真实y坐标的值，也就是类标签</li>
+<li>h 是我们的预测函数（假设函数），根据每一个输入x，根据Θ 计算得到预测的y值，即<br><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121210102717.png" alt="20190121210102717"></li>
+</ul>
+<p>我们可以根据代价函数看到，代价函数中的变量有两个，所以是一个多变量的梯度下降问题，求解出代价函数的梯度，也就是分别对两个变量进行微分</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121210243732.png" alt="20190121210243732"></p>
+<p>明确了代价函数和梯度，以及预测的函数形式。我们就可以开始编写代码了。但在这之前，需要说明一点，就是为了方便代码的编写，我们会将所有的公式都转换为矩阵的形式，python中计算矩阵是非常方便的，同时代码也会变得非常的简洁。<br>为了转换为矩阵的计算，我们观察到预测函数的形式</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121210102717-1.png" alt="20190121210102717-1"></p>
+<p>我们有两个变量，为了对这个公式进行矩阵化，我们可以给每一个点x增加一维，这一维的值固定为1，这一维将会乘到Θ0上。这样就方便我们统一矩阵化的计算</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121210400200.png" alt="20190121210400200"></p>
+<p>然后我们将代价函数和梯度转化为矩阵向量相乘的形式</p>
+<p><img data-src="/Users/maverick/Desktop/PROGRAM/Mavericreate/Zh-Blog/source/_posts/Optimization-theory/20190121210422733.png" alt="20190121210422733"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 首先，我们需要定义数据集和学习率</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集大小 即20个数据点</span></span><br><span class="line">m = <span class="number">20</span></span><br><span class="line"><span class="comment"># x的坐标以及对应的矩阵</span></span><br><span class="line">X0 = ones((m, <span class="number">1</span>))  <span class="comment"># 生成一个m行1列的向量，也就是x0，全是1</span></span><br><span class="line">X1 = arange(<span class="number">1</span>, m+<span class="number">1</span>).reshape(m, <span class="number">1</span>)  <span class="comment"># 生成一个m行1列的向量，也就是x1，从1到m</span></span><br><span class="line">X = hstack((X0, X1))  <span class="comment"># 按照列堆叠形成数组，其实就是样本数据</span></span><br><span class="line"><span class="comment"># 对应的y坐标</span></span><br><span class="line">Y = array([</span><br><span class="line">    <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">8</span>, <span class="number">12</span>,</span><br><span class="line">    <span class="number">11</span>, <span class="number">13</span>, <span class="number">13</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">21</span></span><br><span class="line">]).reshape(m, <span class="number">1</span>)</span><br><span class="line"><span class="comment"># 学习率</span></span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来我们以矩阵向量的形式定义代价函数和代价函数的梯度</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义代价函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cost_function</span><span class="params">(theta, X, Y)</span>:</span></span><br><span class="line">    diff = dot(X, theta) - Y  <span class="comment"># dot() 数组需要像矩阵那样相乘，就需要用到dot()</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span>/(<span class="number">2</span>*m)) * dot(diff.transpose(), diff)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义代价函数对应的梯度函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_function</span><span class="params">(theta, X, Y)</span>:</span></span><br><span class="line">    diff = dot(X, theta) - Y</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span>/m) * dot(X.transpose(), diff)</span><br><span class="line"></span><br><span class="line"><span class="comment">#最后就是算法的核心部分，梯度下降迭代计算</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 梯度下降迭代</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_descent</span><span class="params">(X, Y, alpha)</span>:</span></span><br><span class="line">    theta = array([<span class="number">1</span>, <span class="number">1</span>]).reshape(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">    gradient = gradient_function(theta, X, Y)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> all(abs(gradient) <= <span class="number">1e-5</span>):</span><br><span class="line">        theta = theta - alpha * gradient</span><br><span class="line">        gradient = gradient_function(theta, X, Y)</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line"><span class="comment">#当梯度小于1e-5时，说明已经进入了比较平滑的状态，类似于山谷的状态，这时候再继续迭代效果也不大了，所以这个时候可以退出循环！</span></span><br><span class="line">optimal = gradient_descent(X, Y, alpha)</span><br><span class="line">print(<span class="string">'optimal:'</span>, optimal)</span><br><span class="line">print(<span class="string">'cost function:'</span>, cost_function(optimal, X, Y)[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#通过matplotlib画出图像，</span></span><br><span class="line"><span class="comment"># 根据数据画出对应的图像</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot</span><span class="params">(X, Y, theta)</span>:</span></span><br><span class="line">    <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">    ax = plt.subplot(<span class="number">111</span>)  <span class="comment"># 这是我改的</span></span><br><span class="line">    ax.scatter(X, Y, s=<span class="number">30</span>, c=<span class="string">"red"</span>, marker=<span class="string">"s"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"X"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Y"</span>)</span><br><span class="line">    x = arange(<span class="number">0</span>, <span class="number">21</span>, <span class="number">0.2</span>)  <span class="comment"># x的范围</span></span><br><span class="line">    y = theta[<span class="number">0</span>] + theta[<span class="number">1</span>]*x</span><br><span class="line">    ax.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plot(X1, Y, optimal)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><h3 id="应用方向"><a href="#应用方向" class="headerlink" title="应用方向"></a>应用方向</h3><p>1、求方程的根，2、最优化。</p>
+<h3 id="求方程的根"><a href="#求方程的根" class="headerlink" title="求方程的根"></a>求方程的根</h3><p>并不是所有的方程都有求根公式，或者求根公式很复杂，导致求解困难。利用牛顿法，可以迭代求解。</p>
+<p>原理是利用泰勒公式，在<script type="math/tex">x_0</script>处展开，且展开到一阶，即<script type="math/tex">f(x) = f(x_0)+(x－x_0)f'(x_0)</script></p>
+<p>求解方程f(x)=0，即<script type="math/tex">f(x_0)+(x-x_0)*f'(x_0)=0</script>，求解<script type="math/tex">x = x_1=x_0－f(x_0)/f'(x_0)</script>，因为这是利用泰勒公式的一阶展开，<script type="math/tex">f(x) = f(x_0)+(x－x_0)f'(x_0)</script>处并不是完全相等，而是近似相等，这里求得的x1并不能让<script type="math/tex">f(x)=0</script>，只能说f(x1)的值比f(x0)更接近f（x）=0，于是乎，迭代求解的想法就很自然了，可以进而推出x(n+1)=x(n)－f(x(n))/f’(x(n))，通过迭代，这个式子必然在f（x*）=0的时候收敛。整个过程如下图：</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a href="https://blog.csdn.net/qq_41800366/article/details/86583789" target="_blank" rel="noopener">https://blog.csdn.net/qq_41800366/article/details/86583789</a></p>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/05/10/stochastic-process/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
+      <meta itemprop="name" content="唐浩天">
+      <meta itemprop="description" content="Live without Barricades!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mavericreate.Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/Zh-Blog/2020/05/10/stochastic-process/" class="post-title-link" itemprop="url">马克代夫理论</a>
+        </h1>
+
+        <div class="post-meta">
+
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-10 08:45:06 / 修改时间：20:30:10" itemprop="dateCreated datePublished" datetime="2020-05-10T08:45:06-07:00">2020-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Zh-Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">程序员的数学</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>660</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="随机过程是什么？"><a href="#随机过程是什么？" class="headerlink" title="随机过程是什么？"></a>随机过程是什么？</h1><p>一般来说，把一组随机变量定义为随机过程。在研究随机过程时人们透过表面的偶然性描述出必然的内在规律并以概率的形式来描述这些规律，从偶然中悟出必然正是这一学科的魅力所在。</p>
+<p>整个学科的理论基础是由柯尔莫哥洛夫和杜布奠定的。这一学科最早源于对物理学的研究，如吉布斯、玻尔兹曼、庞加莱等人对统计力学的研究，及后来爱因斯坦、维纳、莱维等人对布朗运动的开创性工作。</p>
+<h1 id="高斯过程"><a href="#高斯过程" class="headerlink" title="高斯过程"></a>高斯过程</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>高斯过程（Gaussian Process, GP）是概率论和数理统计中随机过程（stochastic process）的一种，是一系列服从正态分布的随机变量（random variable）在一指数集（index set）内的组合</p>
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>高斯过程模型属于无参数模型，相对解决的问题复杂度及与其它算法比较减少了算法计算量。</li>
+<li>高斯模型可以解决高维空间（实际上是无限维）的数学问题，可以面对负杂的数学问题。</li>
+<li>结合贝叶斯概率算法，可以实现通过先验概率，推导未知后验输入变量的后验概率。由果推因的概率。<br>高斯过程观测变量空间是连续域，时间或空间。</li>
+<li>高斯过程观测变量空间是实数域的时候，我们就可以进行回归而实现预测。</li>
+<li>高斯过程观测变量空间是整数域的时候（观测点是离散的），我们就可以进行分类。结合贝叶斯算法甚至可以实现单类分类学习（训练），面对小样本就可以实现半监督学习而后完成分类。面对异常检测领域很有用，降低打标签成本（小样本且单类即可训练模型）。 </li>
+</ul>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>为了了解高斯过程，我们需要知道高斯分布（函数）、随机过程、以及贝叶斯概率等。。。</p>
+<p>MD不学了。。。</p>
+<p>前置知识高斯分布杀了我</p>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/04/28/Calculus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -287,14 +562,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -368,7 +643,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-26 18:12:53" itemprop="dateModified" datetime="2020-04-26T18:12:53-07:00">2020-04-26</time>
+                <time title="修改时间：2020-05-10 20:30:26" itemprop="dateModified" datetime="2020-05-10T20:30:26-07:00">2020-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -465,7 +740,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-26 19:13:53" itemprop="dateModified" datetime="2020-04-26T19:13:53-07:00">2020-04-26</time>
+                <time title="修改时间：2020-05-10 20:30:04" itemprop="dateModified" datetime="2020-05-10T20:30:04-07:00">2020-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -562,7 +837,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-09 06:28:05" itemprop="dateModified" datetime="2020-05-09T06:28:05-07:00">2020-05-09</time>
+                <time title="修改时间：2020-05-09 06:36:37" itemprop="dateModified" datetime="2020-05-09T06:36:37-07:00">2020-05-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1013,205 +1288,12 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/03/21/American-Memory/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
-      <meta itemprop="name" content="唐浩天">
-      <meta itemprop="description" content="Live without Barricades!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mavericreate.Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Zh-Blog/2020/03/21/American-Memory/" class="post-title-link" itemprop="url">尽管我们的手中一无所有——美国留学告别篇</a>
-        </h1>
-
-        <div class="post-meta">
-
-         
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-20 17:28:12" itemprop="dateCreated datePublished" datetime="2020-03-20T17:28:12-07:00">2020-03-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-03 15:53:14" itemprop="dateModified" datetime="2020-04-03T15:53:14-07:00">2020-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Zh-Blog/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前序"><a href="#前序" class="headerlink" title="前序"></a>前序</h2><p>​        关于记忆，我一直都很欣赏刘慈欣在三体里说的话：过去就像攥在手中的一把干沙，自以为攥得很紧，其实早就从指缝中流光了。这就是为什么会有回忆录，总要有一些东西来帮助人们记住一些重要的时刻，特别是对我来说，这重要的时刻竟然有接近一年之长。去年8月我离开成都来到Pasadena求学，今年三月因为Coronavirus回国，历时7个月（手动狗头好像和一年有些差距qaq）。不管怎样，我走得之匆忙甚至没空与朋友们好好告别，不过好在我走前搭建好了博客，还能写篇博客留给大家看看（还得写英语qaq）。</p>
-<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/bokuranoteniha-nanimonaikedo/1204763777?i=1204764497"></iframe>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Zh-Blog/2020/03/21/American-Memory/#more" rel="contents">
-                阅读全文 »
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
-      <meta itemprop="name" content="唐浩天">
-      <meta itemprop="description" content="Live without Barricades!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mavericreate.Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/" class="post-title-link" itemprop="url">爬取进击的巨人漫画</a>
-        </h1>
-
-        <div class="post-meta">
-
-         
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-23 15:13:57" itemprop="dateCreated datePublished" datetime="2020-02-23T15:13:57-08:00">2020-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-03 15:52:45" itemprop="dateModified" datetime="2020-04-03T15:52:45-07:00">2020-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Zh-Blog/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>15 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="使用Scrapy爬取进击的巨人漫画"><a href="#使用Scrapy爬取进击的巨人漫画" class="headerlink" title="使用Scrapy爬取进击的巨人漫画"></a>使用Scrapy爬取进击的巨人漫画</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>​        自己看到网上有两个大牛分别爬取了<strong>合法</strong>(Naruto)与<strong>非法</strong>(<del>你懂的</del>)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(<del>丧尽天良</del>),所以就只有自己写了一个算是结合版的代码，爬取了这个<a href="https://www.fzdm.com/" target="_blank" rel="noopener">网站</a>。在此分享给大家，授人以both🐟。</p>
-<p>​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个方法不仅可以下载进击的巨人，整个网站的漫画都可以爬，建议大家别乱改我设置的延迟，爬的太快了可能会被网站锁IP。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/#more" rel="contents">
-                阅读全文 »
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/Zh-Blog/page/2/">2</a><a class="extend next" rel="next" href="/Zh-Blog/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1277,7 +1359,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/Zh-Blog/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1353,13 +1435,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">55k</span>
+    <span title="站点总字数">59k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">50 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
 </div>
 
         
@@ -1498,6 +1580,61 @@ window.addEventListener('pjax:success', () => {
 
     <div id="pjax">
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
