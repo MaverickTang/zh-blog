@@ -603,13 +603,13 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 <h4 id="写书（误"><a href="#写书（误" class="headerlink" title="写书（误"></a>写书（误</h4><p>作文太差了</p>
 <p>多写<strong>写博客</strong>吧（逃</p>
 <h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><p>快被削成美国人的水平了。。。</p>
-<p>先按照板块复习学校的东西（最好做N到模拟题）</p>
+<p>先按照板块复习学校的东西（最好做N套模拟题）</p>
 <p>模考分数做到<strong>135+</strong>吧（想屁吃ing</p>
 <p>学有余力可以学学<strong>程序员的数学</strong></p>
 <p>再有余力就去康康<strong>AMC</strong>的题</p>
 <h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>考完托福后就松懈下来没怎么看托福了</p>
 <p>国内英语考试肯定不怂了</p>
-<p>那就<strong>一周熟读三篇新概念英语4</strong>吧</p>
+<p>那就<strong>一周熟读二篇新概念英语4</strong>吧</p>
 <p>然后背托福单词</p>
 <p>学习托福句型</p>
 <p>总之英语不能被削成中国人水平了</p>
@@ -632,39 +632,39 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">7:00—8:00</td>
+<td style="text-align:center">7:00—7:45</td>
 <td style="text-align:center">起床，吃饭，状态准备</td>
 <td style="text-align:center">起床每次都想认真学习，后面才发现不可能，少浪费时间就够了</td>
 </tr>
 <tr>
-<td style="text-align:center">8:00—9:00</td>
+<td style="text-align:center">7:45—8:30</td>
 <td style="text-align:center">英语 \</td>
 <td style="text-align:center">\</td>
-<td>语文 背诵学习</td>
+<td>语文<strong>主</strong> 背诵学习</td>
 <td>早起背东西效率高（开始迷信</td>
 </tr>
 <tr>
-<td style="text-align:center">9:00—12:00</td>
+<td style="text-align:center">8:30—12:30</td>
 <td style="text-align:center">学习，主要是复习中国学校内容</td>
-<td style="text-align:center">中间可以考虑休息10-20分钟，就是学的时候一定要认真，不求学多少，但是要有质量</td>
+<td style="text-align:center">中间可以考虑休息10-20分钟，就是学的时候一定要认真，根据当天计划调整</td>
 </tr>
 <tr>
-<td style="text-align:center">12:00—13:30</td>
-<td style="text-align:center">（做饭，吃饭               depends</td>
+<td style="text-align:center">12:30—13:00</td>
+<td style="text-align:center">吃饭   （可能会从11点开始做饭）</td>
 <td style="text-align:center">在美国学了做饭的话就不能麻烦家里人一直帮自己了</td>
 </tr>
 <tr>
-<td style="text-align:center">13:30—14:30</td>
+<td style="text-align:center">13:00—14:00</td>
 <td style="text-align:center">午休，看书</td>
 <td style="text-align:center">开始编程之后看书的时间变少了，多看书思考，（睡觉是不可能睡觉的</td>
 </tr>
 <tr>
-<td style="text-align:center">14:30—17:00</td>
+<td style="text-align:center">14:00—17:30</td>
 <td style="text-align:center">学习，<strong>条件允许</strong>的话就多学学新东西</td>
-<td style="text-align:center">这里就可以是编程一类的拓展，还有疯狂练题，允许休息♨️</td>
+<td style="text-align:center">这里就可以是编程一类的拓展，还有疯狂练题，允许休息10-20分钟♨️</td>
 </tr>
 <tr>
-<td style="text-align:center">17:00—18:00</td>
+<td style="text-align:center">17:30—18:30</td>
 <td style="text-align:center">健身  \</td>
 <td style="text-align:center">\</td>
 <td>足球 \</td>
@@ -673,12 +673,12 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 <td>不能胖回原来那样，多运动减肥长高，而且足球，吉他约等于玩</td>
 </tr>
 <tr>
-<td style="text-align:center">18:00—19:00</td>
-<td style="text-align:center">（做饭，吃饭，休息，depends</td>
+<td style="text-align:center">18:30—19:00</td>
+<td style="text-align:center">吃饭，休息，(可能从6:00开始做饭)</td>
 <td style="text-align:center">享受家庭时光</td>
 </tr>
 <tr>
-<td style="text-align:center">19:30—21:00</td>
+<td style="text-align:center">19:00—21:00</td>
 <td style="text-align:center">查漏<strong>补缺</strong>，如果没有什么好查漏的就看书</td>
 <td style="text-align:center">学了就忘那就真的太溴了，关键是要感悟做题</td>
 </tr>
@@ -699,7 +699,7 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 </tbody>
 </table>
 </div>
-<h2 id="周期计划"><a href="#周期计划" class="headerlink" title="周期计划"></a>周期计划</h2><p>学校的任务能够提前完成，是因为老师不知道你的极限，那么就只有靠自己试了</p>
+<h2 id="周期计划"><a href="#周期计划" class="headerlink" title="周期计划"></a>周期计划</h2><p>学校的任务能够提前完成，是因为老师不知道你的极限，那么就只有靠自己试了（已完成</p>
 <div class="table-container">
 <table>
 <thead>
@@ -718,12 +718,12 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 <tr>
 <td>4.21-5.28</td>
 <td>美国学校继续上课</td>
-<td>不求别的，走之前先拿到全A（想屁吃</td>
+<td>不求别的，走之前先拿到全A（考完final感觉特有希望</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>然后从5.29到8月20号都不用担心开学的事了，差不多三个月的时间，提分看起来也不是想屁吃（前提是别浪费时间</p>
+<p><del>然后从5.29到8月20号都不用担心开学的事了</del>，差不多三个月的时间，提分看起来也不是想屁吃（前提是别浪费时间</p>
 <div class="table-container">
 <table>
 <thead>
@@ -735,49 +735,34 @@ $$E[x]=\cfrac{1}{6}*1+\cfrac{1}{6}*2+\cfrac{1}{6}*3+\cfrac{1}{6}*4+\cfrac{1}{6}*
 </thead>
 <tbody>
 <tr>
-<td>5.28—6.10</td>
+<td>5.26—6.4</td>
 <td>物化生以及数学水平恢复</td>
 <td>先画思维导图，至少要把学过的内容每章都复习一遍，找到不好的章节（尤其是化学）</td>
 </tr>
 <tr>
-<td>6.10—6.15</td>
+<td>6.5—6.14</td>
 <td>弱势知识点训练</td>
-<td>先系统梳理概念，在集中练题</td>
+<td>先系统梳理概念，再集中练题</td>
 </tr>
 <tr>
-<td>6.15—6.25</td>
+<td>6.15—6.20</td>
 <td>第一次模拟+弱点查找</td>
-<td>做模拟题，找到自己的弱势知识点</td>
+<td>做模拟题，找到自己的弱势知识点（一天一科可还行</td>
+</tr>
+<tr>
+<td>6.21—6.25</td>
+<td>总结，回馈，梳理</td>
+<td>罗列弱点，弄懂知识点（相似题型做会做熟，总结对知识点运用</td>
 </tr>
 <tr>
 <td>6.25—7.1</td>
-<td>总结，回馈，梳理</td>
-<td>罗列弱点，根据差距制定下轮复习计划</td>
-</tr>
-<tr>
-<td>7.1—7.10</td>
 <td>复习+试探性新内容学习</td>
 <td>巩固原来的知识，再自学原来没学过的地方</td>
 </tr>
 <tr>
-<td>7.11—7.20</td>
-<td>第二次模拟+弱点查找</td>
-<td>做模拟题，找到自己的弱势知识点</td>
-</tr>
-<tr>
-<td>7.21—7.31</td>
-<td>补充弱势知识点，学习程序员的数学</td>
-<td>对竞赛内容适当复习</td>
-</tr>
-<tr>
-<td>。。。</td>
-<td>。。。（根据复习情况决定）</td>
-<td>。。。</td>
-</tr>
-<tr>
-<td>8.31</td>
-<td></td>
-<td>不管怎样，保证自学完新概念英语4，把电脑里的托福资料背完，理化生模拟达到85分以上，数学达到135以上，语文英语随缘</td>
+<td>7.1以后</td>
+<td>计划调整留白期</td>
+<td>可能回学校了</td>
 </tr>
 </tbody>
 </table>
