@@ -1,0 +1,854 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Zh-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Zh-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Zh-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Zh-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Zh-Blog/css/main.css">
+
+
+<link rel="stylesheet" href="/Zh-Blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/Zh-Blog/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":320,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="使用Scrapy爬取进击的巨人漫画一、简介​        自己看到网上有两个大牛分别爬取了合法(Naruto)与非法(你懂的)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(丧尽天良),所以就只有自己写了一个算是结合版的代码，爬取了这个网站。在此分享给大家，授人以both🐟。 ​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取进击的巨人漫画">
+<meta property="og:url" content="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/index.html">
+<meta property="og:site_name" content="Mavericreate.Blog">
+<meta property="og:description" content="使用Scrapy爬取进击的巨人漫画一、简介​        自己看到网上有两个大牛分别爬取了合法(Naruto)与非法(你懂的)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(丧尽天良),所以就只有自己写了一个算是结合版的代码，爬取了这个网站。在此分享给大家，授人以both🐟。 ​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNf91.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect3.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGN2N9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/pic.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNsnU.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGN7He.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGUpDS.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNvgP.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/02/GGNX9I.jpg">
+<meta property="article:published_time" content="2020-02-23T23:13:57.000Z">
+<meta property="article:modified_time" content="2021-02-08T00:01:27.290Z">
+<meta property="article:author" content="唐浩天">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/02/GGY3Ct.png">
+
+<link rel="canonical" href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+<script type="text/javascript">
+  // Wait for the page to load first
+  var _prevOnload = window.onload;
+  window.onload = function() {
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
+      switchLang.onclick = function() {
+          var href = window.location.href;
+          var indexOfEn = href.toLowerCase().indexOf('/Zh-Blog');
+          if(indexOfEn !== -1) {
+              window.location.href = href.replace('/Zh-Blog', '/Blogs');
+          }
+          else {
+              window.location.href = href.replace('/Blogs', '/Zh-Blog');
+          }
+          if(typeof(_prevOnload) === 'function') {
+              _prevOnload();
+          }
+          return false;
+      }
+  }
+</script>
+
+  <title>爬取进击的巨人漫画 | Mavericreate.Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/Zh-Blog/atom.xml" title="Mavericreate.Blog" type="application/atom+xml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script>
+  $("body").backstretch("https://raw.githubusercontent.com/MaverickTang/Images/master/bkg.jpg");
+  </script></head>
+
+
+  
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/Zh-Blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mavericreate.Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">if(Coding == Happiness && Happiness == Life)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/Zh-Blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/Zh-Blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/Zh-Blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/Zh-Blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/Zh-Blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-switch_lang">
+
+    <a href="https://mavericktang.github.io/Blogs/" rel="noopener" target="_blank"><i class="fa fa-fw fa-language"></i>English</a>
+
+  </li>
+        <li class="menu-item menu-item-timer">
+
+    <a href="https://mavericktang.github.io/time/" rel="noopener" target="_blank"><i class="fa fa-fw fa-clock-o"></i>时钟</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/Zh-Blog/tools/" rel="section"><i class="fa fa-fw fa-legal"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-image">
+
+    <a href="https://imgchr.com/album/Y0zVS" rel="noopener" target="_blank"><i class="fa fa-fw fa-image"></i>图床</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/Zh-Blog/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/MaverickTang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Zh-Blog/images/Levi.gif">
+      <meta itemprop="name" content="唐浩天">
+      <meta itemprop="description" content="Live without Barricades!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mavericreate.Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          爬取进击的巨人漫画
+        </h1>
+
+        <div class="post-meta">
+
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 15:13:57" itemprop="dateCreated datePublished" datetime="2020-02-23T15:13:57-08:00">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-07 16:01:27" itemprop="dateModified" datetime="2021-02-07T16:01:27-08:00">2021-02-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Zh-Blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="使用Scrapy爬取进击的巨人漫画"><a href="#使用Scrapy爬取进击的巨人漫画" class="headerlink" title="使用Scrapy爬取进击的巨人漫画"></a>使用Scrapy爬取进击的巨人漫画</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>​        自己看到网上有两个大牛分别爬取了<strong>合法</strong>(Naruto)与<strong>非法</strong>(<del>你懂的</del>)的漫画，十分感叹，便也想借鉴借鉴，结果大牛的的代码在博主的电脑上运行不了(<del>丧尽天良</del>),所以就只有自己写了一个算是结合版的代码，爬取了这个<a href="https://www.fzdm.com/" target="_blank" rel="noopener">网站</a>。在此分享给大家，授人以both🐟。</p>
+<p>​        代码已经挂在GitHub上面了，想下漫画的可以滑到最下面观看下载方法，这个方法不仅可以下载进击的巨人，整个网站的漫画都可以爬，建议大家别乱改我设置的延迟，爬的太快了可能会被网站锁IP。</p>
+<a id="more"></a>
+<h2 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h2><p>博主的环境如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mavericks-MacBook-Pro:~ maverick$</span><br><span class="line">Python 2.7.10 (default, Feb 22 2019, 21:55:15) </span><br><span class="line">Scrapy 1.8.0 - no active project</span><br></pre></td></tr></tbody></table></figure>
+<p>在这里我默认大家都已经安装好了scrapy，<a href="https://www.osgeo.cn/scrapy/intro/install.html#intro-install" target="_blank" rel="noopener">传送门</a></p>
+<p>不知道大家会遇到什么麻烦，博主只用了这一句代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Scrapy</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="三、基础准备"><a href="#三、基础准备" class="headerlink" title="三、基础准备"></a>三、基础准备</h2><h3 id="Scrapy简介（大牛的文章）"><a href="#Scrapy简介（大牛的文章）" class="headerlink" title="Scrapy简介（大牛的文章）"></a>Scrapy简介（<a href="https://blog.csdn.net/c406495762/article/details/72858983" target="_blank" rel="noopener">大牛的文章</a>）</h3><pre><code>  Scrapy Engine(Scrapy核心) 负责数据流在各个组件之间的流。Spiders(爬虫)发出Requests请求，经由Scrapy Engine(Scrapy核心) 交给Scheduler(调度器)，Downloader(下载器)Scheduler(调度器) 获得Requests请求，然后根据Requests请求，从网络下载数据。Downloader(下载器)的Responses响应再传递给Spiders进行分析。根据需求提取出Items，交给Item Pipeline进行下载。Spiders和Item Pipeline是需要用户根据响应的需求进行编写的。除此之外，还有两个中间件，Downloaders Mddlewares和Spider Middlewares，这两个中间件为用户提供方面，通过插入自定义代码扩展Scrapy的功能，例如去重等。
+</code></pre><p><img data-src="https://s1.ax1x.com/2020/04/02/GGY3Ct.png" alt="Scrapy"></p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>注意！这篇文章并不是official文章，一切还以<a href="https://www.osgeo.cn/scrapy/intro/tutorial.html" target="_blank" rel="noopener">官方教程</a>为准。这里只讲本次操作用到的知识。</p>
+<ul>
+<li>创建一个Scrapy项目；</li>
+<li>定义提取的Item；</li>
+<li>编写爬取网站的 spider 并提取 Item；</li>
+<li>利用python自带的request库莱下载漫画</li>
+</ul>
+<h2 id="四、第二次准备"><a href="#四、第二次准备" class="headerlink" title="四、第二次准备"></a>四、第二次准备</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject Titan</span><br></pre></td></tr></tbody></table></figure>
+<p>然后我们可以观察项目内涉及的文件</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">|____Titan</span><br><span class="line">| |____.DS_Store</span><br><span class="line">| |____scrapy.cfg</span><br><span class="line">| |____Titan</span><br><span class="line">| | |____.DS_Store</span><br><span class="line">| | |____spiders</span><br><span class="line">| | | |____titan_spider.py</span><br><span class="line">| | | |______init__.py</span><br><span class="line">| | | |______pycache__</span><br><span class="line">| | | | |______init__.cpython-38.pyc</span><br><span class="line">| | | | |____titan_spider.cpython-38.pyc</span><br><span class="line">| | | | |____titan_spider.cpython-37.pyc</span><br><span class="line">| | | | |______init__.cpython-37.pyc</span><br><span class="line">| | |______init__.py</span><br><span class="line">| | |______pycache__</span><br><span class="line">| | | |______init__.cpython-38.pyc</span><br><span class="line">| | | |____settings.cpython-38.pyc</span><br><span class="line">| | | |____settings.cpython-37.pyc</span><br><span class="line">| | | |______init__.cpython-37.pyc</span><br><span class="line">| | |____middlewares.py</span><br><span class="line">| | |____settings.py</span><br><span class="line">| | |____items.py</span><br><span class="line">| | |____pipelines.py</span><br></pre></td></tr></tbody></table></figure>
+<p>大部分都没啥用，重点是我们要在spider里面添加一个自己编写的python文件，可以是任意名字，像我就叫他巨人蜘蛛</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titan_spider.py</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建spider类"><a href="#创建spider类" class="headerlink" title="创建spider类"></a>创建spider类</h3><p>创建一个用来实现具体爬取功能的类，我们所有的处理实现都会在这个类中进行，它必须为 <code>scrapy.Spider</code> 的子类。</p>
+<p>在 <code>Titan/spiders</code> 文件路径下创建 <code>titan_spider.py</code> 文件。在里面就开始我们蜘蛛（<del>只猪</del>）的初始化</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#上面code是为了让其支持中文</span></span><br><span class="line"><span class="keyword">import</span> scrapy<span class="comment">#scrapy本尊</span></span><br><span class="line"><span class="keyword">import</span> re<span class="comment">#保存文件的library</span></span><br><span class="line"><span class="keyword">import</span> time<span class="comment">#设置延时</span></span><br><span class="line"><span class="keyword">import</span> requests<span class="comment">#从网络下载图片</span></span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TitanSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">	name = <span class="string">"titan"</span><span class="comment">#定义spider的名字</span></span><br><span class="line">	start_urls = [<span class="string">'https://manhua.fzdm.com/132/'</span>]<span class="comment">#起始页面</span></span><br><span class="line">	allowed_domains = [<span class="string">'https://manhua.fzdm.com'</span>,<span class="string">'http://p2.manhuapan.com/'</span>]<span class="comment">#允许范围</span></span><br><span class="line">  <span class="comment">#上面的名字都是official的名字千万别改</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="shell分析"><a href="#shell分析" class="headerlink" title="shell分析"></a>shell分析</h3><p>在command line里面输入</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell 'https://manhua.fzdm.com/39'</span><br></pre></td></tr></tbody></table></figure>
+<p>然后你会得到这一堆东西（别🐦它）</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">2020-02-23 20:14:47 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapybot)</span><br><span class="line">2020-02-23 20:14:47 [scrapy.utils.log] INFO: Versions: lxml 4.4.2.0, libxml2 2.9.4, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.10.0, Python 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53) - [Clang 6.0 (clang-600.0.57)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1d  10 Sep 2019), cryptography 2.8, Platform macOS-10.14.6-x86_64-i386-64bit</span><br><span class="line">2020-02-23 20:14:47 [scrapy.crawler] INFO: Overridden settings: {'DUPEFILTER_CLASS': 'scrapy.dupefilters.BaseDupeFilter', 'LOGSTATS_INTERVAL': 0}</span><br><span class="line">2020-02-23 20:14:47 [scrapy.extensions.telnet] INFO: Telnet Password: e3528447494d6c3d</span><br><span class="line">2020-02-23 20:14:47 [scrapy.middleware] INFO: Enabled extensions:</span><br><span class="line">...中间省略...</span><br><span class="line">[s] Available Scrapy objects:</span><br><span class="line">[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)</span><br><span class="line">[s]   crawler    <scrapy.crawler.crawler object at 0x10d0cd760></scrapy.crawler.crawler></span><br><span class="line">[s]   item       {}</span><br><span class="line">[s]   request    <get 39 https: manhua.fzdm.com></get></span><br><span class="line">[s]   response   <200 https://manhua.fzdm.com/39//></span><br><span class="line">[s]   settings   <scrapy.settings.settings object at 0x10d0cd460></scrapy.settings.settings></span><br><span class="line">[s]   spider     <defaultspider 'default' at 0x10d573400></defaultspider></span><br><span class="line">[s] Useful shortcuts:</span><br><span class="line">[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)</span><br><span class="line">[s]   fetch(req)                  Fetch a scrapy.Request and update local objects </span><br><span class="line">[s]   shelp()           Shell help (print this help)</span><br><span class="line">[s]   view(response)    View response in a browser</span><br><span class="line">>>></span><br></pre></td></tr></tbody></table></figure>
+<p>然后我们就要使用xpath或者是css去寻找指定的页面内容（<del>奥利给干它</del>）</p>
+<p>博主也学习了一些时间，建议各位去康康这个<a href="https://www.jianshu.com/p/489c5d21cdc7" target="_blank" rel="noopener">教程</a>(<del>求作者给广告费恰饭</del>)</p>
+<p>理清思路，现在我们要找到各话的url，通过观察发现这些url都在<a>标签下</a></p><a>
+<p>观察方法：鼠标右键然后点击inspect，再点一下左上角的选择器就可以查看页面元素的所在位置了</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGNf91.png" alt="Inspect"></p>
+<p>于是输入</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.xpath('//li/a[1]/@href').extract()</span><br></pre></td></tr></tbody></table></figure>
+<p>获取到所有符合这种特征的herf</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//li/a[1]/@href').extract()</span><br><span class="line">['//www.fzdm.com', '//news.fzdm.com', '//manhua.fzdm.com', '126/', '125/', '124/', '123/', '122/', '121/', '120/', '119/', '118/', '117/', '116/', 'qc65/', '115/', 'qc64/', '114/', 'qc63/', '113/', 'qc62/', '112/', '前传61/', '111/', '前传60/', '110/', '前传59/', '109/', '108/', '前传57/', '107/', '前传56/', '106/', '前传55/', '105/', '前传54/', '104/', '103/', '102/', 'qz51/', '101/', '100/', 'qz49/', '99/', 'qz48/', '98/', 'qz47/', '97/', 'thf46/', '096/', 'wp45/', '95/', 'qz44/', '94/', 'qz43/', '93/', 'qz42/', '92/', 'qz41/', '91/', 'qz40/', 'qz40/', 'qz39/', 'qz38/', '90/', '89/', '88/', 'qz37/', '87/', ' before-the-fall-36/', '86/', '85/', '84/', '83/', '82/', '81/', '80/', '079/', '078/', '77/', '76/', '75/', 'd74/', '73/', '72/', '71/', '70/', '69/', 'd68/', '67/', '66/', 'dxj52/', '65/', '64/', '63/', '62/', '61/', '60/', '59/', 'wc08/', '58/', 'wc07/', 'qc07/', '57/', 'wc06/', '56/', 'qc06/', '55/', '54/', 'wc04/', '53/', 'wc02/', '52/', 'wc01/', '51/', '50/', 'wc00/', '49/', 'xz/', 'qc01/', '48/', 'fwp/', '47/', 'sgp/', '46/', '45/', '44/', 'fwp02/', 'fwp01/', '043/', '042/', '041/', '040/', '039/', '038/', '037/', '036/', '035/', '034/', '033/', '032/', '031/', '030/', '029/', '028/', '027/', '026/', '025/', '024/', '023/', '022/', '021/', '020/', '019/', '018/', '017/', '016/', '015/', '014/', '013/', '012/', '011/', '010/', '009/', '008/', '007/', '006/', '005/', '004/', '003/', '002/', '001/']</span><br></pre></td></tr></tbody></table></figure>
+<p>我们发现又有几个浑水<strong>摸鱼</strong>的url混了进来，不过咱们先把这个放在一边，等会在python里面用字符串操作把它们给筛掉（<del>博主不会一步找到正确url的方法qaq</del>），如果有更好的方法请大神指出（带我带我！）</p>
+<p> 使用ctrl+d退出之前的shell，分析章节页面。这次我们需要找到图片的url以及下一页的url</p>
+</a><h3 id="再次分析"><a></a><a href="#再次分析" class="headerlink" title="再次分析"></a>再次分析</h3><p><img data-src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect2.png" alt="Inspect"></p>
+<p>手动@风车动漫的广告商到我这里来把广告费结一下，【手动狗头】</p>
+<p>这次我们找一下下一页的url（这个网站他图片的url放的比较日怪）</p>
+<p>在command line里面输入</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell 'https://manhua.fzdm.com/39//126/'</span><br></pre></td></tr></tbody></table></figure>
+<p>然后我们需要再次找到 </p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><a href="index_0.html" class="pure-button button-success">第1页</a></span><br></pre></td></tr></tbody></table></figure>
+<p>然后老套路</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//a[contains(@href, "index")]/@href').extract()</span><br><span class="line">['index_0.html', 'index_1.html', 'index_2.html', 'index_3.html', 'index_4.html', 'index_5.html', 'index_6.html', 'index_1.html']</span><br></pre></td></tr></tbody></table></figure>
+<p>我们知道最后一个url就是咱们的next page了</p>
+<p><strong>但是！！！</strong></p>
+<p>我们这么才能知道这一章什么时候结束呢？</p>
+<p><img data-src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/Inspect3.png" alt="Inspect"></p>
+<p>这是我们的最后一页的代码，看起来从url上一点头绪都没有，但是从旁边的文字上我们又有了新的线索，一般它会给出如：下一页这样的信息，最后一页则没有这样的信息，只要我们知道是否有“下一页”，我们就能知道是否为最后一页</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGN2N9.png" alt="Inspect"></p>
+<p>所以要获取上面的文字，使用如下方法：</p>
+<p>请看第一页与最后一页的对比</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//a[contains(@href, "index")]/text()').extract()</span><br><span class="line">['第1页', '2', '3', '4', '5', '6', '7', '下一页']</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//a[contains(@href, "index")]/text()').extract()</span><br><span class="line">['上一页', '40', '41', '42', '43', '44', '第45页']</span><br></pre></td></tr></tbody></table></figure>
+<p>然后既然我们已经知道了判断下一页的方法，接下来就是获取图片链接了</p>
+<h3 id="获取图片链接"><a href="#获取图片链接" class="headerlink" title="获取图片链接"></a>获取图片链接</h3><p><img data-src="https://raw.githubusercontent.com/MaverickTang/Images/master/%E7%88%AC%E5%8F%96%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E6%BC%AB%E7%94%BB/pic.png" alt="Inspect"></p>
+<p>再次选择我们找到了图片的url</p>
+<p><strong>但是</strong>。。。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//img/@src').extract()</span><br><span class="line">['https://static.fzdm.com/css/logo.png', 'https://cdn.jsdelivr.net/gh/fzdm/st@75839ec8feb53ac89fe52134fc648a17bd1bd31f/img/loading.gif']</span><br></pre></td></tr></tbody></table></figure>
+<p>woc居然找不到图片的url？？？</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGNsnU.jpg" alt="Inspect"></p>
+<p>于是康康这个蜘蛛获取到的整个html代码</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">>>> response.body</span><br><span class="line">b'<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Language" content="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="//www.fzdm.com"><link rel="dns-prefetch" href="//manhua.fzdm.com"><link rel="dns-prefetch" href="//p1.manhuapan.com"><link rel="dns-prefetch" href="//p2.manhuapan.com"><link rel="dns-prefetch" href="//p5.manhuapan.com"><link rel="dns-prefetch" href="//p17.manhuapan.com"><meta content="all" name="robots"><title>\xe8\xbf\x9b\xe5\x87\xbb\xe7\x9a\x84\xe5\xb7\xa8\xe4\xba\xba126\xe8\xaf\x9d </span><br><span class="line">……以下省略</span><br></pre></td></tr></tbody></table></figure>
+<p>我们复制之后打开任意代码编译器然后<code>Command+f</code>寻找这个“2020/02/08055441539556.jpg”url在哪里。</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGN7He.png" alt="Inspect"></p>
+<p>我们发现这个url放在javascript里面，使用<code>document.write()</code>。。。</p>
+<p>你以为我有什么骚操作？？？</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGUpDS.gif" alt="Inspect"></p>
+<p>我还真没有。。。</p>
+<p>找到script</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">>>> response.xpath('//script/text()').extract()</span><br><span class="line">["if ('serviceWorker' in navigator) {\n      navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function (registration) {\n        // registration.unregister().then(function(boolean) {\n        // if boolean = true, unregister is successful\n        // });\n        // 注册成功\n        /*\n      var serviceWorker;\n      if (registration.installing) {\n        console.log('installing');\n      } else if (registration.waiting) {\n        console.log('waiting');\n      } else if (registration.active) {\n        console.log('active');\n      }\n      */\n        console.log('ServiceWorker registration successful with scope: ', registration.scope);\n      }).catch(function (err) {\n        // 注册失败 :(\n        console.log('ServiceWorker registration failed: ', err);\n        let refreshing = false\n        navigator.serviceWorker.addEventListener('controllerchange', () => {\n          if (refreshing) {\n            return\n</span><br><span class="line">……以下省略</span><br></pre></td></tr></tbody></table></figure>
+<p>于是我们获得了一个很大的array which有我们需要的url</p>
+<p>博主是个铁憨憨，强行用python的正则表达式找到了这个url</p>
+<p>正则表达式不会的可以走<a href="https://www.runoob.com/python/python-reg-expressions.html" target="_blank" rel="noopener">这里</a></p>
+<p>在编程的时候，我们就先记录下这些script，然后再继续操作</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pre_img_url = response.xpath(<span class="string">'//script/text()'</span>).extract()<span class="comment">#记录script</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(pre_img_url)):<span class="comment">#记录的时候是以array存储的</span></span><br><span class="line">			matchObj = re.search( <span class="string">r'url=\"()\s*(.*)jpg'</span>, pre_img_url[i], re.M|re.I)<span class="comment">#正则表达式寻找</span></span><br><span class="line">			<span class="keyword">if</span> matchObj:</span><br><span class="line">				ppreimgurl = matchObj.group()<span class="comment">#里面就包含了我们要找的url（本例是“2020/02/08055441539556.jpg”）</span></span><br><span class="line">				img_url= <span class="string">'http://p2.manhuapan.com/'</span> + ppreimgurl[<span class="number">5</span>:len(ppreimgurl)]<span class="comment">#在前面加上存储图片的网址</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="五、开始编写"><a href="#五、开始编写" class="headerlink" title="五、开始编写"></a>五、开始编写</h2><p>还记得我们最开始的<code>parse()</code>吗？我们现在给他添加一点东西</p>
+<p>解释都在代码里面</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">		link_urls = response.xpath(<span class="string">'//li/a[1]/@href'</span>).extract()<span class="comment">#找到各话的url</span></span><br><span class="line">		names = response.xpath(<span class="string">'//li/a[1]/@title'</span>).extract()<span class="comment">#找到各话的名字，方便命名文件夹</span></span><br><span class="line">    <span class="comment"># 下面的variable可以不管</span></span><br><span class="line">		x=<span class="number">-1</span></span><br><span class="line">		h=<span class="number">0</span></span><br><span class="line">		comics_url_list = []</span><br><span class="line">		rnames = []</span><br><span class="line">		base = <span class="string">'https://manhua.fzdm.com/132/'</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(len(link_urls)):</span><br><span class="line">			h=bool(re.search(<span class="string">r'\d'</span>, link_urls[i]))</span><br><span class="line">			<span class="keyword">if</span>(h==<span class="literal">True</span>):</span><br><span class="line">				x=x+<span class="number">1</span></span><br><span class="line">				name=names[x]</span><br><span class="line">				url=base + link_urls[i]<span class="comment">#它的url只有base后面的部分，所以要把base加上</span></span><br><span class="line">				rnames.append(name)<span class="comment">#将各话的名字加入一个新的array</span></span><br><span class="line">				comics_url_list.append(url)<span class="comment">#将url加入array</span></span><br><span class="line"><span class="comment">#				print("%s :https://www.manhuadui.com %s"%(names[4+x],link_urls[i]))</span></span><br><span class="line"><span class="comment">#				print("%s : %s"%(rnames[x],comics_url_list[x]))	</span></span><br><span class="line">				</span><br><span class="line">		print(<span class="string">'\n>>>>>>>>>>>>>>>>>>> current page comics list <<<<<<<<<<<<<<<<<<<<'</span>)</span><br><span class="line">		print(comics_url_list)</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> url <span class="keyword">in</span> comics_url_list:</span><br><span class="line">			<span class="keyword">yield</span> scrapy.Request(url=url, callback=self.comics_parse, dont_filter=<span class="literal">True</span>)<span class="comment">#通过特殊的scrapy传递将url传到下一个函数对下一层网页进行爬取</span></span><br><span class="line">      <span class="comment">#一定要加入dont_filter=True，不然会出bug（不进入下个函数）</span></span><br><span class="line">			print(<span class="string">'>>>>>>>>  parse comics:'</span> + url)</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来我们编写<code>comics_parse(self, response)</code>函数来处理各话的url</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">comics_parse</span><span class="params">(self, response)</span>:</span><span class="comment">#另一个函数爬取下层页面</span></span><br><span class="line">		pre_img_url = response.xpath(<span class="string">'//script/text()'</span>).extract()<span class="comment">#获取script</span></span><br><span class="line">		img_url = <span class="string">''</span></span><br><span class="line">		ptitle=response.xpath(<span class="string">'//title/text()'</span>).extract()<span class="comment">#获取章节名称</span></span><br><span class="line">		prepage_num=response.xpath(<span class="string">'//a[contains(@href, "index")]/text()'</span>).extract()<span class="comment">#获取页面名字</span></span><br><span class="line">		page_num=<span class="string">''</span></span><br><span class="line">		a=<span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(prepage_num)):<span class="comment">#寻找page number来作为文件名</span></span><br><span class="line">			<span class="keyword">for</span> _char <span class="keyword">in</span> prepage_num[j]:<span class="comment">#判断中文字符来找到当前页码（它会是“第n页”）</span></span><br><span class="line">				<span class="keyword">if</span> <span class="string">'\u4e00'</span> <= _char <= <span class="string">'\u9fa5'</span>:</span><br><span class="line">					page_num=prepage_num[j]</span><br><span class="line">					<span class="keyword">if</span> page_num == <span class="string">'下一页'</span>:<span class="comment">#如果是‘下一页’叫表示它漏过了‘第一页’</span></span><br><span class="line">						page_num=<span class="string">'第1页'</span></span><br><span class="line">					a=<span class="number">1</span></span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">			<span class="keyword">if</span>(a==<span class="number">1</span>):</span><br><span class="line">				<span class="keyword">break</span>	 </span><br><span class="line">		t=ptitle[<span class="number">0</span>]</span><br><span class="line">		index=ptitle[<span class="number">0</span>].find(<span class="string">'话'</span>)<span class="comment">#通过找到‘话’来找到章节的名字</span></span><br><span class="line">		title=t[<span class="number">0</span>:(index+<span class="number">1</span>)]<span class="comment">#截取章节名字</span></span><br><span class="line"><span class="comment">#		matchObj = re.search( r'url=\"()\s*(.*)jpg', line, re.M|re.I)</span></span><br><span class="line"> 	 <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pre_img_url)):<span class="comment">#记录的时候是以array存储的      </span></span><br><span class="line">   		matchObj = re.search( <span class="string">r'url=\"()\s*(.*)jpg'</span>, pre_img_url[i], re.M|re.I)<span class="comment">#正则表达式寻找      </span></span><br><span class="line">    	<span class="keyword">if</span> matchObj:        </span><br><span class="line">      	ppreimgurl = matchObj.group()<span class="comment">#里面就包含了我们要找的url（本例是“2020/02/08055441539556.jpg”）        img_url= 'http://p2.manhuapan.com/' + ppreimgurl[5:len(ppreimgurl)]#在前面加上存储图片的网址</span></span><br><span class="line">				self.log(<span class="string">'>>>>>>>>>>>开始下载<<<<<<<<<<<<<'</span>)</span><br><span class="line"><span class="comment">#				self.save_img(page_num[len(page_num)], title, img_url)</span></span><br><span class="line">				document = <span class="string">'/Users/maverick/Desktop/test/One punch'</span></span><br><span class="line">				comics_path = document + <span class="string">'/'</span> + title</span><br><span class="line">				exists = os.path.exists(comics_path)</span><br><span class="line">				<span class="keyword">if</span> <span class="keyword">not</span> exists:<span class="comment">#如果没有创建过文件夹</span></span><br><span class="line"><span class="comment">#					self.log('create document: ' + title)</span></span><br><span class="line">					os.makedirs(comics_path)</span><br><span class="line">				pic_name = comics_path + <span class="string">'/'</span> + page_num + <span class="string">'.jpg'</span></span><br><span class="line">				exists = os.path.exists(pic_name)</span><br><span class="line">				<span class="keyword">if</span> <span class="keyword">not</span> exists:</span><br><span class="line">					time.sleep(<span class="number">0.1</span>)<span class="comment">#延时防止锁ip</span></span><br><span class="line">					urlretrieve(img_url, pic_name)<span class="comment">#下载图片</span></span><br><span class="line">				<span class="keyword">break</span>		</span><br><span class="line">		pages_urls = response.xpath(<span class="string">'//a[contains(@href, "index")]/@href'</span>).extract()<span class="comment">#找到下一页的url</span></span><br><span class="line">		page_situation = response.xpath(<span class="string">'//a[contains(@href, "index")]/text()'</span>).extract()<span class="comment">#与是否为最后一页有关</span></span><br><span class="line">		ans=<span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> _char <span class="keyword">in</span> page_situation[len(page_situation)<span class="number">-1</span>]:<span class="comment">#还是通过中文来判断是否为最后一页</span></span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> <span class="string">'\u4e00'</span> <= _char <= <span class="string">'\u9fa5'</span>:</span><br><span class="line">				ans=<span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span>(ans==<span class="number">0</span>):</span><br><span class="line">			premyfront = response.request.url<span class="comment">#找到当前页面的url，再通过字符串操作得到基础页</span></span><br><span class="line">			fenge = premyfront.split(<span class="string">'/'</span>)</span><br><span class="line">			myfont=<span class="string">''</span></span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">				myfont=myfont+fenge[i]+<span class="string">'/'</span></span><br><span class="line">			next_page = myfont+pages_urls[len(pages_urls)<span class="number">-1</span>]<span class="comment">#得到下一页</span></span><br><span class="line">			self.log(next_page)</span><br><span class="line">			<span class="keyword">yield</span> scrapy.Request(next_page, callback=self.comics_parse, dont_filter=<span class="literal">True</span>)	<span class="comment">#递归自己</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			self.log(<span class="string">'parse comics:'</span> + title + <span class="string">'finished.'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>然后我们就可以欣赏它爬取的漫画了。因为整个网站的机制是一样的，所以我们只需要修改url地址，就可以任意爬取自己想看的漫画了。</p>
+<h2 id="五、后记"><a href="#五、后记" class="headerlink" title="五、后记"></a>五、后记</h2><p>如果是自己想用的话，代码已经在<a href="https://github.com/MaverickTang/Attack-on-titan-download">GitHub</a>上面了，下载下来就可以直接用。</p>
+<p>不仅是巨人，这个爬虫还可以爬取整个网站上的其他漫画，比如：</p>
+<p>一拳超人，火影忍者，海贼王,鬼灭之刃等。</p>
+<p>请求星星✨</p>
+<p>使用terminalcd到根目录然后运行以下代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl titan</span><br></pre></td></tr></tbody></table></figure>
+<p>记得把保存的本机地址还有想爬取的漫画地址改一下</p>
+<p>当然只要编程的速度够快，这种下载速度绝对比某网盘快得多，最关键的是方便并且可以装B。。。</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGNvgP.gif" alt="Inspect"></p>
+<p>放上自己爬到的兵长帅照哈哈哈哈哈</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/02/GGNX9I.jpg" alt="Inspect"></p>
+<h2 id="六、参考链接及版权说明"><a href="#六、参考链接及版权说明" class="headerlink" title="六、参考链接及版权说明"></a>六、参考链接及版权说明</h2><p>博主是第一次写博客，如果侵权请联系我删除，还有对两个大佬写的博客表示诚挚感谢，链接第一与第二个为两个大佬的博客。</p>
+<p>参考链接：</p>
+<p>1(合法).<a href="https://blog.csdn.net/c406495762/article/details/72858983" target="_blank" rel="noopener">https://blog.csdn.net/c406495762/article/details/72858983</a></p>
+<p>2(非法).<a href="https://moshuqi.github.io/2016/09/27/Python爬虫-Scrapy框架/" target="_blank" rel="noopener">https://moshuqi.github.io/2016/09/27/Python%E7%88%AC%E8%99%AB-Scrapy%E6%A1%86%E6%9E%B6/</a></p>
+<p>3(正则表达式).<a href="https://www.runoob.com/python/python-reg-expressions.html" target="_blank" rel="noopener">https://www.runoob.com/python/python-reg-expressions.html</a></p>
+<p>4(xpath与css学习).<a href="https://www.jianshu.com/p/489c5d21cdc7" target="_blank" rel="noopener">https://www.jianshu.com/p/489c5d21cdc7</a></p>
+<p>5(下载图片方法).<a href="https://morvanzhou.github.io/tutorials/data-manipulation/scraping/3-02-download/" target="_blank" rel="noopener">https://morvanzhou.github.io/tutorials/data-manipulation/scraping/3-02-download/</a></p>
+<p>6(进击的巨人在线观看).<a href="https://manhua.fzdm.com/39/" target="_blank" rel="noopener">https://manhua.fzdm.com/39/</a></p>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/Zh-Blog/images/wechatpay.png" alt="唐浩天 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/Zh-Blog/images/alipay.png" alt="唐浩天 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>唐浩天
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on%20t-titan/" title="爬取进击的巨人漫画">https://github.com/MaverickTang/Zh-Blog/2020/02/24/Crawl-Attack-on t-titan/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fa fa-wechat"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Zh-Blog/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/Zh-Blog/2020/03/21/American-Memory/" rel="next" title="尽管我们的手中一无所有——美国留学告别篇">
+      尽管我们的手中一无所有——美国留学告别篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Scrapy爬取进击的巨人漫画"><span class="nav-number">1.</span> <span class="nav-text">使用Scrapy爬取进击的巨人漫画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、环境准备"><span class="nav-number">1.2.</span> <span class="nav-text">二、环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、基础准备"><span class="nav-number">1.3.</span> <span class="nav-text">三、基础准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy简介（大牛的文章）"><span class="nav-number">1.3.1.</span> <span class="nav-text">Scrapy简介（大牛的文章）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路"><span class="nav-number">1.3.2.</span> <span class="nav-text">基本思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、第二次准备"><span class="nav-number">1.4.</span> <span class="nav-text">四、第二次准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">1.4.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建spider类"><span class="nav-number">1.4.2.</span> <span class="nav-text">创建spider类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell分析"><span class="nav-number">1.4.3.</span> <span class="nav-text">shell分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再次分析"><span class="nav-number">1.4.4.</span> <span class="nav-text">再次分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取图片链接"><span class="nav-number">1.4.5.</span> <span class="nav-text">获取图片链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、开始编写"><span class="nav-number">1.5.</span> <span class="nav-text">五、开始编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、后记"><span class="nav-number">1.6.</span> <span class="nav-text">五、后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、参考链接及版权说明"><span class="nav-number">1.7.</span> <span class="nav-text">六、参考链接及版权说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="唐浩天"
+      src="/Zh-Blog/images/Levi.gif">
+  <p class="site-author-name" itemprop="name">唐浩天</p>
+  <div class="site-description" itemprop="description">Live without Barricades!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Zh-Blog/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/Zh-Blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/Zh-Blog/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MaverickTang" title="GitHub → https://github.com/MaverickTang"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/Zh-Blog/agodsfor@gmail.com" title="E-Mail → agodsfor@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="/Zh-Blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/Zh-Blog/recc.xyz" title="recc.xyz">Rec</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://siriusq.top/" title="https://siriusq.top" rel="noopener" target="_blank">Sirius</a>
+        </li>
+    </ul>
+  </div>
+
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  © 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mavericreate</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">105k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 ≈</span>
+    <span title="站点阅读时长">1:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/Zh-Blog/lib/anime.min.js"></script>
+  <script src="/Zh-Blog/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/Zh-Blog/lib/velocity/velocity.min.js"></script>
+  <script src="/Zh-Blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/Zh-Blog/js/utils.js"></script>
+
+<script src="/Zh-Blog/js/motion.js"></script>
+
+
+<script src="/Zh-Blog/js/schemes/pisces.js"></script>
+
+
+<script src="/Zh-Blog/js/next-boot.js"></script>
+
+<script src="/Zh-Blog/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/Zh-Blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'be309a88a9a8f3bbeaa5',
+      clientSecret: 'd3b52b56b65cdd831b4a034e82e05b4c735a4997# GitHub Application Client Secret',
+      repo        : 'gitalk-commnet# Repository name to store issues',
+      owner       : 'MaverickTang# GitHub repo owner',
+      admin       : ['MaverickTang'],
+      id          : '5ef3df351aa370c4b96d757e23cf6d7f',
+        language: '',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+<!--崩溃欺骗-->
+<script type="/Blogs/text/javascript" src="/Blogs/js/crash_cheat.js"></script>
+
+
+
+	<script async src="/Blogs/js/cursor/fireworks.js"></script>
+
+
+    </div>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/Blogs/js/crash_cheat.js"></script>
+<script src="/Zh-Blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+</title></span></pre></td></tr></tbody></table></figure></div></article></div></div></div></div></main></div><script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
